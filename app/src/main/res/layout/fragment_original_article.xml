@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/mColorBackground"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_panel_back_layout" />
+
+
+    <ImageView
+        android:id="@+id/user_info_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/blank_place_holder" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_info_imageview"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="啊，这页空空的"
+        android:textSize="20sp" />
+
+</RelativeLayout>

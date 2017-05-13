@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_main_fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <com.helldefender.enjoylife.widget.TabViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="45dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:background="#ececec"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_homepage"
+            style="@style/navigation_style"
+            android:checked="true"
+            android:drawableTop="@drawable/homepage_radio_btn_bg"
+            android:paddingBottom="2dp"
+            android:paddingTop="3dp"
+            android:text="首页"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_discovery"
+            style="@style/navigation_style"
+            android:checked="false"
+            android:drawableTop="@drawable/discovery_radio_btn_bg"
+            android:paddingBottom="2dp"
+            android:paddingTop="3dp"
+            android:text="发现"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/img_posted"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:src="@mipmap/posted" />
+
+        <RadioButton
+            android:id="@+id/radio_message"
+            style="@style/navigation_style"
+            android:checked="false"
+            android:drawableTop="@drawable/message_radio_btn_bg"
+            android:paddingBottom="2dp"
+            android:paddingTop="3dp"
+            android:text="消息"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_user"
+            style="@style/navigation_style"
+            android:checked="false"
+            android:drawableTop="@drawable/user_radio_btn_bg"
+            android:paddingBottom="2dp"
+            android:paddingTop="3dp"
+            android:text="我的"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+</FrameLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/entity/HttpResultModel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/entity/ResultsBean.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/ApiException.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/HttpApi.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/HttpException.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/HttpExceptionFunc1.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/HttpManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/ObservableManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/ProgressSubscriber.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/interceptors/CacheInterceptor.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/interceptors/DynamicParameterInterceptor.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/interceptors/HeadInterceptor.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/interceptors/ParameterInterceptor.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/progress/ProgressCancelListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/data/server/progress/ProgressDialogHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/helldefender/enjoylife/utils/DisplayUtil.java" charset="GBK" />
+  </component>
+</project>

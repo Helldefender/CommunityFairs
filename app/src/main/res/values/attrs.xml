@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="mColorBackground" format="color" />
+    <attr name="mColorText" format="color" />
+    <attr name="mColorPrimary" format="color" />
+    <attr name="mColorAccent" format="color" />
+
+    <declare-styleable name="RefreshRecyclerView">
+        <attr name="refreshHeaderLayout" format="reference" />
+        <attr name="loadMoreFooterLayout" format="reference" />
+        <attr name="refreshEnabled" format="boolean" />
+        <attr name="loadMoreEnabled" format="boolean" />
+        <attr name="refreshFinalMoveOffset" format="dimension" />
+    </declare-styleable>
+</resources>

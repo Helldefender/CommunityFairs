@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">活动集市</string>
+    <string name="about">  乐活是一个基于乐趣分享的社区.\n\n在这里，你既可以分享生活中做过的，感受过的，经历过的，值得的，有趣的，大家都应尝试的 “新鲜事”.\n\n或是你人生中的开心的，惊讶的，感恩的，时刻；\n对传统的重新定义或是重温的儿时的记忆；\n一本值得你读上两三遍的好书或是一部令人沉思的电影；\n一趟收获颇丰的旅行，一个令人神往的地方；\n一种令人诧异的新知识，一个省时省力的生活小技巧；\n\n在这里，你也可以发现让无聊的你摆脱枯燥的想法，用他人的快乐给你的生活带来新的活力,你也可以把自己的生活中乐趣向他人分享，找到同好.\n\n乐活致力于提供最好的分享体验。简单优雅的设计，给用户带来前所未有的愉快感受；包罗万象的专题，使得用户更容易发现自己喜爱的内容，与同好交流.\n\n乐活让您摆脱枯燥，重拾活力，乐享生活.\n
+</string>
+
+    <string name="login">登录</string>
+    <string name="logout">登出</string>
+    <string name="register">注册</string>
+    <string name="logining">登录中\u2026</string>
+    <string name="register_part1">还没有乐活号？</string>
+    <string name="register_part2">立即注册</string>
+    <string name="registering">注册中\u2026</string>
+    <string name="agree">同意</string>
+    <string name="reject">拒绝</string>
+    <string name="network_is_not_available">网络连接失败，请检查你的网络设置</string>
+
+    <string name="login_hint_account">乐活号或昵称</string>
+    <string name="login_hint_password">密码</string>
+
+    <string name="input_phone">输入11位手机号作为乐活号</string>
+    <string name="register_phone_tip">乐活号为十一位手机号</string>
+
+    <string name="input_username">4-30个字符，支持中英文、数字</string>
+    <string name="register_username_tip">帐号限4-30个字符，支持中英文、数字</string>
+
+    <string name="input_password">6-16位数字或字母，区分大小写</string>
+    <string name="register_password_tip">密码限6-16位数字或字母，区分大小写</string>
+
+    <string name="input_password_confirm">再次输入密码</string>
+    <string name="register_password_confirm_tip">两次密码输入不一致</string>
+
+    <string name="register_success">注册成功</string>
+    <string name="register_failed">注册失败,错误码%1$s:%2$s</string>
+    <string name="login_has_account">已有帐号？直接登录</string>
+
+    <string name="msg_comment">回复<![CDATA[<font color="\"#f5b550\"">你:</font>]]>  </string>
+
+    <string name="smoothlistview_header_hint_normal">下拉刷新</string>
+    <string name="smoothlistview_header_hint_ready">松开刷新数据</string>
+    <string name="smoothlistview_header_hint_loading">正在加载...</string>
+    <string name="smoothlistview_header_last_time">上次更新时间：</string>
+    <string name="smoothlistview_footer_hint_normal">查看更多</string>
+    <string name="smoothlistview_footer_hint_ready">松开载入更多</string>
+
+</resources>

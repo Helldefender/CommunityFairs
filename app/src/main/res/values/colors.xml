@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 日间模式颜色 -->
+    <color name="colorPrimary">#586bd8</color>
+    <color name="colorPrimaryDark">#4a5bcc</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- 夜间模式颜色 -->
+    <color name="colorPrimaryNight">#332d2d</color>
+    <color name="colorPrimaryDarkNight">#3A3A3A</color>
+    <color name="colorAccentNight">#2c2929</color>
+    <color name="colorBackground">#3F3F3F</color>
+
+    <!-- 底部导航页的文字变化 -->
+    <color name="bottom_text_uncheck">#555555</color>
+    <color name="bottom_text_checked">#4483c9</color>
+
+    <color name="tab_transparent">#00000000</color>
+
+    <!-- 登录按钮的文字变化 -->
+    <color name="login_btn_enable">#ffffff</color>
+    <color name="login_btn_disable">#eeb55b</color>
+
+    <color name="base_color">#f5b550</color>
+
+    <color name="text_color">#444444</color>
+
+    <color name="statusColor">#F4733D</color>
+
+
+
+</resources>

@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="DayTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="mColorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="mColorAccent">@color/colorAccent</item>
+        <item name="mColorBackground">@android:color/white</item>
+        <item name="mColorText">@android:color/black</item>
+        <item name="android:homeAsUpIndicator">@mipmap/back_arrow</item>
+    </style>
+
+    <style name="NightTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="mColorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
+        <item name="mColorAccent">@color/colorAccentNight</item>
+        <item name="mColorBackground">@color/colorBackground</item>
+        <item name="mColorText">@color/colorAccentNight</item>
+        <item name="android:homeAsUpIndicator">@mipmap/back_arrow</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.PopOverlay" parent="ThemeOverlay.AppCompat.Light">
+    </style>
+
+    <style name="navigation_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:button">@null</item>
+
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:textColor">@color/selector_main_bottom_tab_text</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="DiscoveryAppBar" parent="android:Widget">
+        <item name="elevation">0dip</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="easy_dialog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/tab_transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="about_text_style">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginRight">4dp</item>
+    </style>
+
+</resources>
