@@ -8,6 +8,7 @@ import com.helldefender.enjoylife.inject.qualifier.ActivityContext;
 import com.helldefender.enjoylife.inject.qualifier.ApplicationContext;
 import com.helldefender.enjoylife.inject.scope.PerActivity;
 import com.helldefender.enjoylife.ui.activity.DetailContentActivity;
+import com.helldefender.enjoylife.ui.activity.MainActivity;
 
 import dagger.Component;
 
@@ -15,7 +16,7 @@ import dagger.Component;
  * Created by Helldefender on 2017/4/7.
  */
 @PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
+@Component(dependencies = {ApplicationComponent.class, BaseFragmentComponent.class}, modules = ActivityModule.class)
 public interface ActivityComponent {
     @ActivityContext
     Context getActivityContext();
@@ -25,6 +26,7 @@ public interface ActivityComponent {
 
     Activity getActivity();
 
-    void inject(DetailContentActivity detailContentActivity);
+    void inject(MainActivity mainActivity);
 
+    void inject(DetailContentActivity detailContentActivity);
 }

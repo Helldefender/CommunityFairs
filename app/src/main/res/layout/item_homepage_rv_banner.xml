@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="220dp"
     android:orientation="vertical">
@@ -8,4 +8,16 @@
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="25dp"
+        android:text="重庆邮电大学"
+        android:textStyle="bold"
+        android:drawableLeft="@mipmap/shape"
+        android:textColor="@android:color/white"
+        android:drawablePadding="5dp"
+        android:textSize="16sp" />
+</FrameLayout>

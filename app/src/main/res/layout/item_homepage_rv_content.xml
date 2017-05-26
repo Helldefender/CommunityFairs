@@ -37,17 +37,46 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_homepage_tv_finish"
                     android:padding="5dp"
                     android:text="报名中"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_item_homepage_likeNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"
+                        android:drawableLeft="@mipmap/like"
+                        android:drawablePadding="5dp"
+                        android:text="12"
+                        android:textColor="#80000000"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_item_homepage_commentNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@id/tv_item_homepage_likeNum"
+                        android:drawableLeft="@mipmap/comment"
+                        android:drawablePadding="5dp"
+                        android:text="100"
+                        android:textColor="#80000000"
+                        android:textSize="12sp" />
+                </RelativeLayout>
 
 
             </LinearLayout>

@@ -8,7 +8,6 @@ import com.helldefender.enjoylife.R;
 import com.helldefender.enjoylife.ui.adapter.base.BaseAdapter;
 import com.helldefender.enjoylife.ui.adapter.base.BaseViewHolder;
 import com.helldefender.enjoylife.ui.adapter.base.MultiViewType;
-import com.helldefender.enjoylife.ui.adapter.base.PosterRVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class DetailContentRVAdapter extends BaseAdapter<String> {
     }
 
     private void bindContent(BaseViewHolder baseViewHolder) {
-        RecyclerView hListRecyclerView = baseViewHolder.getView(R.id.rv_detail_item_poster);
+        RecyclerView hListRecyclerView = baseViewHolder.getView(R.id.rv_item_display_part);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         hListRecyclerView.setLayoutManager(linearLayoutManager);
@@ -50,7 +49,7 @@ public class DetailContentRVAdapter extends BaseAdapter<String> {
         data.add("测试");
         data.add("测试");
         data.add("测试");
-        hListRecyclerView.setAdapter(new PosterRVAdapter(context, R.layout.item_detail_rv_poster, data));
+        hListRecyclerView.setAdapter(new PosterRVAdapter(context, R.layout.item_detail_rv_display_part, data));
     }
 
     private void bindComment(BaseViewHolder baseViewHolder) {

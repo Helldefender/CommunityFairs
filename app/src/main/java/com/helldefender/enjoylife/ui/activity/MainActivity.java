@@ -12,12 +12,16 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.inject.qualifier.FragmentType;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
 import com.helldefender.enjoylife.ui.adapter.FragmentViewPagerAdapter;
+import com.helldefender.enjoylife.ui.fragment.BlankFragment;
+import com.helldefender.enjoylife.ui.fragment.DiscoveryAppBarFragment;
 import com.helldefender.enjoylife.ui.fragment.DiscoveryFragment;
 import com.helldefender.enjoylife.ui.fragment.HomePageFragment;
 import com.helldefender.enjoylife.ui.fragment.MessageFragment;
 import com.helldefender.enjoylife.ui.fragment.UserFragment;
+import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
 import com.helldefender.enjoylife.widget.TabViewPager;
 
 import java.util.ArrayList;
@@ -36,6 +40,12 @@ public class MainActivity extends BaseActivity {
 
     private static final int TAB_USER = 3;
 
+    @FragmentType("BlankFragment")
+    BlankFragment blankFragment;
+
+    @FragmentType("DiscoveryAppBarFragment")
+    DiscoveryAppBarFragment discoveryAppBarFragment;
+
     @BindView(R.id.viewpager)
     TabViewPager viewpager;
 
@@ -51,7 +61,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.radio_user)
     RadioButton radioUser;
 
-    //private int appBarLayoutId;
+    private int appBarLayoutId;
 
     public static void start(Context context) {
         start(context, null);
@@ -79,12 +89,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initInject() {
-
+        mActivityComponent.inject(this);
     }
 
     @Override
     public void initPresenter() {
-
     }
 
     @Override
@@ -99,6 +108,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+        //mActivityComponent;
+
         initViewPager();
     }
 
@@ -127,19 +138,19 @@ public class MainActivity extends BaseActivity {
             public void onPageSelected(int id) {
                 switch (id) {
                     case TAB_HOMEPAGE:
-                        //appBarLayoutId = 0;
+                        appBarLayoutId = 0;
                         radioHomepage.setChecked(true);
                         break;
                     case TAB_DISCOVERY:
-                        //appBarLayoutId = R.layout.fragment_appbar;
+                        appBarLayoutId = R.layout.fragment_discovery_appbar;
                         radioDiscovery.setChecked(true);
                         break;
                     case TAB_MESSAGE:
-                        //appBarLayoutId = 0;
+                        appBarLayoutId = 0;
                         radioMessage.setChecked(true);
                         break;
                     case TAB_USER:
-                        //appBarLayoutId = 0;
+                        appBarLayoutId = 0;
                         radioUser.setChecked(true);
                         break;
                 }
@@ -162,24 +173,50 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.radio_homepage:
                 viewpager.setCurrentItem(TAB_HOMEPAGE, false);
-                //replaceAppBarLayout();
+                replaceAppBarLayout();
                 doubleClick(view);
                 break;
             case R.id.radio_discovery:
                 viewpager.setCurrentItem(TAB_DISCOVERY, false);
-                //replaceAppBarLayout();
+                replaceAppBarLayout();
                 break;
             case R.id.radio_message:
                 viewpager.setCurrentItem(TAB_MESSAGE, false);
-                //replaceAppBarLayout();
+                replaceAppBarLayout();
                 break;
             case R.id.radio_user:
                 viewpager.setCurrentItem(TAB_USER, false);
-                //replaceAppBarLayout();
+                replaceAppBarLayout();
                 break;
             case R.id.img_posted:
                 PublishActivity.start(MainActivity.this, null);
                 break;
+        }
+    }
+
+    private void replaceAppBarLayout() {
+        BaseFragment baseFragment = getAppBarFragment();
+        addAppBarFragment(baseFragment);
+    }
+
+    private BaseFragment getAppBarFragment() {
+        if (appBarLayoutId != 0) {
+//            Log.d("DAI", "discovery" + (discoveryAppBarFragment == null));
+//            return discoveryAppBarFragment;
+            return DiscoveryAppBarFragment.getInstance();
+        }
+//        Log.d("DAI", "blank" + (blankFragment == null));
+//        return blankFragment;
+        return BlankFragment.getInstance();
+    }
+
+    private void addAppBarFragment(BaseFragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frameLayout_main_fragmentContainer, fragment, fragment.getClass().getSimpleName())
+                    .addToBackStack(fragment.getClass().getSimpleName())
+                    .commitAllowingStateLoss();
         }
     }
 

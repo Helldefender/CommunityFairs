@@ -5,17 +5,7 @@
 
     <solid android:color="#F4733D" />
 
-    <padding
-        android:bottom="2dp"
-        android:left="4dp"
-        android:right="4dp"
-        android:top="2dp" />
-
     <stroke
-        android:width="2dp"
+        android:width="4dp"
         android:color="@android:color/white" />
-
-    <size
-        android:width="15dp"
-        android:height="15dp" />
 </shape>

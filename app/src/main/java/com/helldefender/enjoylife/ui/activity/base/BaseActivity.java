@@ -24,8 +24,6 @@ import com.helldefender.enjoylife.app.MyApplication;
 import com.helldefender.enjoylife.inject.component.ActivityComponent;
 import com.helldefender.enjoylife.inject.component.DaggerActivityComponent;
 import com.helldefender.enjoylife.inject.module.ActivityModule;
-import com.helldefender.enjoylife.listener.OnRetryListener;
-import com.helldefender.enjoylife.listener.OnShowHideViewListener;
 import com.helldefender.enjoylife.listener.PermissionListener;
 import com.helldefender.enjoylife.presenter.base.BasePresenter;
 import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
@@ -76,60 +74,55 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 //        context.startActivity(intent);
 //    }
 
-    private void initActivityComponent() {
-        mActivityComponent = DaggerActivityComponent.builder()
-                .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
-                .activityModule(new ActivityModule(this))
-                .build();
-    }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(getLayoutId());
+        //setContentView(R.layout.activity_base);
 
-        llBaseActivity = (LinearLayout) findViewById(R.id.ll_base_activity);
-        statusLayoutManager = new StatusLayoutManager.Builder(this)
-                .contentView(getLayoutId())
-                .loadingView(R.layout.layout_status_loading)
-                .emptyDataView(getEmptyLayoutId())
-                .errorView(R.layout.layout_status_error)
-                .netWorkErrorView(R.layout.layout_status_net_error)
-                .retryViewId(R.layout.layout_status_retry)
-//                .emptyDataRetryViewId()
-//                .errorRetryViewId()
-//                .netWorkErrorRetryViewId()
-                .emptyDataIconImageId(R.id.tv_status_empty)
-                .emptyDataTextTipId(R.id.img_status_empty)
-                .onRetryListener(new OnRetryListener() {
-                    @Override
-                    public void onRetry() {
-                        statusLayoutManager.showLoading();
-                        //请求加载数据
-                    }
-                })
-                //view显示隐藏监听
-                .onShowHideViewListener(new OnShowHideViewListener() {
-                    @Override
-                    public void onShowView(View view, int id) {
-                        //该view显示
-                    }
-
-                    @Override
-                    public void onHideView(View view, int id) {
-                        //该view隐藏
-                    }
-                })
-                .build();
-
-        llBaseActivity.addView(statusLayoutManager.getRootLayout(), 0);
-
-        statusLayoutManager.showContent();
-
-        ButterKnife.bind(this);
+//        llBaseActivity = (LinearLayout) findViewById(R.id.ll_base_activity);
+//        statusLayoutManager = new StatusLayoutManager.Builder(this)
+//                .contentView(getLayoutId())
+//                .loadingView(R.layout.layout_status_loading)
+//                .emptyDataView(getEmptyLayoutId())
+//                .errorView(R.layout.layout_status_error)
+//                .netWorkErrorView(R.layout.layout_status_net_error)
+//                .retryViewId(R.layout.layout_status_retry)
+////                .emptyDataRetryViewId()
+////                .errorRetryViewId()
+////                .netWorkErrorRetryViewId()
+//                .emptyDataIconImageId(R.id.tv_status_empty)
+//                .emptyDataTextTipId(R.id.img_status_empty)
+//                .onRetryListener(new OnRetryListener() {
+//                    @Override
+//                    public void onRetry() {
+//                        statusLayoutManager.showLoading();
+//                        //请求加载数据
+//                    }
+//                })
+//                //view显示隐藏监听
+//                .onShowHideViewListener(new OnShowHideViewListener() {
+//                    @Override
+//                    public void onShowView(View view, int id) {
+//                        //该view显示
+//                    }
+//
+//                    @Override
+//                    public void onHideView(View view, int id) {
+//                        //该view隐藏
+//                    }
+//                })
+//                .build();
+//
+//        llBaseActivity.addView(statusLayoutManager.getRootLayout(), 0);
+//
+//        statusLayoutManager.showContent();
 
         initActivityComponent();
         initInject();
+
+        ButterKnife.bind(this);
+
         initPresenter();
 
         if (mPresenter != null) {
@@ -140,6 +133,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    private void initActivityComponent() {
+        mActivityComponent = DaggerActivityComponent.builder()
+                .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
+                .baseFragmentComponent(((MyApplication) getApplication()).getBaseFragmentComponent())
+                .activityModule(new ActivityModule(this))
+                .build();
     }
 
     protected void handleStatusBar() {
@@ -232,7 +233,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
 
     protected int getFragmentContentId() {
-        return R.id.ll_main_fragmentContainer;
+        return R.id.coordinatorLayout_main_fragmentContainer;
     }
 
     public static void requestRuntimePermission(BaseActivity baseActivity, String[] permissions, PermissionListener listener) {

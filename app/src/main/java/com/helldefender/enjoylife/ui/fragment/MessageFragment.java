@@ -9,9 +9,10 @@ import android.view.ViewGroup;
 
 import com.helldefender.enjoylife.R;
 import com.helldefender.enjoylife.presenter.impl.MessagePresenterImpl;
-import com.helldefender.enjoylife.ui.adapter.base.MessageRVAdapter;
+import com.helldefender.enjoylife.ui.adapter.MessageRVAdapter;
 import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
 import com.helldefender.enjoylife.view.MessageView;
+import com.helldefender.enjoylife.widget.recyclerview.MessageItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +94,7 @@ public class MessageFragment extends BaseFragment implements MessageView {
         data.add("测试");
         data.add("测试");
         data.add("测试");
+        messageRecyclerView.addItemDecoration(new MessageItemDecoration());
         messageRecyclerView.setAdapter(new MessageRVAdapter(getHoldingActivity(), R.layout.item_message_rv, data));
         //messageRecyclerView.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
     }

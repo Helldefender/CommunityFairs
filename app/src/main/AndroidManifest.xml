@@ -31,9 +31,6 @@
         <activity
             android:name=".ui.activity.CommentPostActivity"
             android:theme="@style/transparent" />
-        <activity android:name=".ExcelTestActivity">
-
-        </activity>
 
     </application>
 

@@ -7,6 +7,7 @@ import com.helldefender.enjoylife.inject.module.FragmentModule;
 import com.helldefender.enjoylife.inject.qualifier.ActivityContext;
 import com.helldefender.enjoylife.inject.qualifier.ApplicationContext;
 import com.helldefender.enjoylife.inject.scope.PerFragment;
+import com.helldefender.enjoylife.ui.fragment.DiscoveryAppBarFragment;
 import com.helldefender.enjoylife.ui.fragment.DiscoveryFragment;
 import com.helldefender.enjoylife.ui.fragment.HomePageFragment;
 import com.helldefender.enjoylife.ui.fragment.MessageFragment;
@@ -31,6 +32,9 @@ public interface FragmentComponent {
 
     void inject(DiscoveryFragment discoveryFragment);
 
+    void inject(DiscoveryAppBarFragment discoveryAppBarFragment);
+
     void inject(MessageFragment messageFragment);
+
 }
 

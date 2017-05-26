@@ -4,6 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_publish"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F4733D" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="我是文件上传页"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_publish"
         android:layout_width="match_parent"

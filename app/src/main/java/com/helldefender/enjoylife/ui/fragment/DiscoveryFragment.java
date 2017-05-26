@@ -2,13 +2,11 @@ package com.helldefender.enjoylife.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.helldefender.enjoylife.R;
 import com.helldefender.enjoylife.presenter.impl.DiscoveryPresenterImpl;
@@ -34,24 +32,10 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
     @Inject
     DiscoveryPresenterImpl discoveryPresenter;
 
-//    @BindView(R.id.rv_discovery)
-//    RecyclerView discoveryRecyclerView;
+    @BindView(R.id.rv_discovery_event)
+    RecyclerView mEventRecyclerView;
 
     Unbinder unbinder;
-
-    @BindView(R.id.tv_discovery_moreOrganization)
-    TextView tvMoreOrganization;
-
-    @BindView(R.id.rv_discovery_organization)
-    RecyclerView rvOrganization;
-
-    @BindView(R.id.tv_discovery_moreEvent)
-    TextView tvMoreEvent;
-
-    @BindView(R.id.rv_discovery_event)
-    RecyclerView rvEvent;
-
-    private OrganizationRvAdapter organizationRvAdapter;
 
     private OrganizationRvAdapter eventRvAdapter;
 
@@ -83,7 +67,7 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
-        initPresenter();
+        //initPresenter();
         initRecyclerView();
     }
 
@@ -140,14 +124,10 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
 //            }
 //        }, data));
 
-        organizationRvAdapter = new OrganizationRvAdapter(getHoldingActivity(), R.layout.item_discovery_rv_organization, data);
-        rvOrganization.setLayoutManager(new GridLayoutManager(getHoldingActivity(), 4, GridLayoutManager.VERTICAL, false));
-        rvOrganization.setAdapter(organizationRvAdapter);
-
         eventRvAdapter = new OrganizationRvAdapter(getHoldingActivity(), R.layout.item_discovery_rv_event, data);
-        rvEvent.setLayoutManager(new LinearLayoutManager(getHoldingActivity()));
-        rvEvent.setAdapter(eventRvAdapter);
-        rvEvent.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
+        mEventRecyclerView.setLayoutManager(new LinearLayoutManager(getHoldingActivity()));
+        mEventRecyclerView.setAdapter(eventRvAdapter);
+        mEventRecyclerView.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
     }
 
     @Override

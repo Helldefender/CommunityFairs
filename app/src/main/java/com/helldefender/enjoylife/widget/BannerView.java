@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +37,9 @@ public class BannerView extends FrameLayout {
 
     private static final int INDICATOR_COUNT = 4;
 
-    private static final boolean isAutoPlay = false;
+    private static final boolean isAutoPlay = true;
 
-    private Context context;
+    private Context mContext;
 
     private List<ImageView> imageViewList;
 
@@ -54,23 +55,23 @@ public class BannerView extends FrameLayout {
 
     private TextView titleText;
 
-    private ImageHandler handler = new ImageHandler(new WeakReference<BannerView>(this));
+    private BannerHandler handler = new BannerHandler(new WeakReference<BannerView>(this));
 
     public BannerView(@NonNull Context context) {
         this(context, null);
-        this.context = context;
+        this.mContext = context;
     }
 
     public BannerView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
-        this.context = context;
+        this.mContext = context;
     }
 
     public BannerView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         if (!isInEditMode()) {
-            this.context = context;
+            this.mContext = context;
             initData();
 
             if (isAutoPlay) {
@@ -80,6 +81,9 @@ public class BannerView extends FrameLayout {
     }
 
     private void initData() {
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater.inflate(R.layout.view_banner, this, true);
+
         imageViewList = new ArrayList<ImageView>();
         indicatorList = new ArrayList<View>();
     }
@@ -89,20 +93,22 @@ public class BannerView extends FrameLayout {
             return;
         }
 
-        LayoutInflater.from(context).inflate(R.layout.view_banner, this, true);
-        LinearLayout indicatorLayout = (LinearLayout) findViewById(R.id.ll_banner_indicator);
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.view_banner, this, true);
+
+        LinearLayout indicatorLayout = (LinearLayout) view.findViewById(R.id.ll_banner_indicator);
         indicatorLayout.removeAllViews();
 
-        titleText = (TextView) findViewById(R.id.tv_banner_title);
+        titleText = (TextView) view.findViewById(R.id.tv_banner_title);
         titleText.setText(titleList.get(0));
 
         for (int i = 0; i < imageUrlList.size(); i++) {
-            ImageView imageView = new ImageView(context);
+            ImageView imageView = new ImageView(mContext);
             imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             imageViewList.add(imageView);
 
-            ImageView indicatorView = new ImageView(context);
+            ImageView indicatorView = new ImageView(mContext);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             params.leftMargin = 8;
             params.rightMargin = 8;
@@ -122,7 +128,7 @@ public class BannerView extends FrameLayout {
             imageViewList.get(imageViewList.size() - 1).setOnClickListener(onClickListener);
         }
 
-        viewPager = (ViewPager) findViewById(R.id.vp_banner_image);
+        viewPager = (ViewPager) view.findViewById(R.id.vp_banner_image);
         viewPager.setFocusable(true);
         viewPager.setAdapter(new ViewPagerAdapter());
 
@@ -132,11 +138,11 @@ public class BannerView extends FrameLayout {
     }
 
     public void startPlay() {
-        handler.sendEmptyMessageDelayed(ImageHandler.MSG_KEEP_SILENT, ImageHandler.MSG_DELAY);
+        handler.sendEmptyMessageDelayed(BannerHandler.MSG_KEEP_SILENT, BannerHandler.MSG_DELAY);
     }
 
     public void stopPlay() {
-        handler.sendEmptyMessageDelayed(ImageHandler.MSG_KEEP_SILENT, ImageHandler.MSG_DELAY);
+        handler.sendEmptyMessageDelayed(BannerHandler.MSG_KEEP_SILENT, BannerHandler.MSG_DELAY);
     }
 
     public void setOnClickListener(OnClickListener onClickListener) {
@@ -148,13 +154,14 @@ public class BannerView extends FrameLayout {
         this.titleList = titleList;
     }
 
-
-    public void destory() {
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
         stopPlay();
         destoryBitmaps();
     }
 
-    private static class ImageHandler extends Handler {
+    private static class BannerHandler extends Handler {
 
         protected static final int MSG_UPDATE_IMAGE = 1;
 
@@ -170,7 +177,7 @@ public class BannerView extends FrameLayout {
 
         private int currentItem = 0;
 
-        public ImageHandler(WeakReference<BannerView> weakReference) {
+        public BannerHandler(WeakReference<BannerView> weakReference) {
             this.weakReference = weakReference;
         }
 
@@ -222,7 +229,7 @@ public class BannerView extends FrameLayout {
             }
 
             ImageView imageView = imageViewList.get(position);
-            Glide.with(context).load("http://pic16.nipic.com/20110921/7247268_215811562102_2.jpg").into(imageView);
+            Glide.with(mContext).load("http://pic16.nipic.com/20110921/7247268_215811562102_2.jpg").into(imageView);
             //如果view在之前已经添加到了一个父组件，则必须先remove,封否则会抛出异常
             ViewParent viewParent = imageView.getParent();
 
@@ -254,7 +261,8 @@ public class BannerView extends FrameLayout {
 
         @Override
         public void onPageSelected(int position) {
-            handler.sendMessage(Message.obtain(handler, ImageHandler.MSG_PAGE_CHANGED, position, 0));
+            Log.d("DAI", "ONPAGESELDCTED");
+            handler.sendMessage(Message.obtain(handler, BannerHandler.MSG_PAGE_CHANGED, position, 0));
 
             int total = indicatorList.size();
             position %= total;
@@ -274,10 +282,12 @@ public class BannerView extends FrameLayout {
         public void onPageScrollStateChanged(int state) {
             switch (state) {
                 case ViewPager.SCROLL_STATE_DRAGGING:
-                    handler.sendEmptyMessage(ImageHandler.MSG_KEEP_SILENT);
+                    Log.d("DAI", "scroll state dragging");
+                    handler.sendEmptyMessage(BannerHandler.MSG_KEEP_SILENT);
                     break;
                 case ViewPager.SCROLL_STATE_IDLE:
-                    handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+                    Log.d("DAI", "SCROLL STATE IDLE");
+                    handler.sendEmptyMessageDelayed(BannerHandler.MSG_UPDATE_IMAGE, BannerHandler.MSG_DELAY);
                     break;
                 default:
                     break;

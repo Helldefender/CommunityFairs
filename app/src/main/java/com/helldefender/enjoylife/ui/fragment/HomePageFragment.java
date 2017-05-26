@@ -7,7 +7,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.helldefender.enjoylife.R;
 import com.helldefender.enjoylife.event.LoggingStatusEvent;
@@ -49,9 +48,6 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
 
     @Inject
     HomePagePresenterImpl homePagePresenter;
-
-    @BindView(R.id.ll_homepage_fragment)
-    LinearLayout llHomepage;
 
     @BindView(R.id.rv_homepage_refresh)
     RefreshRecyclerView homeRecyclerView;

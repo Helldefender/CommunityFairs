@@ -19,8 +19,10 @@ import com.helldefender.enjoylife.listener.OnRetryListener;
 import com.helldefender.enjoylife.listener.OnShowHideViewListener;
 import com.helldefender.enjoylife.presenter.base.BasePresenter;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
+import com.helldefender.enjoylife.utils.SubscriptionUtil;
 
 import butterknife.ButterKnife;
+import rx.Subscription;
 
 /**
  * Created by Helldefender on 2017/2/5.
@@ -35,6 +37,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     protected FragmentComponent mFragmentComponent;
 
     protected StatusLayoutManager statusLayoutManager;
+
+    protected Subscription subscription;
 
     LinearLayout llBaseFragment;
 
@@ -125,6 +129,10 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+        }
+        SubscriptionUtil.cancelSubscription(subscription);
     }
 
     protected void addFragment(BaseFragment baseFragment) {

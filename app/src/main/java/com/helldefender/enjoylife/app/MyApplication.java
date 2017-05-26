@@ -4,8 +4,11 @@ import android.app.Application;
 import android.content.Context;
 
 import com.helldefender.enjoylife.inject.component.ApplicationComponent;
+import com.helldefender.enjoylife.inject.component.BaseFragmentComponent;
 import com.helldefender.enjoylife.inject.component.DaggerApplicationComponent;
+import com.helldefender.enjoylife.inject.component.DaggerBaseFragmentComponent;
 import com.helldefender.enjoylife.inject.module.ApplicationModule;
+import com.helldefender.enjoylife.inject.module.BaseFragmentModule;
 import com.jude.utils.JUtils;
 
 /**
@@ -20,6 +23,8 @@ public class MyApplication extends Application {
 
     private ApplicationComponent applicationComponent;
 
+    private BaseFragmentComponent baseFragmentComponent;
+
     public static Context applicationContext;
 
     @Override
@@ -33,6 +38,10 @@ public class MyApplication extends Application {
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
+
+        baseFragmentComponent = DaggerBaseFragmentComponent.builder().
+                baseFragmentModule(new BaseFragmentModule())
+                .build();
     }
 
     public static MyApplication getInstance() {
@@ -45,6 +54,10 @@ public class MyApplication extends Application {
 
     public ApplicationComponent getApplicationComponent() {
         return applicationComponent;
+    }
+
+    public BaseFragmentComponent getBaseFragmentComponent() {
+        return baseFragmentComponent;
     }
 
 }

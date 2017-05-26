@@ -11,15 +11,6 @@
         <item name="android:homeAsUpIndicator">@mipmap/back_arrow</item>
     </style>
 
-    <style name="NightTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="mColorPrimary">@color/colorPrimaryNight</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
-        <item name="mColorAccent">@color/colorAccentNight</item>
-        <item name="mColorBackground">@color/colorBackground</item>
-        <item name="mColorText">@color/colorAccentNight</item>
-        <item name="android:homeAsUpIndicator">@mipmap/back_arrow</item>
-    </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.PopOverlay" parent="ThemeOverlay.AppCompat.Light">

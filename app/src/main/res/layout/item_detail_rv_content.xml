@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_detail_content_location"
-        android:drawableLeft="@mipmap/shape"
+        android:drawableLeft="@mipmap/pin"
         android:drawablePadding="10dp"
         android:padding="5dp"
         android:text="雨红莲"
@@ -16,7 +16,7 @@
         android:textSize="16sp" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_detail_item_poster"
+        android:id="@+id/rv_item_display_part"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp" />
@@ -28,11 +28,11 @@
         android:layout_marginTop="10dp"
         android:text="小米电视系统软件部总监鼎力推荐，版权输出台湾地区受到两岸同行肯定，学得懂用得上、国内一部真正来自于Android开发专家的Android系统分析权威指南，讲解新版本热点技术，解决系统开发困惑问题 "
         android:textColor="#D9000000"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_detail_content_divider" />
@@ -132,7 +132,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_detail_content_divider" />

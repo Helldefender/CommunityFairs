@@ -371,31 +371,31 @@ public class RefreshRecyclerView extends RecyclerView {
         }
     }
 
-//    @Override
-//    public boolean onInterceptTouchEvent(MotionEvent e) {
-//        final int action = MotionEventCompat.getActionMasked(e);
-//        final int actionIndex = MotionEventCompat.getActionIndex(e);
-//        switch (action) {
-//            case MotionEvent.ACTION_DOWN: {
-//                mActivePointerId = MotionEventCompat.getPointerId(e, 0);
-//                lastTouchY = (int) (MotionEventCompat.getY(e, actionIndex) + 0.5f);
-//            }
-//            break;
-//
-//            case MotionEvent.ACTION_POINTER_DOWN: {
-//                mActivePointerId = MotionEventCompat.getPointerId(e, actionIndex);
-//                lastTouchY = (int) (MotionEventCompat.getY(e, actionIndex) + 0.5f);
-//            }
-//            break;
-//
-//            case MotionEventCompat.ACTION_POINTER_UP: {
-//                //onPointerUp(e);
-//            }
-//            break;
-//        }
-//
-//        return super.onInterceptTouchEvent(e);
-//    }
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent e) {
+        final int action = MotionEventCompat.getActionMasked(e);
+        final int actionIndex = MotionEventCompat.getActionIndex(e);
+        switch (action) {
+            case MotionEvent.ACTION_DOWN: {
+                mActivePointerId = MotionEventCompat.getPointerId(e, 0);
+                lastTouchY = (int) (MotionEventCompat.getY(e, actionIndex) + 0.5f);
+            }
+            break;
+
+            case MotionEvent.ACTION_POINTER_DOWN: {
+                mActivePointerId = MotionEventCompat.getPointerId(e, actionIndex);
+                lastTouchY = (int) (MotionEventCompat.getY(e, actionIndex) + 0.5f);
+            }
+            break;
+
+            case MotionEventCompat.ACTION_POINTER_UP: {
+                //onPointerUp(e);
+            }
+            break;
+        }
+
+        return super.onInterceptTouchEvent(e);
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
@@ -440,8 +440,8 @@ public class RefreshRecyclerView extends RecyclerView {
                         } else {
                             setStatus(STATUS_SWIPING_TO_REFRESH);
                         }
-                        move(dy);
-                        //fingerMove(dy);
+                        //move(dy);
+                        fingerMove(dy);
                         return true;
                     }
                 }

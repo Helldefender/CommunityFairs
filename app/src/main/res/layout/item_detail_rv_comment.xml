@@ -5,7 +5,7 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/item_comment_avatar_image"
+        android:id="@+id/img_item_comment_avatar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginLeft="5dp"
@@ -22,11 +22,28 @@
         android:layout_weight="5"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/item_comment_username_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="小叮当" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_item_comment_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="200dp"
+                android:text="小叮当" />
+
+            <TextView
+                android:id="@+id/tv_item_comment_likeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@mipmap/comment_like"
+                android:drawablePadding="5dp"
+                android:layout_marginRight="5dp"
+                android:text="99" />
+        </RelativeLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
