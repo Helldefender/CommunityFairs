@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fl_homepage_fragment"
     android:layout_width="match_parent"
+    android:background="#F5F6F7"
     android:layout_height="match_parent">
 
     <com.helldefender.enjoylife.widget.recyclerview.RefreshRecyclerView
@@ -14,18 +15,4 @@
         app:refreshEnabled="true"
         app:refreshHeaderLayout="@layout/layout_refresh_header_view" />
 
-    <com.helldefender.enjoylife.widget.FilterMenu
-        android:id="@+id/filter_homepage_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:dddividerColor="@color/gray"
-        app:ddmaskColor="@color/mask_color"
-        app:ddmenuBackgroundColor="@color/white"
-        app:ddmenuMenuHeightPercent="0.5"
-        app:ddmenuSelectedIcon="@mipmap/drop_down_selected_icon"
-        app:ddmenuTextSize="13sp"
-        app:ddmenuUnselectedIcon="@mipmap/drop_down_unselected_icon"
-        app:ddtextSelectedColor="@color/drop_down_selected"
-        app:ddtextUnselectedColor="@color/drop_down_unselected"
-        app:ddunderlineColor="@color/gray" />
 </FrameLayout>

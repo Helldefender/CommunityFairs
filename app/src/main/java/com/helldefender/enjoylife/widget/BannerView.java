@@ -118,9 +118,9 @@ public class BannerView extends FrameLayout {
 
         for (int i = 0; i < indicatorList.size(); i++) {
             if (i == 0) {
-                indicatorList.get(0).setBackgroundResource(R.mipmap.carousel_strip);
+                indicatorList.get(0).setBackgroundResource(R.drawable.carousel_strip);
             } else {
-                indicatorList.get(i).setBackgroundResource(R.mipmap.carousel_circle);
+                indicatorList.get(i).setBackgroundResource(R.drawable.carousel_circle);
             }
         }
 
@@ -269,9 +269,9 @@ public class BannerView extends FrameLayout {
 
             for (int i = 0; i < total; i++) {
                 if (i == position) {
-                    indicatorList.get(i).setBackgroundResource(R.mipmap.carousel_strip);
+                    indicatorList.get(i).setBackgroundResource(R.drawable.carousel_strip);
                 } else {
-                    indicatorList.get(i).setBackgroundResource(R.mipmap.carousel_circle);
+                    indicatorList.get(i).setBackgroundResource(R.drawable.carousel_circle);
                 }
             }
 

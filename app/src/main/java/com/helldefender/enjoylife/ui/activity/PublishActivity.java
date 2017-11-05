@@ -1,10 +1,13 @@
 package com.helldefender.enjoylife.ui.activity;
 
+import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,23 +17,32 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bigkoo.pickerview.OptionsPickerView;
+import com.bigkoo.pickerview.TimePickerView;
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.modules.FormActivity;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
-import com.helldefender.enjoylife.ui.adapter.PublishRVAdapter;
+import com.helldefender.enjoylife.ui.adapter.EventReleaseRvAdapter;
 import com.helldefender.enjoylife.utils.file.FileInfo;
 import com.helldefender.enjoylife.utils.file.UploadService;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.internal.Platform;
+import okhttp3.internal.platform.Platform;
 
 
 /**
@@ -43,20 +55,52 @@ public class PublishActivity extends BaseActivity {
 
     public static final int REQUEST_WES_PERMISSION = 1;
 
+    @BindView(R.id.tv_user_info_edit)
+    TextView tvUserInfoEdit;
+    @BindView(R.id.et_publish_name)
+    EditText etPublishName;
+    @BindView(R.id.et_sign_up_num)
+    EditText etSignUpNum;
+    @BindView(R.id.ll_share_num)
+    LinearLayout llShareNum;
+    @BindView(R.id.ll_share_num_male)
+    LinearLayout llShareNumMale;
+    @BindView(R.id.tv_publish_level)
+    TextView tvPublishLevel;
+    @BindView(R.id.tv_publish_type)
+    TextView tvPublishType;
+    @BindView(R.id.tv_event_sign_start)
+    TextView tvEventSignStart;
+    @BindView(R.id.ll_event_sign_start)
+    LinearLayout llEventSignStart;
+    @BindView(R.id.tv_event_sing_end)
+    TextView tvEventSingEnd;
+    @BindView(R.id.ll_event_sign_end)
+    LinearLayout llEventSignEnd;
+    @BindView(R.id.tv_event_start)
+    TextView tvEventStart;
+    @BindView(R.id.ll_event_start)
+    LinearLayout llEventStart;
+    @BindView(R.id.et_feedback_content)
+    EditText etFeedbackContent;
+    @BindView(R.id.tv_event_title)
+    TextView tvEventTitle;
+
     //private static boolean isEnable = false;
 
     private boolean isEmpty = false;
 
     private Platform platform;
 
-    @BindView(R.id.tb_publish)
-    Toolbar mToolBar;
-
     @BindView(R.id.rv_publish)
     RecyclerView imgRecyclerView;
 
     @BindView(R.id.btn_publish_add)
     Button addBtn;
+
+    private ArrayList<String> mSexOptionsList = new ArrayList<>();
+
+    private ArrayList<String> mIdentityOptionsList = new ArrayList<>();
 
     public static void start(Context context) {
         start(context, null);
@@ -75,12 +119,7 @@ public class PublishActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_test;
-    }
-
-    @Override
-    public int getEmptyLayoutId() {
-        return 0;
+        return R.layout.activity_event_publish;
     }
 
     @Override
@@ -94,27 +133,209 @@ public class PublishActivity extends BaseActivity {
     }
 
     @Override
+    protected void widgetClick(View view) {
+
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setSupportActionBar(mToolBar);
+        //setUpStatusBar(R.color.statusColor);
 
-        setUpStatusBar(R.color.statusColor);
+        handleStatusBar();
 
         platform = Platform.get();
 
         List<String> data = new ArrayList<String>();
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
+//        data.add("测试");
+//        data.add("测试");
+//        data.add("测试");
+//        data.add("测试");
+
+        mSexOptionsList.add("国家级");
+        mSexOptionsList.add("省级");
+        mSexOptionsList.add("市级");
+        mSexOptionsList.add("校级");
+        mSexOptionsList.add("院级");
+        mSexOptionsList.add("班级");
+
+        mIdentityOptionsList.add("学术科技与创新创业类活动");
+        mIdentityOptionsList.add("文化艺术与身心发展类活动");
+        mIdentityOptionsList.add("社会实践与志愿服务活动");
+        mIdentityOptionsList.add("社团活动与技能培训类活动");
+        mIdentityOptionsList.add("思想政治与道德素养类活动");
+        mIdentityOptionsList.add("其他");
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         imgRecyclerView.setLayoutManager(linearLayoutManager);
 
-        imgRecyclerView.setAdapter(new PublishRVAdapter(this, R.layout.item_publish_rv_img, data));
+        imgRecyclerView.setAdapter(new EventReleaseRvAdapter(this, R.layout.item_publish_rv_img, data));
+
+        tvEventTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        tvUserInfoEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(PublishActivity.this).setTitle("发布活动")
+                        .setMessage("是否需要生成报名表")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                startActivity(FormActivity.class);
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                finish();
+                            }
+                        })
+                        .show();
+
+
+            }
+        });
+
+        tvPublishLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final OptionsPickerView sexOptions = new OptionsPickerView.Builder(PublishActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+
+                    @Override
+                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                        String textSelect = mSexOptionsList.get(options1);
+                        tvPublishLevel.setText(textSelect);
+                    }
+                })
+                        .setTitleText("选择活动级别")
+                        .setContentTextSize(20)//设置滚轮文字大小
+                        .setDividerColor(Color.parseColor("#ECECEC"))//设置分割线的颜色
+                        .setBgColor(Color.parseColor("#FFFFFF"))
+                        .setTitleBgColor(Color.parseColor("#F5F6F7"))
+                        .setTitleColor(Color.parseColor("#666666"))
+                        .setCancelColor(Color.parseColor("#999999"))
+                        .setSubmitColor(Color.parseColor("#999999"))
+                        .setTextColorCenter(Color.parseColor("#999999"))
+                        .build();
+                sexOptions.setPicker(mSexOptionsList);
+                sexOptions.show();
+            }
+        });
+
+        tvPublishType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final OptionsPickerView sexOptions = new OptionsPickerView.Builder(PublishActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+
+                    @Override
+                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                        String textSelect = mIdentityOptionsList.get(options1);
+                        tvPublishType.setText(textSelect);
+                    }
+                })
+                        .setTitleText("选择活动类型")
+                        .setContentTextSize(20)//设置滚轮文字大小
+                        .setDividerColor(Color.parseColor("#ECECEC"))//设置分割线的颜色
+                        .setBgColor(Color.parseColor("#FFFFFF"))
+                        .setTitleBgColor(Color.parseColor("#F5F6F7"))
+                        .setTitleColor(Color.parseColor("#666666"))
+                        .setCancelColor(Color.parseColor("#999999"))
+                        .setSubmitColor(Color.parseColor("#999999"))
+                        .setTextColorCenter(Color.parseColor("#999999"))
+                        .build();
+                sexOptions.setPicker(mIdentityOptionsList);
+                sexOptions.show();
+            }
+        });
+
+        llEventSignStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerView pvTime = new TimePickerView.Builder(PublishActivity.this, new TimePickerView.OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date, View v) {//选中事件回调
+                        tvEventSignStart.setText(getTime(date));
+                    }
+                })
+                        .setTitleText("选择报名开始时间")
+                        .setDividerColor(Color.parseColor("#ECECEC"))//设置分割线的颜色
+                        .setBgColor(Color.parseColor("#FFFFFF"))
+                        .setTitleBgColor(Color.parseColor("#F5F6F7"))
+                        .setTitleColor(Color.parseColor("#666666"))
+                        .setCancelColor(Color.parseColor("#999999"))
+                        .setSubmitColor(Color.parseColor("#999999"))
+                        .setTextColorCenter(Color.parseColor("#999999"))
+                        .setType(new boolean[]{true, true, true, true, true, false})
+                        .build();
+                pvTime.setDate(Calendar.getInstance());
+                pvTime.show();
+            }
+        });
+
+        llEventSignEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerView pvTime = new TimePickerView.Builder(PublishActivity.this, new TimePickerView.OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date, View v) {//选中事件回调
+                        tvEventSingEnd.setText(getTime(date));
+                    }
+                })
+                        .setTitleText("选择报名截止时间")
+                        .setDividerColor(Color.parseColor("#ECECEC"))//设置分割线的颜色
+                        .setBgColor(Color.parseColor("#FFFFFF"))
+                        .setTitleBgColor(Color.parseColor("#F5F6F7"))
+                        .setTitleColor(Color.parseColor("#666666"))
+                        .setCancelColor(Color.parseColor("#999999"))
+                        .setSubmitColor(Color.parseColor("#999999"))
+                        .setTextColorCenter(Color.parseColor("#999999"))
+                        .setType(new boolean[]{true, true, true, true, true, false})
+                        .build();
+                pvTime.setDate(Calendar.getInstance());
+                pvTime.show();
+            }
+        });
+
+        llEventStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerView pvTime = new TimePickerView.Builder(PublishActivity.this, new TimePickerView.OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date, View v) {//选中事件回调
+                        tvEventStart.setText(getTime(date));
+                    }
+                })
+                        .setTitleText("选择活动开始时间")
+                        .setDividerColor(Color.parseColor("#ECECEC"))//设置分割线的颜色
+                        .setBgColor(Color.parseColor("#FFFFFF"))
+                        .setTitleBgColor(Color.parseColor("#F5F6F7"))
+                        .setTitleColor(Color.parseColor("#666666"))
+                        .setCancelColor(Color.parseColor("#999999"))
+                        .setSubmitColor(Color.parseColor("#999999"))
+                        .setTextColorCenter(Color.parseColor("#999999"))
+                        .setType(new boolean[]{true, true, true, true, true, false})
+                        .build();
+                pvTime.setDate(Calendar.getInstance());
+                pvTime.show();
+            }
+        });
+
+
+    }
+
+    private String getTime(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        return format.format(date);
     }
 
     @OnClick({R.id.btn_publish_add})
@@ -206,6 +427,7 @@ public class PublishActivity extends BaseActivity {
 
     private void displayImage(final String imagePath) {
         if (imagePath != null) {
+
             //HttpMethods.getInstance().postImage(imagePath, new ProgressSubscriber<ImageBean>(imageUpListener, this));
         } else {
             Toast.makeText(this, "获取图片失败", Toast.LENGTH_SHORT).show();

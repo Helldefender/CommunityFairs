@@ -12,9 +12,8 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import com.helldefender.enjoylife.R;
-import com.helldefender.enjoylife.inject.qualifier.FragmentType;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
-import com.helldefender.enjoylife.ui.adapter.FragmentViewPagerAdapter;
+import com.helldefender.enjoylife.ui.adapter.TabViewPagerAdapter;
 import com.helldefender.enjoylife.ui.fragment.BlankFragment;
 import com.helldefender.enjoylife.ui.fragment.DiscoveryAppBarFragment;
 import com.helldefender.enjoylife.ui.fragment.DiscoveryFragment;
@@ -40,11 +39,11 @@ public class MainActivity extends BaseActivity {
 
     private static final int TAB_USER = 3;
 
-    @FragmentType("BlankFragment")
-    BlankFragment blankFragment;
-
-    @FragmentType("DiscoveryAppBarFragment")
-    DiscoveryAppBarFragment discoveryAppBarFragment;
+//    @FragmentType("BlankFragment")
+//    BlankFragment blankFragment;
+//
+//    @FragmentType("DiscoveryAppBarFragment")
+//    DiscoveryAppBarFragment discoveryAppBarFragment;
 
     @BindView(R.id.viewpager)
     TabViewPager viewpager;
@@ -83,17 +82,17 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public int getEmptyLayoutId() {
-        return 0;
-    }
-
-    @Override
     public void initInject() {
         mActivityComponent.inject(this);
     }
 
     @Override
     public void initPresenter() {
+    }
+
+    @Override
+    protected void widgetClick(View view) {
+
     }
 
     @Override
@@ -126,9 +125,9 @@ public class MainActivity extends BaseActivity {
         fragmentList.add(messageFragment);
         fragmentList.add(userFragment);
 
-        this.viewpager.setOffscreenPageLimit(0);
+        viewpager.setOffscreenPageLimit(0);
 
-        new FragmentViewPagerAdapter(getSupportFragmentManager(), viewpager, fragmentList);
+        new TabViewPagerAdapter(getSupportFragmentManager(), viewpager, fragmentList);
     }
 
     private void addPageChangeListener() {

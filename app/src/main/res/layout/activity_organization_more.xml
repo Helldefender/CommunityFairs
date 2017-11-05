@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_introduce"
+        android:paddingBottom="10dp"
+        android:paddingTop="35dp">
+
+        <TextView
+            android:id="@+id/tv_organization_more_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/arrow_left_white"
+            android:gravity="center_horizontal"
+            android:paddingLeft="15dp"
+            android:text="人气组织"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_organization_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

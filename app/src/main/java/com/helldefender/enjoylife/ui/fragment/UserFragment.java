@@ -1,13 +1,27 @@
 package com.helldefender.enjoylife.ui.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.modules.MoreEventActivity;
+import com.helldefender.enjoylife.modules.MoreOrganizationActivity;
+import com.helldefender.enjoylife.modules.SaveActivity;
+import com.helldefender.enjoylife.modules.attend.MyAttendActivity;
+import com.helldefender.enjoylife.modules.publish.MyPublishActivity;
+import com.helldefender.enjoylife.modules.setting.AboutActivity;
+import com.helldefender.enjoylife.modules.setting.SettingActivity;
 import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Helldefender on 2017/2/5.
@@ -15,27 +29,55 @@ import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
 
 public class UserFragment extends BaseFragment {
 
-    private TextView likeText;
+    @BindView(R.id.img_user_avatar)
+    ImageView imgUserAvatar;
 
-    private TextView originalText;
+    @BindView(R.id.frame_user_avatarContainer)
+    FrameLayout frameUserAvatarContainer;
 
-    private TextView settingText;
+    @BindView(R.id.tv_user_followers)
+    TextView tvUserFollowers;
 
-    private TextView aboutText;
+    @BindView(R.id.tv_user_following)
+    TextView tvUserFollowing;
 
-    private ImageView avatar;
+    @BindView(R.id.ll_user_followStatus)
+    LinearLayout llUserFollowStatus;
 
-    private TextView userNameText;
+    @BindView(R.id.ll_user_userInfo)
+    LinearLayout llUserUserInfo;
 
-    private TextView introductions;
+    @BindView(R.id.tv_user_userName)
+    TextView tvUserUserName;
 
-    private TextView fansNumText;
+    @BindView(R.id.tv_user_location)
+    TextView tvUserLocation;
 
-    private TextView focusNumText;
+    @BindView(R.id.tv_user_organization)
+    TextView tvUserOrganization;
 
-    private TextView logoutText;
+    @BindView(R.id.tv_user_popular)
+    TextView tvUserPopular;
 
-    private Switch nightModeSwitch;
+    @BindView(R.id.tv_user_favorite)
+    TextView tvUserFavorite;
+
+    @BindView(R.id.tv_user_attend)
+    TextView tvUserAttend;
+
+    @BindView(R.id.tv_user_release)
+    TextView tvUserRelease;
+
+    @BindView(R.id.tv_user_setting)
+    TextView tvUserSetting;
+
+    @BindView(R.id.tv_user_about)
+    TextView tvUserAbout;
+
+    @BindView(R.id.tv_user_logout)
+    TextView tvUserLogout;
+
+    Unbinder unbinder;
 
     @Override
     protected void initInject() {
@@ -49,15 +91,54 @@ public class UserFragment extends BaseFragment {
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
-//        setAvatar(view);
-//
-//        setOriginalArticle(view);
-//
-//        setSwitch(view);
-//
-//        setAbout(view);
-//
-//        setLogout(view);
+        tvUserRelease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(MyPublishActivity.class);
+            }
+        });
+
+        tvUserAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(AboutActivity.class);
+            }
+        });
+
+        tvUserAttend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(MyAttendActivity.class);
+            }
+        });
+
+        tvUserFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(SaveActivity.class);
+            }
+        });
+
+        tvUserPopular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(MoreEventActivity.class);
+            }
+        });
+
+        tvUserOrganization.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(MoreOrganizationActivity.class);
+            }
+        });
+
+        tvUserSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(SettingActivity.class);
+            }
+        });
     }
 
     @Override
@@ -70,68 +151,17 @@ public class UserFragment extends BaseFragment {
         return 0;
     }
 
-//    private void setAvatar(View view) {
-//        avatar = (ImageView) view.findViewById(R.id.user_avatar);
-//    }
-//
-//    private void setAbout(View view) {
-//        aboutText = (TextView) view.findViewById(R.id.user_about);
-//
-//        aboutText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                addFragment(AboutFragment.getInstance());
-//            }
-//        });
-//    }
-//
-//    private void setOriginalArticle(View view) {
-//        originalText = (TextView) view.findViewById(R.id.user_original);
-//        likeText = (TextView) view.findViewById(R.id.user_like);
-//
-//        originalText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                addFragment(OriginalArticleFragment.getInstance("我的原创"));
-//            }
-//        });
-//
-//        likeText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                addFragment(OriginalArticleFragment.getInstance("我的喜欢"));
-//            }
-//        });
-//    }
-//
-//    private void setSwitch(View view) {
-//        nightModeSwitch = (Switch) view.findViewById(R.id.user_night_mode_switch);
-//        nightModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                MainActivity mainActivity = (MainActivity) getHoldingActivity();
-//                if (isChecked) {
-//                    //mainActivity.dayNightMode();
-//                } else {
-//                    //mainActivity.dayNightMode();
-//                }
-//            }
-//        });
-//    }
-//
-//
-//    private void setLogout(View view) {
-//        logoutText = (TextView) view.findViewById(R.id.logout_textview);
-//
-//        logoutText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                PreferenceUtil.clearUserToken();
-////                LoginActivity.start(getHoldingActivity(), null);
-////                getHoldingActivity().finish();
-//                Logger.d("点击了按钮，发布事件");
-//                EventBus.getDefault().post(new LoggingStatusEvent(false));
-//            }
-//        });
-//    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

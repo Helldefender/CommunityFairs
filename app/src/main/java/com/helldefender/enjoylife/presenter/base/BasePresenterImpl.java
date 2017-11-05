@@ -3,10 +3,7 @@ package com.helldefender.enjoylife.presenter.base;
 import android.support.annotation.NonNull;
 
 import com.helldefender.enjoylife.listener.OnRequestCallBackListener;
-import com.helldefender.enjoylife.utils.SubscriptionUtil;
 import com.helldefender.enjoylife.view.base.BaseView;
-
-import rx.Subscription;
 
 /**
  * Created by Helldefender on 2017/4/7.
@@ -16,7 +13,7 @@ public class BasePresenterImpl<T extends BaseView, E> implements BasePresenter, 
 
     protected T mView;
 
-    protected Subscription subscription;
+    //protected Subscription subscription;
 
     @Override
     public void onCreate() {
@@ -30,7 +27,7 @@ public class BasePresenterImpl<T extends BaseView, E> implements BasePresenter, 
 
     @Override
     public void onDestroy() {
-        SubscriptionUtil.cancelSubscription(subscription);
+        //SubscriptionUtil.cancelSubscription(subscription);
     }
 
     @Override

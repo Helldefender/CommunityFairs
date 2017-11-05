@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_search_borrow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_introduce"
+        android:paddingBottom="10dp"
+        android:paddingTop="35dp">
+
+        <TextView
+            android:id="@+id/tv_sign_up_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/arrow_left_white"
+            android:gravity="center_horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="活动报名"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_linear_layout"
+            android:orientation="vertical"
+            android:showDividers="beginning|middle|end">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="姓名："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请填写姓名（必填）"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="学号："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请填写学号（必填）"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_share_num_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="学院："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/et_sign_up_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择学院（必选）"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sign_up_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="性别："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/et_sign_up_sex"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:hint="请填写选择（性别）"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_share_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="联系方式："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请填写联系方式（必填）"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="姓名："
+                        android:textColor="#666666"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/et_sign_up_name_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:hint="请填写姓名（必填）"
+                        android:maxLines="1"
+                        android:paddingRight="15dp"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_share_num_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="学号："
+                        android:textColor="#666666"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/et_sign_up_num_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:hint="请填写学号（必填）"
+                        android:maxLines="1"
+                        android:paddingRight="15dp"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_share_num_male_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="学院："
+                        android:textColor="#666666"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/et_sign_up_type_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:hint="请选择学院（必选）"
+                        android:maxLines="1"
+                        android:paddingRight="15dp"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="性别："
+                        android:textColor="#666666"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/et_sign_up_sex_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="请填写选择（性别）"
+                        android:paddingRight="15dp"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_share_unit_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="联系方式："
+                        android:textColor="#666666"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/et_sign_up_contact_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:hint="请填写联系方式（必填）"
+                        android:maxLines="1"
+                        android:paddingRight="15dp"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="18dp"
+                    android:gravity="bottom"
+                    android:text="@string/remark"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et_sign_up_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@null"
+                    android:hint="填写共享备注(选填)"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_sign_up_add"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/arrow_right_gray"
+                android:gravity="right|center"
+                android:paddingRight="15dp"
+                android:text="添加队友"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="55dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bg_corner_btn_blue"
+                android:text="报名"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.helldefender.enjoylife.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +13,6 @@ import com.helldefender.enjoylife.presenter.impl.MessagePresenterImpl;
 import com.helldefender.enjoylife.ui.adapter.MessageRVAdapter;
 import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
 import com.helldefender.enjoylife.view.MessageView;
-import com.helldefender.enjoylife.widget.recyclerview.MessageItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,20 +83,10 @@ public class MessageFragment extends BaseFragment implements MessageView {
         messageRecyclerView.setLayoutManager(new LinearLayoutManager(getHoldingActivity()));
         List<String> data = new ArrayList<String>();
         data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        data.add("测试");
-        messageRecyclerView.addItemDecoration(new MessageItemDecoration());
+
         messageRecyclerView.setAdapter(new MessageRVAdapter(getHoldingActivity(), R.layout.item_message_rv, data));
-        //messageRecyclerView.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
+        //messageRecyclerView.addItemDecoration(new MessageItemDecoration());
+        messageRecyclerView.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
     }
 
 

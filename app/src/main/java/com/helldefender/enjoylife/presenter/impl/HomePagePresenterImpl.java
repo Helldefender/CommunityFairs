@@ -1,6 +1,5 @@
 package com.helldefender.enjoylife.presenter.impl;
 
-import com.helldefender.enjoylife.data.impl.HttpServiceImpl;
 import com.helldefender.enjoylife.presenter.NewsLatestPresenter;
 import com.helldefender.enjoylife.presenter.base.BasePresenterImpl;
 import com.helldefender.enjoylife.utils.imageloader.ImageLoaderUtil;
@@ -14,15 +13,21 @@ import javax.inject.Inject;
 
 public class HomePagePresenterImpl extends BasePresenterImpl<HomePageView, String> implements NewsLatestPresenter {
 
-    private HttpServiceImpl httpService;
+    //private HttpServiceImpl httpService;
 
     private ImageLoaderUtil imageLoaderUtil;
 
+//    @Inject
+//    public HomePagePresenterImpl(HttpServiceImpl httpService) {
+//        //this.dataManager = new DataManager(new HttpServiceImpl());
+//        //this.dataManager = dataManager;
+//        this.httpService = httpService;
+//    }
+
     @Inject
-    public HomePagePresenterImpl(HttpServiceImpl httpService) {
+    public HomePagePresenterImpl() {
         //this.dataManager = new DataManager(new HttpServiceImpl());
         //this.dataManager = dataManager;
-        this.httpService = httpService;
     }
 
     public HomePagePresenterImpl test() {
@@ -50,6 +55,6 @@ public class HomePagePresenterImpl extends BasePresenterImpl<HomePageView, Strin
     }
 
     public void getHomePageDate() {
-        subscription = httpService.getFromService(this);
+        //subscription = httpService.getFromService(this);
     }
 }

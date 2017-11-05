@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.helldefender.enjoylife.widget.StickyNavLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_organization_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_introduce"
+        android:orientation="vertical"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp">
+
+            <ImageView
+                android:id="@+id/img_organization_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:src="@drawable/arrow_left_white" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_organization_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bg_corner_btn_blue"
+                android:gravity="right"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:text="+关注"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+
+            <com.helldefender.enjoylife.widget.CircleImageView
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/avatar"
+                app:cirImg_border_color="#FFFFFF"
+                app:cirImg_border_width="1dp" />
+
+            <ImageView
+                android:id="@+id/img_organization_v"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="right|bottom"
+                android:scaleType="fitXY"
+                android:src="@drawable/v" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_organization_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="青年志愿者协会"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_organization_events"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="动态：2"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_organization_follow_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="关注数：232"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout_organization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:tabBackground="@color/tabBackgroundColor"
+        app:tabIndicatorColor="#57B6EF"
+        app:tabIndicatorHeight="1dp"
+        app:tabSelectedTextColor="@color/tabSelectTextColor"
+        app:tabTextAppearance="@style/MyTabTextAppearance" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_organization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</com.helldefender.enjoylife.widget.StickyNavLayout>

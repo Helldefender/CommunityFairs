@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_introduce"
+        android:paddingBottom="10dp"
+        android:paddingTop="35dp">
+
+        <TextView
+            android:id="@+id/tv_lab_finance_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/arrow_left_white"
+            android:gravity="center_horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="报名详情"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="学院分类"
+        android:textColor="#999999"
+        android:textSize="17sp" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart_lab_finance"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="2" />
+</LinearLayout>

@@ -28,7 +28,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:clickable="true"
-                android:src="@mipmap/back_arrow" />
+                android:src="@drawable/back_arrow" />
 
             <TextView
                 android:id="@+id/tv_publish_num"

@@ -18,7 +18,7 @@ import com.helldefender.enjoylife.R;
 
 public class ClearEditText extends EditText implements OnTouchListener, TextWatcher {
 
-	Drawable deleteImage = getResources().getDrawable(R.mipmap.delete_orange);
+	Drawable deleteImage = getResources().getDrawable(R.drawable.delete_orange);
 
 	Drawable icon;
 

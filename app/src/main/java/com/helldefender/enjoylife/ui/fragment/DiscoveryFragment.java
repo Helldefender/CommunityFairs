@@ -7,10 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.modules.MoreEventActivity;
 import com.helldefender.enjoylife.presenter.impl.DiscoveryPresenterImpl;
+import com.helldefender.enjoylife.ui.activity.DetailContentActivity;
 import com.helldefender.enjoylife.ui.adapter.OrganizationRvAdapter;
+import com.helldefender.enjoylife.ui.adapter.base.BaseAdapter;
 import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
 import com.helldefender.enjoylife.view.DiscoveryView;
 
@@ -36,6 +40,8 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
     RecyclerView mEventRecyclerView;
 
     Unbinder unbinder;
+    @BindView(R.id.tv_discovery_moreEvent)
+    TextView tvDiscoveryMoreEvent;
 
     private OrganizationRvAdapter eventRvAdapter;
 
@@ -69,6 +75,13 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
     protected void initViews(View view, Bundle savedInstanceState) {
         //initPresenter();
         initRecyclerView();
+
+        tvDiscoveryMoreEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(MoreEventActivity.class);
+            }
+        });
     }
 
     @Override
@@ -128,6 +141,13 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryView {
         mEventRecyclerView.setLayoutManager(new LinearLayoutManager(getHoldingActivity()));
         mEventRecyclerView.setAdapter(eventRvAdapter);
         mEventRecyclerView.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
+
+        eventRvAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, int viewType) {
+                getHoldingActivity().startActivity(DetailContentActivity.class);
+            }
+        });
     }
 
     @Override

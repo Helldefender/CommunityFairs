@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
-    android:layout_marginTop="12dp"
+    android:layout_marginTop="8dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="horizontal"
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="重庆邮电大学"
+                android:text="数据库应用程序设计大赛"
                 android:textColor="#D9000000"
                 android:textSize="20sp" />
 
@@ -59,25 +59,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
-                        android:drawableLeft="@mipmap/like"
+                        android:drawableLeft="@drawable/like"
                         android:drawablePadding="5dp"
                         android:text="12"
                         android:textColor="#80000000"
                         android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tv_item_homepage_commentNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:layout_toLeftOf="@id/tv_item_homepage_likeNum"
-                        android:drawableLeft="@mipmap/comment"
-                        android:drawablePadding="5dp"
-                        android:text="100"
-                        android:textColor="#80000000"
-                        android:textSize="12sp" />
                 </RelativeLayout>
-
 
             </LinearLayout>
 
@@ -86,12 +73,12 @@
                 android:layout_height="2dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_homepage_view_divider" />
+                android:background="#ECECEC" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="时间：2017.07.02"
+                android:text="时间：2017.06.16"
                 android:textColor="#B3000000"
                 android:textSize="14sp" />
 
@@ -99,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="地点：雨红莲"
+                android:text="地点：信科S108"
                 android:textColor="#B3000000"
                 android:textSize="14sp" />
 
@@ -110,17 +97,17 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <ImageView
+                <com.helldefender.enjoylife.widget.CircleImageView
                     android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/colorAccent" />
+                    android:src="@drawable/avatar"
+                    android:layout_height="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="蓝山工作室"
-                    android:textColor="#80000000"
+                    android:text="计算机学院"
+                    android:textColor="#333333"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -155,7 +142,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_marginLeft="12dp"
-                        android:src="@mipmap/picture" />
+                        android:src="@drawable/picture" />
 
                     <TextView
                         android:layout_width="27dp"
@@ -176,7 +163,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_marginLeft="12dp"
-                        android:src="@mipmap/video" />
+                        android:src="@drawable/video" />
 
                     <TextView
                         android:layout_width="27dp"

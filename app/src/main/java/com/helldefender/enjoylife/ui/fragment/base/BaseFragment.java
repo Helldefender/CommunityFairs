@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import com.helldefender.enjoylife.R;
 import com.helldefender.enjoylife.StatusLayoutManager;
-import com.helldefender.enjoylife.app.MyApplication;
+import com.helldefender.enjoylife.app.App;
 import com.helldefender.enjoylife.inject.component.DaggerFragmentComponent;
 import com.helldefender.enjoylife.inject.component.FragmentComponent;
 import com.helldefender.enjoylife.inject.module.FragmentModule;
@@ -19,10 +19,8 @@ import com.helldefender.enjoylife.listener.OnRetryListener;
 import com.helldefender.enjoylife.listener.OnShowHideViewListener;
 import com.helldefender.enjoylife.presenter.base.BasePresenter;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
-import com.helldefender.enjoylife.utils.SubscriptionUtil;
 
 import butterknife.ButterKnife;
-import rx.Subscription;
 
 /**
  * Created by Helldefender on 2017/2/5.
@@ -38,7 +36,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
 
     protected StatusLayoutManager statusLayoutManager;
 
-    protected Subscription subscription;
+    //protected Subscription subscription;
 
     LinearLayout llBaseFragment;
 
@@ -66,7 +64,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFragmentComponent = DaggerFragmentComponent.builder()
-                .applicationComponent(((MyApplication) getActivity().getApplication()).getApplicationComponent())
+                .applicationComponent(((App) getActivity().getApplication()).getApplicationComponent())
                 .fragmentModule(new FragmentModule(this))
                 .build();
         initInject();
@@ -132,7 +130,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
         if (mPresenter != null) {
             mPresenter.onDestroy();
         }
-        SubscriptionUtil.cancelSubscription(subscription);
+        //SubscriptionUtil.cancelSubscription(subscription);
     }
 
     protected void addFragment(BaseFragment baseFragment) {

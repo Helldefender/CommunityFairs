@@ -2,7 +2,7 @@ package com.helldefender.enjoylife.inject.module;
 
 import android.content.Context;
 
-import com.helldefender.enjoylife.app.MyApplication;
+import com.helldefender.enjoylife.app.App;
 import com.helldefender.enjoylife.inject.qualifier.ApplicationContext;
 import com.helldefender.enjoylife.inject.scope.PerApp;
 
@@ -15,9 +15,9 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private MyApplication application;
+    private App application;
 
-    public ApplicationModule(MyApplication application) {
+    public ApplicationModule(App application) {
         this.application = application;
     }
 

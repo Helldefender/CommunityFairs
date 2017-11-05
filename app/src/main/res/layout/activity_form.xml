@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_introduce"
+        android:paddingBottom="10dp"
+        android:paddingTop="35dp">
+
+        <TextView
+            android:id="@+id/tv_form_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/arrow_left_white"
+            android:drawablePadding="20dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="编辑报名表"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_linear_layout"
+            android:orientation="vertical"
+            android:showDividers="beginning|middle|end">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="姓名："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择是否必填"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="学号："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择是否必填"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="学院："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择是否必填"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sign_up_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="性别："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_sex"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:gravity="center"
+                    android:hint="请选择是否必填"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_share_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="联系方式："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择是否必填"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="报名人数："
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_max_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择最多报名人数"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入列名称"
+                    android:paddingLeft="15dp"
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_form_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择是否必填"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_form_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入列名称"
+                    android:paddingLeft="15dp"
+                    android:textColor="#666666"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:hint="请选择是否必填"
+                    android:maxLines="1"
+                    android:paddingRight="15dp"
+                    android:textColor="#333333"
+                    android:textColorHint="#999999"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_form_add"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/arrow_right_gray"
+                android:gravity="right|center"
+                android:paddingRight="15dp"
+                android:text="添加列"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="55dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bg_user_introduce"
+                android:text="报名"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -5,6 +5,13 @@
     <attr name="mColorPrimary" format="color" />
     <attr name="mColorAccent" format="color" />
 
+    <declare-styleable name="CircleImageView">
+        <attr name="cirImg_border_width" format="dimension"/>
+        <attr name="cirImg_border_color" format="color"/>
+        <attr name="cirImg_border_overlay" format="boolean"/>
+        <attr name="cirImg_fill_color" format="color"/>
+    </declare-styleable>
+
     <declare-styleable name="RefreshRecyclerView">
         <attr name="refreshHeaderLayout" format="reference" />
         <attr name="loadMoreFooterLayout" format="reference" />
@@ -12,8 +19,8 @@
         <attr name="loadMoreEnabled" format="boolean" />
         <attr name="refreshFinalMoveOffset" format="dimension" />
     </declare-styleable>
-    <declare-styleable name="FilterMenu">
 
+    <declare-styleable name="FilterMenu">
         <attr name="ddunderlineColor" format="color"/>
         <attr name="dddividerColor" format="color"/>
         <attr name="ddtextSelectedColor" format="color"/>
@@ -24,6 +31,19 @@
         <attr name="ddmenuSelectedIcon" format="reference"/>
         <attr name="ddmenuUnselectedIcon" format="reference"/>
         <attr name="ddmenuMenuHeightPercent" format="float"/>
+    </declare-styleable>
+
+    <attr name="position">
+        <enum name="left_top" value="0" />
+        <enum name="left_bottom" value="1" />
+        <enum name="right_top" value="2" />
+        <enum name="right_bottom" value="3" />
+    </attr>
+    <attr name="radius" format="dimension" />
+
+    <declare-styleable name="ArcMenu">
+        <attr name="position" />
+        <attr name="radius" />
     </declare-styleable>
 
 </resources>

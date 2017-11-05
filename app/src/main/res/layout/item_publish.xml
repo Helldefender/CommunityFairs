@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/item_publish_img_left"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/indicator_1" />
+
+    <TextView
+        android:id="@+id/item_publish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:text="2017-06-01"
+        android:textColor="#666666"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_publish_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="35dp"
+        android:layout_weight="1"
+        android:background="@drawable/publish_1"
+        android:orientation="vertical"
+        android:paddingLeft="35dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/item_publish_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="数据库大赛"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/item_publish_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:paddingBottom="5dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp"
+            android:text="报名中"
+            android:textColor="#333333"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/item_publish_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:text="报名人数“66人"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

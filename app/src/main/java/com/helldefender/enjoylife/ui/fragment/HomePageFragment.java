@@ -4,15 +4,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.helldefender.enjoylife.R;
-import com.helldefender.enjoylife.event.LoggingStatusEvent;
 import com.helldefender.enjoylife.listener.OnLoadMoreListener;
 import com.helldefender.enjoylife.listener.OnRefreshListener;
 import com.helldefender.enjoylife.presenter.impl.HomePagePresenterImpl;
+import com.helldefender.enjoylife.modules.ConstellationAdapter;
+import com.helldefender.enjoylife.modules.GirdDropDownAdapter;
+import com.helldefender.enjoylife.modules.ListDropDownAdapter;
 import com.helldefender.enjoylife.ui.activity.DetailContentActivity;
 import com.helldefender.enjoylife.ui.adapter.HomePageAdapter;
 import com.helldefender.enjoylife.ui.adapter.base.BaseAdapter;
@@ -22,9 +25,6 @@ import com.helldefender.enjoylife.view.HomePageView;
 import com.helldefender.enjoylife.widget.BannerView;
 import com.helldefender.enjoylife.widget.recyclerview.LoadMoreFooterView;
 import com.helldefender.enjoylife.widget.recyclerview.RefreshRecyclerView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,7 @@ import butterknife.Unbinder;
 
 import static com.helldefender.enjoylife.ui.adapter.HomePageAdapter.TYPE_BANNER;
 import static com.helldefender.enjoylife.ui.adapter.HomePageAdapter.TYPE_CONTENT;
+import static com.helldefender.enjoylife.ui.adapter.HomePageAdapter.TYPE_FILTER;
 
 /**
  * Created by Helldefender on 2017/2/5.
@@ -52,15 +53,35 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
     @BindView(R.id.rv_homepage_refresh)
     RefreshRecyclerView homeRecyclerView;
 
+//    @BindView(R.id.filter_homepage_menu)
+//    FilterMenu mFilterMenu;
+
     Unbinder unbinder;
 
     private BannerView bannerView;
+
+    private String headers[] = {"城市", "年龄", "性别", "星座"};
+    private List<View> popupViews = new ArrayList<>();
+
+    private GirdDropDownAdapter cityAdapter;
+    private ListDropDownAdapter ageAdapter;
+    private ListDropDownAdapter sexAdapter;
+    private ConstellationAdapter constellationAdapter;
+
+    private String citys[] = {"不限", "武汉", "北京", "上海", "成都", "广州", "深圳", "重庆", "天津", "西安", "南京", "杭州"};
+    private String ages[] = {"不限", "18岁以下", "18-22岁", "23-26岁", "27-35岁", "35岁以上"};
+    private String sexs[] = {"不限", "男", "女"};
+    private String constellations[] = {"不限", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座", "水瓶座", "双鱼座"};
+
+    private int constellationPosition = 0;
 
     private static final int SPAN_COUNT = 6;
 
     private LoadMoreFooterView loadMoreFooterView;
 
     private HomePageAdapter homePageAdapter;
+
+    private GridLayoutManager gridLayoutManager;
 
     private List<String> data;
 
@@ -112,6 +133,7 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
 
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
+        //initFilterMenu();
         initRecyclerView();
     }
 
@@ -129,9 +151,97 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
         }
     }
 
+//    private void initFilterMenu() {
+//        mFilterMenu.setVisibility(View.GONE);
+//
+//        final ListView cityView = new ListView(getHoldingActivity());
+//        cityAdapter = new GirdDropDownAdapter(getHoldingActivity(), Arrays.asList(citys));
+//        cityView.setDividerHeight(0);
+//        cityView.setAdapter(cityAdapter);
+//
+//        //init age menu
+//        final ListView ageView = new ListView(getHoldingActivity());
+//        ageView.setDividerHeight(0);
+//        ageAdapter = new ListDropDownAdapter(getHoldingActivity(), Arrays.asList(ages));
+//        ageView.setAdapter(ageAdapter);
+//
+//        //init sex menu
+//        final ListView sexView = new ListView(getHoldingActivity());
+//        sexView.setDividerHeight(0);
+//        sexAdapter = new ListDropDownAdapter(getHoldingActivity(), Arrays.asList(sexs));
+//        sexView.setAdapter(sexAdapter);
+//
+//        //init constellation
+//        final View constellationView = LayoutInflater.from(getHoldingActivity()).inflate(R.layout.custom_layout, null);
+//        GridView constellation = ButterKnife.findById(constellationView, R.id.constellation);
+//        constellationAdapter = new ConstellationAdapter(getHoldingActivity(), Arrays.asList(constellations));
+//        constellation.setAdapter(constellationAdapter);
+//        TextView ok = ButterKnife.findById(constellationView, R.id.ok);
+//        ok.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mFilterMenu.setTabText(constellationPosition == 0 ? headers[3] : constellations[constellationPosition]);
+//                mFilterMenu.closeMenu();
+//            }
+//        });
+//
+//        //init popupViews
+//        popupViews.add(cityView);
+//        popupViews.add(ageView);
+//        popupViews.add(sexView);
+//        popupViews.add(constellationView);
+//
+//        //add item click event
+//        cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                cityAdapter.setCheckItem(position);
+//                mFilterMenu.setTabText(position == 0 ? headers[0] : citys[position]);
+//                mFilterMenu.closeMenu();
+//            }
+//        });
+//
+//        ageView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                ageAdapter.setCheckItem(position);
+//                mFilterMenu.setTabText(position == 0 ? headers[1] : ages[position]);
+//                mFilterMenu.closeMenu();
+//            }
+//        });
+//
+//        sexView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                sexAdapter.setCheckItem(position);
+//                mFilterMenu.setTabText(position == 0 ? headers[2] : sexs[position]);
+//                mFilterMenu.closeMenu();
+//            }
+//        });
+//
+//        constellation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                constellationAdapter.setCheckItem(position);
+//                constellationPosition = position;
+//            }
+//        });
+//
+//        //init context view
+//        TextView contentView = new TextView(getHoldingActivity());
+//        contentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//        //contentView.setText("内容显示区域");
+//        contentView.setGravity(Gravity.CENTER);
+//        contentView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+//
+//        //init dropdownview
+//        mFilterMenu.setDropDownMenu(Arrays.asList(headers), popupViews, contentView);
+//    }
+
     private void initRecyclerView() {
+        gridLayoutManager = new GridLayoutManager(getHoldingActivity(), SPAN_COUNT, GridLayoutManager.VERTICAL, false);
         //fragment中的context
-        homeRecyclerView.setLayoutManager(new GridLayoutManager(getHoldingActivity(), SPAN_COUNT, GridLayoutManager.VERTICAL, false));
+        homeRecyclerView.setLayoutManager(gridLayoutManager);
 
         loadMoreFooterView = (LoadMoreFooterView) homeRecyclerView.getLoadMoreFooterView();
 
@@ -167,6 +277,7 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
             public int getViewTypeSpanCount(int viewType) {
                 switch (viewType) {
                     case TYPE_BANNER:
+                    case TYPE_FILTER:
                     case TYPE_CONTENT:
                         return SPAN_COUNT;
                     default:
@@ -179,6 +290,9 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
                 if (position == 0) {
                     return TYPE_BANNER;
                 }
+                if (position == 1) {
+                    return TYPE_FILTER;
+                }
 
                 return TYPE_CONTENT;
 
@@ -188,6 +302,8 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
             public int getLayoutId(int viewType) {
                 if (viewType == TYPE_BANNER) {
                     return R.layout.item_homepage_rv_banner;
+                } else if (viewType == TYPE_FILTER) {
+                    return R.layout.item_homepage_rv_filter;
                 }
                 return R.layout.item_homepage_rv_content;
             }
@@ -219,15 +335,27 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
 
             }
         });
+
+        homeRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int position = gridLayoutManager.findFirstCompletelyVisibleItemPosition();
+//                if (position == 0) {
+//                    mFilterMenu.setVisibility(View.GONE);
+//                } else {
+//                    mFilterMenu.setVisibility(View.VISIBLE);
+//                }
+            }
+        });
     }
 
     private void refresh() {
-//        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffCallBack(homePageAdapter.getData(), newData), true);
-//
-//        diffResult.dispatchUpdatesTo(homePageAdapter);
-//        data = newData;
-//        homePageAdapter.setData(newData);
-
         handler.sendMessageDelayed(handler.obtainMessage(), 4000);
     }
 
@@ -240,11 +368,11 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
         }, 2000);
     }
 
-    @Subscribe
-    public void onLoggingStatusChange(LoggingStatusEvent loggingStatusEvent) {
-        //Logger.d("订阅者收到事件");
-        statusLayoutManager.showLoading();
-    }
+//    @Subscribe
+//    public void onLoggingStatusChange(LoggingStatusEvent loggingStatusEvent) {
+//        //Logger.d("订阅者收到事件");
+//        statusLayoutManager.showLoading();
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -254,21 +382,27 @@ public class HomePageFragment extends BaseFragment implements HomePageView, OnLo
         return rootView;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        EventBus.getDefault().register(this);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        EventBus.getDefault().unregister(this);
+//    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+//
+//        if (mFilterMenu.isShowing()) {
+//            mFilterMenu.closeMenu();
+//        }
+
         unbinder.unbind();
     }
+
 }

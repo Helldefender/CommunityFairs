@@ -7,20 +7,22 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.modules.SignUpActivity;
 import com.helldefender.enjoylife.presenter.impl.DetailContentPresenterImpl;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
 import com.helldefender.enjoylife.ui.adapter.DetailContentRVAdapter;
 import com.helldefender.enjoylife.ui.adapter.base.MultiViewType;
 import com.helldefender.enjoylife.utils.ToolbarUtil;
 import com.helldefender.enjoylife.view.DetailContentView;
+import com.helldefender.enjoylife.widget.ArcMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +50,13 @@ public class DetailContentActivity extends BaseActivity implements DetailContent
     @BindView(R.id.appBar_detailContent)
     AppBarLayout mAppBarLayout;
 
-    @BindView(R.id.tab_detailContent)
-    FloatingActionButton mFAB;
-
     @BindView(R.id.collapsingToolBar_detailContent)
     CollapsingToolbarLayout collapsingToolbarLayout;
 
     @BindView(R.id.rv_detailContent)
     RecyclerView mRecyclerView;
+
+    private ArcMenu mArcMenu;
 
     private List<String> data;
 
@@ -102,11 +103,6 @@ public class DetailContentActivity extends BaseActivity implements DetailContent
     }
 
     @Override
-    public int getEmptyLayoutId() {
-        return 0;
-    }
-
-    @Override
     public void initInject() {
         mActivityComponent.inject(this);
     }
@@ -119,11 +115,30 @@ public class DetailContentActivity extends BaseActivity implements DetailContent
     }
 
     @Override
+    protected void widgetClick(View view) {
+
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //handleStatusBar();
+        mArcMenu = (ArcMenu) findViewById(R.id.id_menu);
 
+        mArcMenu.setOnMenuItemClickListener(new ArcMenu.OnMenuItemClickListener() {
+            @Override
+            public void onClick(View view, int pos) {
+                if (pos == 1) {
+                    Toast.makeText(DetailContentActivity.this, "您已收藏该活动", Toast.LENGTH_SHORT).show();
+                } else if (pos == 2) {
+                    startActivity(SignUpActivity.class);
+                } else if (pos == 3) {
+                    mRecyclerView.scrollToPosition(data.size() - 1);
+                    startActivity(CommentPostActivity.class);
+                }
+            }
+        });
 
         //setUpStatusBar(R.color.myColor);
         handleStatusBar();
@@ -142,12 +157,13 @@ public class DetailContentActivity extends BaseActivity implements DetailContent
                 if (verticalOffset == 0) {
                     if (state != CollapsingToolbarLayoutState.EXPANDED) {
                         state = CollapsingToolbarLayoutState.EXPANDED;//修改状态标记为展开
-                        collapsingToolbarLayout.setTitle("我是标题");//设置title为EXPANDED
+                        collapsingToolbarLayout.setTitle("数据库应用程序大赛");//设置title为EXPANDED
+                        collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#FFFFFF"));
 
                     }
                 } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                     if (state != CollapsingToolbarLayoutState.COLLAPSED) {
-                        collapsingToolbarLayout.setTitle("我是标题");//设置title不显示
+                        collapsingToolbarLayout.setTitle("数据库应用程序大赛");//设置title不显示
                         //mTitleText.setVisibility(View.VISIBLE);//隐藏播放按钮
                         state = CollapsingToolbarLayoutState.COLLAPSED;//修改状态标记为折叠
                     }
@@ -156,7 +172,8 @@ public class DetailContentActivity extends BaseActivity implements DetailContent
                         if (state == CollapsingToolbarLayoutState.COLLAPSED) {
                             //mTitleText.setVisibility(View.GONE);//由折叠变为中间状态时隐藏播放按钮
                         }
-                        collapsingToolbarLayout.setTitle("我是标题");//设置title为INTERNEDIATE
+                        collapsingToolbarLayout.setTitle("数据库应用程序大赛");//设置title为INTERNEDIATE
+                        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#FFFFFF"));
                         state = CollapsingToolbarLayoutState.INTERNEDIATE;//修改状态标记为中间
                     }
                 }
@@ -199,12 +216,6 @@ public class DetailContentActivity extends BaseActivity implements DetailContent
                 return R.layout.item_detail_rv_comment;
             }
         }, data));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_detail_content, menu);
-        return true;
     }
 
     @Override

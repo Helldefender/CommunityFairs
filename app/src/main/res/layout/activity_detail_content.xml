@@ -18,14 +18,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/tab_detailContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_anchor="@+id/appBar_detailContent"
-        app:layout_anchorGravity="bottom|end" />
+    <include layout="@layout/menu_right_bottom" />
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar_detailContent"

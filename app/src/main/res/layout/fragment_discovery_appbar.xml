@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:background="@drawable/search_layout_bg"
             android:drawablePadding="15dp"
             android:gravity="center|left"
-            android:hint="大家正在搜"
+            android:hint="大家正在搜 数据库大赛 "
             android:imeOptions="actionSend"
             android:paddingLeft="20dp"
             android:paddingRight="10dp"
@@ -44,7 +44,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:text="取消"
-            android:textColor="#f5b550"
+            android:textColor="#333333"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -75,7 +75,7 @@
             android:clickable="true"
             android:gravity="right"
             android:text="更多"
-            android:textColor="#F4733D"
+            android:textColor="#333333"
             android:textSize="14sp" />
     </LinearLayout>
 

@@ -1,6 +1,5 @@
 package com.helldefender.enjoylife.presenter.impl;
 
-import com.helldefender.enjoylife.data.impl.HttpServiceImpl;
 import com.helldefender.enjoylife.presenter.base.BasePresenterImpl;
 import com.helldefender.enjoylife.utils.imageloader.ImageLoaderUtil;
 import com.helldefender.enjoylife.view.DiscoveryView;
@@ -14,15 +13,19 @@ import javax.inject.Inject;
 public class DiscoveryPresenterImpl extends BasePresenterImpl<DiscoveryView,String> {
     //private DataManager dataManager;
 
-    private HttpServiceImpl httpService;
+    //private HttpServiceImpl httpService;
 
     private ImageLoaderUtil imageLoaderUtil;
 
+//    @Inject
+//    public DiscoveryPresenterImpl(HttpServiceImpl httpService) {
+//        //this.dataManager = new DataManager(new HttpServiceImpl());
+//        //this.dataManager = dataManager;
+//        this.httpService = httpService;
+//    }
+
     @Inject
-    public DiscoveryPresenterImpl(HttpServiceImpl httpService) {
-        //this.dataManager = new DataManager(new HttpServiceImpl());
-        //this.dataManager = dataManager;
-        this.httpService = httpService;
+    public DiscoveryPresenterImpl() {
     }
 
 //    @Inject

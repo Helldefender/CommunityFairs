@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
-import com.helldefender.enjoylife.app.MyApplication;
+import com.helldefender.enjoylife.app.App;
 
 import java.util.ArrayList;
 
@@ -156,6 +156,6 @@ public class PermissionUtil {
     private static boolean isHasPermission(String permission) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return true;
-        return ContextCompat.checkSelfPermission(MyApplication.getContext(), permission) == PackageManager.PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(App.getContext(), permission) == PackageManager.PERMISSION_GRANTED;
     }
 }

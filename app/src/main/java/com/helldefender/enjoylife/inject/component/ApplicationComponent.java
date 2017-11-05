@@ -2,7 +2,6 @@ package com.helldefender.enjoylife.inject.component;
 
 import android.content.Context;
 
-import com.helldefender.enjoylife.data.impl.HttpServiceImpl;
 import com.helldefender.enjoylife.data.local.DataBaseHelper;
 import com.helldefender.enjoylife.data.local.PreferencesHelper;
 import com.helldefender.enjoylife.inject.module.ApplicationModule;
@@ -29,7 +28,7 @@ public interface ApplicationComponent {
 
     //HttpService
     //注意理解Scope注解的作用（类似于元注解，是用来定义注解的/更好地管理创建的类实例的生命周期），以及Singleton是Scope注解的默认实现
-    HttpServiceImpl getHttpServiceImpl();
+    //HttpServiceImpl getHttpServiceImpl();
 
 
 

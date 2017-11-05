@@ -9,8 +9,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.modules.MoreOrganizationActivity;
+import com.helldefender.enjoylife.modules.OrganizationActivity;
 import com.helldefender.enjoylife.presenter.impl.DiscoveryAppBarImpl;
 import com.helldefender.enjoylife.ui.adapter.OrganizationRvAdapter;
+import com.helldefender.enjoylife.ui.adapter.base.BaseAdapter;
 import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
 import com.helldefender.enjoylife.view.DisCoveryAppBarView;
 import com.helldefender.enjoylife.widget.ClearEditText;
@@ -82,6 +85,13 @@ public class DiscoveryAppBarFragment extends BaseFragment implements DisCoveryAp
     @Override
     protected void initViews(View view, Bundle savedInstanceState) {
         initRecyclerView();
+
+        moreOrganizationTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(MoreOrganizationActivity.class);
+            }
+        });
     }
 
     @Override
@@ -108,6 +118,13 @@ public class DiscoveryAppBarFragment extends BaseFragment implements DisCoveryAp
         organizationRvAdapter = new OrganizationRvAdapter(getHoldingActivity(), R.layout.item_discovery_rv_organization, data);
         mOrganizationRecyclerView.setLayoutManager(new GridLayoutManager(getHoldingActivity(), 4, GridLayoutManager.VERTICAL, false));
         mOrganizationRecyclerView.setAdapter(organizationRvAdapter);
+
+        organizationRvAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, int viewType) {
+                getHoldingActivity().startActivity(OrganizationActivity.class);
+            }
+        });
     }
 
 

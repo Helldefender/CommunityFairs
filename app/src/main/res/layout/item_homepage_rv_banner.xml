@@ -16,7 +16,7 @@
         android:layout_marginTop="25dp"
         android:text="重庆邮电大学"
         android:textStyle="bold"
-        android:drawableLeft="@mipmap/shape"
+        android:drawableLeft="@drawable/shape"
         android:textColor="@android:color/white"
         android:drawablePadding="5dp"
         android:textSize="16sp" />

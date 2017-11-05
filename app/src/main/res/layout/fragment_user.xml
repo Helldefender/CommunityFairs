@@ -13,7 +13,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:divider="@drawable/divider_linear_layout"
+            android:orientation="vertical"
+            android:showDividers="beginning|middle|end">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,7 +30,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="25dp"
-                    android:background="@drawable/bg_user_info"
                     android:orientation="horizontal"
                     android:paddingBottom="20dp"
                     android:paddingLeft="5dp"
@@ -42,15 +43,15 @@
 
                         <ImageView
                             android:id="@+id/img_user_avatar"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@mipmap/logo" />
+                            android:layout_width="66dp"
+                            android:layout_height="66dp"
+                            android:src="@drawable/avatar" />
 
                         <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:layout_gravity="bottom|right"
-                            android:src="@drawable/certification" />
+                            android:src="@drawable/v" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -66,7 +67,7 @@
                             android:ellipsize="end"
                             android:gravity="left"
                             android:maxLines="1"
-                            android:text="重庆邮电大学计算机科学与技术学院"
+                            android:text="活动集市"
                             android:textColor="@android:color/white"
                             android:textSize="20sp" />
 
@@ -83,7 +84,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="left"
-                                android:text="粉丝数：111"
+                                android:text="粉丝数：0"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -93,7 +94,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="left"
-                                android:text="关注数：111"
+                                android:text="关注数：0"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -118,7 +119,7 @@
                         android:gravity="left|center_vertical"
                         android:maxLines="2"
                         android:paddingLeft="5dp"
-                        android:text="我是简介"
+                        android:text="活动集市，发现生活的乐趣"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
 
@@ -126,7 +127,7 @@
                         android:id="@+id/tv_user_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/shape"
+                        android:drawableLeft="@drawable/shape"
                         android:drawablePadding="10dp"
                         android:gravity="right|center_vertical"
                         android:paddingRight="5dp"
@@ -137,28 +138,13 @@
 
             </LinearLayout>
 
-
-            <TextView
-                android:id="@+id/tv_user_latest"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:drawableLeft="@mipmap/new_activity"
-                android:drawablePadding="30dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="最新活动"
-                android:textColor="?attr/mColorText"
-                android:textSize="12sp" />
-
             <TextView
                 android:id="@+id/tv_user_organization"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
                 android:clickable="true"
-                android:drawableLeft="@mipmap/outbox"
+                android:drawableLeft="@drawable/outbox"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -172,25 +158,11 @@
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
                 android:clickable="true"
-                android:drawableLeft="@mipmap/trash"
+                android:drawableLeft="@drawable/trash"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
                 android:text="热门活动"
-                android:textColor="?attr/mColorText"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tv_user_message"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:drawableLeft="@mipmap/spam"
-                android:drawablePadding="30dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="消息"
                 android:textColor="?attr/mColorText"
                 android:textSize="12sp" />
 
@@ -200,7 +172,7 @@
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
                 android:clickable="true"
-                android:drawableLeft="@mipmap/forums"
+                android:drawableLeft="@drawable/forums"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -214,7 +186,7 @@
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
                 android:clickable="true"
-                android:drawableLeft="@mipmap/updates"
+                android:drawableLeft="@drawable/updates"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -228,7 +200,7 @@
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
                 android:clickable="true"
-                android:drawableLeft="@mipmap/promos"
+                android:drawableLeft="@drawable/promos"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -246,7 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
-                android:drawableLeft="@mipmap/purchases"
+                android:drawableLeft="@drawable/purchases"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -259,7 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_margin="5dp"
-                android:drawableLeft="@mipmap/social"
+                android:drawableLeft="@drawable/social"
                 android:drawablePadding="30dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -282,6 +254,10 @@
                 android:textColor="#F5B550"
                 android:textSize="15sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#F4F4F4" />
         </LinearLayout>
     </ScrollView>
 

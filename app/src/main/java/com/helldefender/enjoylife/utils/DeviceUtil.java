@@ -12,6 +12,7 @@ import android.view.WindowManager;
  */
 
 public class DeviceUtil {
+
     @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public static Point getScreenSize(Context context){

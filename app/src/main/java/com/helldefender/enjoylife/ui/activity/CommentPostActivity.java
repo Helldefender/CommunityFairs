@@ -10,8 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.helldefender.enjoylife.R;
-import com.helldefender.enjoylife.delete.server.SubscriberOnNextListener;
-import com.helldefender.enjoylife.delete.server.entity.CommentBean;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
 
 /**
@@ -26,7 +24,7 @@ public class CommentPostActivity extends BaseActivity {
 
     private LinearLayout placeHolderLayout;
 
-    private SubscriberOnNextListener commentPostListener;
+    //private SubscriberOnNextListener commentPostListener;
 
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -49,12 +47,7 @@ public class CommentPostActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return 0;
-    }
-
-    @Override
-    public int getEmptyLayoutId() {
-        return 0;
+        return R.layout.activity_comment_post;
     }
 
     @Override
@@ -68,9 +61,13 @@ public class CommentPostActivity extends BaseActivity {
     }
 
     @Override
+    protected void widgetClick(View view) {
+
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comment_post);
 
         setUpStatusBar(android.R.color.transparent);
 
@@ -80,7 +77,7 @@ public class CommentPostActivity extends BaseActivity {
 
         setPlaceHolderLayout();
 
-        initCommentPostListener();
+        //initCommentPostListener();
     }
 
     private void setUpContentEdit() {
@@ -113,14 +110,14 @@ public class CommentPostActivity extends BaseActivity {
         });
     }
 
-    private void initCommentPostListener() {
-        commentPostListener = new SubscriberOnNextListener<CommentBean>() {
-            @Override
-            public void onNext(CommentBean commentBean) {
-                //判断是否成功，刷新数据（for result）
-            }
-        };
-    }
+//    private void initCommentPostListener() {
+//        commentPostListener = new SubscriberOnNextListener<CommentBean>() {
+//            @Override
+//            public void onNext(CommentBean commentBean) {
+//                //判断是否成功，刷新数据（for result）
+//            }
+//        };
+//    }
 
     private void updateReleaseBtn(TextView releaseBtn, boolean isEnable) {
         releaseBtn.setEnabled(isEnable);

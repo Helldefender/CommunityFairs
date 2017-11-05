@@ -1,5 +1,6 @@
 package com.helldefender.enjoylife.ui.activity.base;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -16,11 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.helldefender.enjoylife.R;
-import com.helldefender.enjoylife.StatusLayoutManager;
-import com.helldefender.enjoylife.app.MyApplication;
+import com.helldefender.enjoylife.app.App;
 import com.helldefender.enjoylife.inject.component.ActivityComponent;
 import com.helldefender.enjoylife.inject.component.DaggerActivityComponent;
 import com.helldefender.enjoylife.inject.module.ActivityModule;
@@ -38,7 +38,7 @@ import butterknife.ButterKnife;
  * Created by Helldefender on 2017/2/5.
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements View.OnClickListener{
 
     protected T mPresenter;
 
@@ -48,17 +48,15 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected Toolbar toolbar;
 
-    protected StatusLayoutManager statusLayoutManager;
+    protected abstract int getLayoutId();
 
-    protected LinearLayout llBaseActivity;
+    protected abstract void initInject();
 
-    public abstract int getLayoutId();
+    protected abstract void initPresenter();
 
-    public abstract int getEmptyLayoutId();
+    protected abstract void widgetClick(View view);
 
-    public abstract void initInject();
-
-    public abstract void initPresenter();
+    protected void setWidgetListener(){}
 
 //    public static void start(Context context,Class<?> cs) {
 //        start(context,cs ,null);
@@ -78,50 +76,13 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        //setContentView(R.layout.activity_base);
-
-//        llBaseActivity = (LinearLayout) findViewById(R.id.ll_base_activity);
-//        statusLayoutManager = new StatusLayoutManager.Builder(this)
-//                .contentView(getLayoutId())
-//                .loadingView(R.layout.layout_status_loading)
-//                .emptyDataView(getEmptyLayoutId())
-//                .errorView(R.layout.layout_status_error)
-//                .netWorkErrorView(R.layout.layout_status_net_error)
-//                .retryViewId(R.layout.layout_status_retry)
-////                .emptyDataRetryViewId()
-////                .errorRetryViewId()
-////                .netWorkErrorRetryViewId()
-//                .emptyDataIconImageId(R.id.tv_status_empty)
-//                .emptyDataTextTipId(R.id.img_status_empty)
-//                .onRetryListener(new OnRetryListener() {
-//                    @Override
-//                    public void onRetry() {
-//                        statusLayoutManager.showLoading();
-//                        //请求加载数据
-//                    }
-//                })
-//                //view显示隐藏监听
-//                .onShowHideViewListener(new OnShowHideViewListener() {
-//                    @Override
-//                    public void onShowView(View view, int id) {
-//                        //该view显示
-//                    }
-//
-//                    @Override
-//                    public void onHideView(View view, int id) {
-//                        //该view隐藏
-//                    }
-//                })
-//                .build();
-//
-//        llBaseActivity.addView(statusLayoutManager.getRootLayout(), 0);
-//
-//        statusLayoutManager.showContent();
 
         initActivityComponent();
         initInject();
 
         ButterKnife.bind(this);
+
+        setWidgetListener();
 
         initPresenter();
 
@@ -137,8 +98,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     private void initActivityComponent() {
         mActivityComponent = DaggerActivityComponent.builder()
-                .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
-                .baseFragmentComponent(((MyApplication) getApplication()).getBaseFragmentComponent())
+                .applicationComponent(((App) getApplication()).getApplicationComponent())
+                .baseFragmentComponent(((App) getApplication()).getBaseFragmentComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
     }
@@ -294,6 +255,34 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     public void onNavigateUpClicked() {
         onBackPressed();
     }
+
+    public void startActivity(Class<?> cls) {
+        startActivity(new Intent(BaseActivity.this, cls));
+    }
+
+    public void startActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+    }
+
+    protected void startActivityForResult(Class<?> cls, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        startActivityForResult(intent, requestCode);
+    }
+
+    protected void startActivityForResult(Class<?> cls, Bundle bundle, int requestCode) {
+        Intent intent = new Intent();
+        intent.setClass(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
 //    protected <T extends View> T findView(int resId) {
 //        return (T) (getView().findViewById(resId));
 //    }
@@ -301,4 +290,17 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 //    protected abstract void initInjector();
 //
 //    protected abstract void initViews();
+
+    protected String getStringRes(int resId) {
+        return getResources().getString(resId);
+    }
+
+    protected void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        widgetClick(v);
+    }
 }

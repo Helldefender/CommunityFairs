@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:divider="@drawable/divider_linear_layout"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle|end">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_introduce"
+        android:paddingBottom="10dp"
+        android:paddingTop="35dp">
+
+        <TextView
+            android:id="@+id/tv_drawer_setting_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/arrow_left_white"
+            android:gravity="center_horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/setting"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_drawer_setting_account_management"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="@string/account_management"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_drawer_setting_account_management"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:paddingRight="15dp"
+            android:text="17783195406"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:drawableRight="@drawable/arrow_right_gray"
+            android:paddingRight="15dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="个人资料"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_drawer_setting_help"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#FFFFFF"
+        android:drawableRight="@drawable/arrow_right_gray"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="反馈"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+</LinearLayout>

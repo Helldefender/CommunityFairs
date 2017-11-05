@@ -13,6 +13,19 @@
         android:layout_marginBottom="45dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout_main_fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/frameLayout_main_fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
@@ -47,7 +60,7 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:clickable="true"
-            android:src="@mipmap/posted" />
+            android:src="@drawable/posted" />
 
         <RadioButton
             android:id="@+id/radio_message"
@@ -69,18 +82,5 @@
             android:text="我的"
             android:textSize="12sp" />
     </RadioGroup>
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout_main_fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <FrameLayout
-            android:id="@+id/frameLayout_main_fragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed" />
-
-    </android.support.design.widget.AppBarLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,6 +1,5 @@
 package com.helldefender.enjoylife.presenter.impl;
 
-import com.helldefender.enjoylife.data.impl.HttpServiceImpl;
 import com.helldefender.enjoylife.presenter.base.BasePresenterImpl;
 import com.helldefender.enjoylife.utils.imageloader.ImageLoaderUtil;
 import com.helldefender.enjoylife.view.DisCoveryAppBarView;
@@ -13,7 +12,7 @@ import javax.inject.Inject;
 
 public class DiscoveryAppBarImpl extends BasePresenterImpl<DisCoveryAppBarView, String> {
 
-    private HttpServiceImpl httpService;
+    //private HttpServiceImpl httpService;
 
     private ImageLoaderUtil imageLoaderUtil;
 

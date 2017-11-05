@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.helldefender.enjoylife.R;
+import com.helldefender.enjoylife.modules.login.LoginActivity;
 import com.helldefender.enjoylife.ui.activity.base.BaseActivity;
 import com.helldefender.enjoylife.utils.PreferenceUtil;
 
@@ -21,12 +23,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return 0;
-    }
-
-    @Override
-    public int getEmptyLayoutId() {
-        return 0;
+        return R.layout.activity_welcome;
     }
 
     @Override
@@ -40,9 +37,14 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
+    protected void widgetClick(View view) {
+
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+       // setContentView(R.layout.activity_welcome);
 
         handleStatusBar();
 
@@ -56,7 +58,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void showSplashView() {
-        getWindow().setBackgroundDrawableResource(R.mipmap.splash_bg);
+        getWindow().setBackgroundDrawableResource(R.drawable.splash);
         customSplash = true;
 
         Runnable runnable = new Runnable() {
@@ -66,7 +68,8 @@ public class SplashActivity extends BaseActivity {
                     MainActivity.start(SplashActivity.this,null);
                     finish();
                 } else {
-                    LoginActivity.start(SplashActivity.this, null);
+                    //LoginActivity.start(SplashActivity.this, null);
+                    startActivity(LoginActivity.class);
                     finish();
                 }
             }
