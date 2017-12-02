@@ -2,7 +2,7 @@ package com.helldefender.enjoylife.inject.component;
 
 import com.helldefender.enjoylife.inject.module.BaseFragmentModule;
 import com.helldefender.enjoylife.inject.qualifier.FragmentType;
-import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
+import com.helldefender.enjoylife.app.BaseFragment;
 
 import dagger.Component;
 

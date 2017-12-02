@@ -8,44 +8,38 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+
         android:name=".app.App"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/DayTheme">
-        <activity android:name=".ui.activity.SplashActivity">
+        <activity android:name=".modules.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".modules.main.MainActivity">
 
         </activity>
-        <activity android:name=".modules.login.LoginActivity" />
-        <activity android:name=".modules.register.RegisterActivity" />
-        <activity android:name=".modules.register.EditInfoActivity" />
-        <activity android:name=".ui.activity.DetailContentActivity" />
-        <activity android:name=".ui.activity.PublishActivity" />
+        <activity android:name=".modules.user.login.LoginActivity" />
+        <activity android:name=".modules.user.register.RegisterActivity" />
+        <activity android:name=".modules.community.detail.DetailContentActivity" />
+        <activity android:name=".modules.community.publish.PublishActivity" />
         <activity
-            android:name=".ui.activity.CommentPostActivity"
+            android:name=".modules.community.detail.CommentPostActivity"
             android:theme="@style/transparent" />
-        <activity android:name=".modules.OrganizationActivity" />
-        <activity android:name=".modules.MoreEventActivity" />
-        <activity android:name=".modules.password.PasswordResetActivity" />
-        <activity android:name=".modules.MoreOrganizationActivity" />
-        <activity android:name=".modules.publish.MyPublishActivity" />
-        <activity android:name=".modules.attend.MyAttendActivity" />
-        <activity android:name=".modules.SignUpActivity" />
-        <activity android:name=".modules.FormActivity" />
-        <activity android:name=".modules.SaveActivity" />
-        <activity android:name=".modules.setting.AboutActivity" />
-        <activity android:name=".modules.setting.SettingActivity" />
-        <activity android:name=".modules.setting.FeedBackActivity" />
-        <activity android:name=".modules.setting.PasswordModifyActivity" />
-        <activity android:name=".modules.LabFinanceActivity" />
+        <activity android:name=".modules.main.discovery.organization.OrganizationActivity" />
+        <activity android:name=".modules.user.password.PasswordResetActivity" />
+        <activity android:name=".modules.community.publish.MyPublishActivity" />
+        <activity android:name=".modules.community.attend.MyAttendActivity" />
+        <activity android:name=".modules.user.setting.AboutActivity" />
+        <activity android:name=".modules.user.setting.SettingActivity" />
+        <activity android:name=".modules.user.setting.FeedBackActivity" />
+        <activity android:name=".modules.user.setting.PasswordModifyActivity" />
 
     </application>
 

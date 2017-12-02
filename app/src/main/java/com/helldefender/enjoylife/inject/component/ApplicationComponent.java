@@ -2,8 +2,8 @@ package com.helldefender.enjoylife.inject.component;
 
 import android.content.Context;
 
-import com.helldefender.enjoylife.data.local.DataBaseHelper;
-import com.helldefender.enjoylife.data.local.PreferencesHelper;
+import com.helldefender.enjoylife.model.data.local.DataBaseHelper;
+import com.helldefender.enjoylife.model.data.local.PreferencesHelper;
 import com.helldefender.enjoylife.inject.module.ApplicationModule;
 import com.helldefender.enjoylife.inject.qualifier.ApplicationContext;
 import com.helldefender.enjoylife.inject.scope.PerApp;

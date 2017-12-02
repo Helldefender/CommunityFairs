@@ -7,8 +7,8 @@ import com.helldefender.enjoylife.inject.module.ActivityModule;
 import com.helldefender.enjoylife.inject.qualifier.ActivityContext;
 import com.helldefender.enjoylife.inject.qualifier.ApplicationContext;
 import com.helldefender.enjoylife.inject.scope.PerActivity;
-import com.helldefender.enjoylife.ui.activity.DetailContentActivity;
-import com.helldefender.enjoylife.ui.activity.MainActivity;
+import com.helldefender.enjoylife.modules.community.detail.DetailContentActivity;
+import com.helldefender.enjoylife.modules.main.MainActivity;
 
 import dagger.Component;
 

@@ -38,6 +38,6 @@
             android:gravity="center"
             android:text="@string/app_info"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </FrameLayout>
 </LinearLayout>

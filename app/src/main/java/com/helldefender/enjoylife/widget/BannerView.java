@@ -33,9 +33,9 @@ import java.util.List;
 
 public class BannerView extends FrameLayout {
 
-    private static final int IMAGE_COUNT = 4;
+    //private static final int IMAGE_COUNT = 4;
 
-    private static final int INDICATOR_COUNT = 4;
+    //private static final int INDICATOR_COUNT = 4;
 
     private static final boolean isAutoPlay = true;
 
@@ -299,8 +299,11 @@ public class BannerView extends FrameLayout {
      * 销毁ImageView资源，回收内存
      */
     private void destoryBitmaps() {
+        if (imageViewList == null) {
+            return;
+        }
 
-        for (int i = 0; i < IMAGE_COUNT; i++) {
+        for (int i = 0; i < imageViewList.size(); i++) {
             ImageView imageView = imageViewList.get(i);
             Drawable drawable = imageView.getDrawable();
             if (drawable != null) {

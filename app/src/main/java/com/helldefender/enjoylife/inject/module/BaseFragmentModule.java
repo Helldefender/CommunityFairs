@@ -1,9 +1,9 @@
 package com.helldefender.enjoylife.inject.module;
 
 import com.helldefender.enjoylife.inject.qualifier.FragmentType;
-import com.helldefender.enjoylife.ui.fragment.BlankFragment;
-import com.helldefender.enjoylife.ui.fragment.DiscoveryAppBarFragment;
-import com.helldefender.enjoylife.ui.fragment.base.BaseFragment;
+import com.helldefender.enjoylife.modules.main.discovery.BlankFragment;
+import com.helldefender.enjoylife.modules.main.discovery.DiscoveryAppBarFragment;
+import com.helldefender.enjoylife.app.BaseFragment;
 
 import dagger.Module;
 import dagger.Provides;
