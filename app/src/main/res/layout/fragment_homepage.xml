@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fl_homepage_fragment"
-    android:layout_width="match_parent"
-    android:background="#F5F6F7"
-    android:layout_height="match_parent">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <com.helldefender.enjoylife.widget.recyclerview.RefreshRecyclerView
-        android:id="@+id/rv_homepage_refresh"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.homepage.HomePageViewModel" />
+
+        <import type="com.helldefender.communityfairs.bindingadapter.LayoutManager" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:loadMoreEnabled="true"
-        app:loadMoreFooterLayout="@layout/layout_load_more_footer_view"
-        app:refreshEnabled="true"
-        app:refreshHeaderLayout="@layout/layout_refresh_header_view" />
+        android:background="#F5F6F7">
 
-</FrameLayout>
+        <com.helldefender.communityfairs.widget.recyclerview.RefreshRecyclerView
+            android:id="@+id/rv_homepage_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:loadMoreEnabled="true"
+            app:loadMoreFooterLayout="@layout/layout_load_more_footer_view"
+            app:refreshEnabled="true"
+            app:refreshHeaderLayout="@layout/layout_refresh_header_view"
+            bind:itemViewWrapper="@{viewModel.itemViewWrapper}"
+            bind:layoutManager="@{LayoutManager.getLinearLayoutManger()}"
+            bind:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            bind:viewModel="@{viewModel.viewModel}" />
+    </FrameLayout>
+
+
+</layout>

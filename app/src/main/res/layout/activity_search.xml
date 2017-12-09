@@ -15,7 +15,7 @@
         android:paddingBottom="10dp"
         android:paddingTop="25dp">
 
-        <com.helldefender.enjoylife.widget.ClearEditText
+        <com.helldefender.communityfairs.widget.ClearEditText
             android:id="@+id/search_edit"
             android:layout_width="0dp"
             android:layout_height="35dp"

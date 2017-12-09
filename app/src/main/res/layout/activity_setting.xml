@@ -22,7 +22,6 @@
             android:gravity="center_horizontal"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="@string/setting"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </LinearLayout>
@@ -38,7 +37,6 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="15dp"
-            android:text="@string/account_management"
             android:textColor="#666666"
             android:textSize="15sp" />
 

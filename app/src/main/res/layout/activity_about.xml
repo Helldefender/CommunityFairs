@@ -19,7 +19,6 @@
             android:gravity="center_horizontal"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="@string/about"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
     </LinearLayout>

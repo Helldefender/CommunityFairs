@@ -250,7 +250,6 @@
                 android:layout_height="45dp"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/logout"
                 android:textColor="#F5B550"
                 android:textSize="15sp" />
 

@@ -384,7 +384,6 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="18dp"
                     android:gravity="bottom"
-                    android:text="@string/remark"
                     android:textColor="#666666"
                     android:textSize="14sp" />
 

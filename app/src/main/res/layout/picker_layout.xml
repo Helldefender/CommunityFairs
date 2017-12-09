@@ -9,19 +9,19 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <com.helldefender.enjoylife.widget.PickerListView
+        <com.helldefender.communityfairs.widget.PickerListView
             android:id="@+id/picker_listview_left"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.helldefender.enjoylife.widget.PickerListView
+        <com.helldefender.communityfairs.widget.PickerListView
             android:id="@+id/picker_listview_center"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.helldefender.enjoylife.widget.PickerListView
+        <com.helldefender.communityfairs.widget.PickerListView
             android:id="@+id/picker_listview_right"
             android:layout_width="0dp"
             android:layout_height="match_parent"

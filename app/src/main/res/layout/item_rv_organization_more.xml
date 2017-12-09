@@ -26,7 +26,7 @@
             android:paddingBottom="15dp"
             android:paddingTop="25dp">
 
-            <com.helldefender.enjoylife.widget.CircleImageView
+            <com.helldefender.communityfairs.widget.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/avatar" />

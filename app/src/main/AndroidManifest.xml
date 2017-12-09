@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.helldefender.enjoylife">
+    package="com.helldefender.communityfairs">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,38 +9,22 @@
 
     <application
 
-        android:name=".app.App"
+        android:name="com.helldefender.communityfairs.app.App"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/DayTheme">
-        <activity android:name=".modules.SplashActivity">
+        <activity android:name="com.helldefender.communityfairs.modules.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".modules.main.MainActivity">
-
-        </activity>
-        <activity android:name=".modules.user.login.LoginActivity" />
-        <activity android:name=".modules.user.register.RegisterActivity" />
-        <activity android:name=".modules.community.detail.DetailContentActivity" />
-        <activity android:name=".modules.community.publish.PublishActivity" />
         <activity
-            android:name=".modules.community.detail.CommentPostActivity"
+            android:name="com.helldefender.communityfairs.modules.community.detail.CommentPostActivity"
             android:theme="@style/transparent" />
-        <activity android:name=".modules.main.discovery.organization.OrganizationActivity" />
-        <activity android:name=".modules.user.password.PasswordResetActivity" />
-        <activity android:name=".modules.community.publish.MyPublishActivity" />
-        <activity android:name=".modules.community.attend.MyAttendActivity" />
-        <activity android:name=".modules.user.setting.AboutActivity" />
-        <activity android:name=".modules.user.setting.SettingActivity" />
-        <activity android:name=".modules.user.setting.FeedBackActivity" />
-        <activity android:name=".modules.user.setting.PasswordModifyActivity" />
-
     </application>
 
 </manifest>

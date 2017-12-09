@@ -4,7 +4,7 @@
     android:layout_height="220dp"
     android:orientation="vertical">
 
-    <com.helldefender.enjoylife.widget.BannerView
+    <com.helldefender.communityfairs.widget.BannerView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

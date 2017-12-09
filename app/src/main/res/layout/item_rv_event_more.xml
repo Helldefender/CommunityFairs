@@ -109,7 +109,7 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <com.helldefender.enjoylife.widget.CircleImageView
+                    <com.helldefender.communityfairs.widget.CircleImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/avatar" />

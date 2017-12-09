@@ -1,86 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinatorLayout_main_fragmentContainer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipChildren="false">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <com.helldefender.enjoylife.widget.TabViewPager
-        android:id="@+id/viewpager"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.MainViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="45dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:clipChildren="false">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout_main_fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <FrameLayout
-            android:id="@+id/frameLayout_main_fragmentContainer"
+        <com.helldefender.communityfairs.widget.TabViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="45dp" />
 
-    </android.support.design.widget.AppBarLayout>
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom"
-        android:background="#ececec"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radio_homepage"
-            style="@style/navigation_style"
-            android:checked="true"
-            android:drawableTop="@drawable/homepage_radio_btn_bg"
-            android:paddingBottom="2dp"
-            android:paddingTop="3dp"
-            android:text="首页"
-            android:textSize="12sp" />
-
-        <RadioButton
-            android:id="@+id/radio_discovery"
-            style="@style/navigation_style"
-            android:checked="false"
-            android:drawableTop="@drawable/discovery_radio_btn_bg"
-            android:paddingBottom="2dp"
-            android:paddingTop="3dp"
-            android:text="发现"
-            android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/img_posted"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:layout_gravity="bottom"
-            android:clickable="true"
-            android:src="@drawable/posted" />
+            android:background="#ececec"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radio_message"
-            style="@style/navigation_style"
-            android:checked="false"
-            android:drawableTop="@drawable/message_radio_btn_bg"
-            android:paddingBottom="2dp"
-            android:paddingTop="3dp"
-            android:text="消息"
-            android:textSize="12sp" />
+            <RadioButton
+                android:id="@+id/radio_homepage"
+                style="@style/navigation_style"
+                android:checked="true"
+                android:drawableTop="@drawable/homepage_radio_btn_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="3dp"
+                android:text="@string/homepage"
+                android:textSize="12sp" />
 
-        <RadioButton
-            android:id="@+id/radio_user"
-            style="@style/navigation_style"
-            android:checked="false"
-            android:drawableTop="@drawable/user_radio_btn_bg"
-            android:paddingBottom="2dp"
-            android:paddingTop="3dp"
-            android:text="我的"
-            android:textSize="12sp" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/radio_discovery"
+                style="@style/navigation_style"
+                android:checked="false"
+                android:drawableTop="@drawable/discovery_radio_btn_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="3dp"
+                android:text="@string/discovery"
+                android:textSize="12sp" />
 
-</android.support.design.widget.CoordinatorLayout>
+            <ImageView
+                android:id="@+id/img_posted"
+                android:layout_width="wrap_content"
+                android:layout_height="59dp"
+                android:layout_gravity="bottom"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/posted" />
+
+            <RadioButton
+                android:id="@+id/radio_message"
+                style="@style/navigation_style"
+                android:checked="false"
+                android:drawableTop="@drawable/message_radio_btn_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="3dp"
+                android:text="@string/message"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/radio_user"
+                style="@style/navigation_style"
+                android:checked="false"
+                android:drawableTop="@drawable/user_radio_btn_bg"
+                android:paddingBottom="2dp"
+                android:paddingTop="3dp"
+                android:text="@string/user"
+                android:textSize="12sp" />
+        </RadioGroup>
+    </FrameLayout>
+</layout>

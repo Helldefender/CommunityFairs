@@ -1,4 +1,4 @@
-<com.helldefender.enjoylife.widget.ArcMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<com.helldefender.communityfairs.widget.ArcMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:hyman="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/id_menu"
@@ -48,4 +48,4 @@
         android:tag="People"
         android:text="我要评论" />
 
-</com.helldefender.enjoylife.widget.ArcMenu>
+</com.helldefender.communityfairs.widget.ArcMenu>
