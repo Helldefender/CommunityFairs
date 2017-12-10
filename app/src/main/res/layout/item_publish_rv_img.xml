@@ -7,8 +7,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/star" />
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:layout_width="wrap_content"

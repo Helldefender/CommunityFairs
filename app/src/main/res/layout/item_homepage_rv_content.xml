@@ -17,12 +17,12 @@
         android:layout_marginRight="6dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
-        bind:clickCommand="@{viewModel.itemClickCommand}"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         app:cardCornerRadius="3dp"
-        app:cardElevation="1dp">
+        app:cardElevation="1dp"
+        bind:clickCommand="@{viewModel.itemClickCommand}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:lines="2"
-                    android:text="数据库应用程序设计大赛"
+                    android:text="@{viewModel.title}"
                     android:textColor="#D9000000"
                     android:textSize="20sp" />
 
@@ -83,7 +83,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:background="#ECECEC" />
@@ -138,7 +138,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/star" />
+                    bind:url="@{viewModel.imageUrl}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

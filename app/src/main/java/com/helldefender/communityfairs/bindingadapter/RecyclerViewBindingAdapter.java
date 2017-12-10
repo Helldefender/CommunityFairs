@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.helldefender.communityfairs.app.BaseAdapter;
 import com.helldefender.communityfairs.bindingadapter.command.ReplyCommand;
+import com.helldefender.communityfairs.widget.recyclerview.RefreshRecyclerView;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -22,15 +23,16 @@ import io.reactivex.subjects.PublishSubject;
 
 public class RecyclerViewBindingAdapter {
 
-    @BindingAdapter(value = {"itemViewWrapper", "viewModel", "adapter"}, requireAll = false)
-    public static <T> void setAdapter(RecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, BaseAdapter adapter) {
+    @BindingAdapter(value = {"itemViewWrapper", "viewModel", "adapter", "refreshEnable", "loadMoreEnable"}, requireAll = false)
+    public static <T> void setAdapter(RefreshRecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, BaseAdapter adapter, boolean refreshEnable, boolean loadMoreEnable) {
         if (itemViewWrapper == null) {
             throw new IllegalArgumentException("向你抛出了一个异常-->ItemViewWrapper为空");
         }
+
         BaseAdapter mAdapter = (BaseAdapter) recyclerView.getAdapter();
         if (adapter == null) {
             if (mAdapter == null) {
-                adapter = BaseAdapterFactory.DEFAULT.create(itemViewWrapper, viewModel);
+                adapter = BaseAdapterFactory.DEFAULT.create(recyclerView, itemViewWrapper, viewModel, refreshEnable, loadMoreEnable);
             } else {
                 adapter = mAdapter;
             }
@@ -46,7 +48,7 @@ public class RecyclerViewBindingAdapter {
         recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));
     }
 
-    @BindingAdapter(value = {"onLoadMoreCommand"})
+    @BindingAdapter("onLoadMoreCommand")
     public static void onLoadMoreCommand(RecyclerView recyclerView, ReplyCommand<Integer> replyCommand) {
 
         RecyclerView.OnScrollListener onScrollListener = new OnScrollListener(replyCommand);
@@ -107,12 +109,15 @@ public class RecyclerViewBindingAdapter {
     public interface BaseAdapterFactory {
         BaseAdapterFactory DEFAULT = new BaseAdapterFactory() {
             @Override
-            public <T> BaseAdapter<T> create(ItemViewWrapper<T> itemViewWrapper, List<T> viewModel) {
+            public <T> BaseAdapter<T> create(RefreshRecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, boolean refreshEnable, boolean loadMoreEnable) {
+                if (refreshEnable && loadMoreEnable) {
+                    return new BaseAdapter<>(itemViewWrapper, viewModel, recyclerView.getRefreshHeaderLayout(), recyclerView.getLoadMoreFooterLayout());
+                }
                 return new BaseAdapter<>(itemViewWrapper, viewModel);
             }
         };
 
-        <T> BaseAdapter<T> create(ItemViewWrapper<T> itemViewWrapper, List<T> viewModel);
+        <T> BaseAdapter<T> create(RefreshRecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, boolean refreshEnable, boolean loadMoreEnable);
     }
 
 }

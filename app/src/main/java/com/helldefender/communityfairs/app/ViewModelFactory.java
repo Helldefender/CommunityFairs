@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
 import com.helldefender.communityfairs.modules.main.MainViewModel;
+import com.helldefender.communityfairs.modules.main.discovery.DiscoveryViewModel;
 import com.helldefender.communityfairs.modules.main.homepage.HomePageViewModel;
 import com.helldefender.communityfairs.modules.main.homepage.NewsItemViewModel;
 
@@ -39,6 +40,8 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new MainViewModel(application);
         } else if (modelClass.isAssignableFrom(NewsItemViewModel.class)) {
             return (T) new NewsItemViewModel(application);
+        } else if (modelClass.isAssignableFrom(DiscoveryViewModel.class)) {
+            return (T) new DiscoveryViewModel(application);
         } else {
             throw new IllegalArgumentException("向你抛出了一个异常--->未知的ViewModel类型:" + modelClass);
         }

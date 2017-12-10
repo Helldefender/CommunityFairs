@@ -15,19 +15,14 @@ import com.helldefender.communityfairs.utils.imageloader.ImageLoaderConfiguratio
 
 public class ImageViewBindingAdapter {
 
-//    @BindingAdapter("url")
-//    public static void setImageUrl(ImageView imageView, String url) {
-//        ImageLoader.getInstance().loadImage(new ImageLoaderConfiguration.Builder()
-//                .context(App.getContext())
-//                .url(url)
-//                .imageView(imageView)
-//                //.placeHolderRes()
-//                //.errorRes()
-//                .build());
-//    }
-//
-//    @BindingAdapter(value = {"url","placeHolderRes","errorRes","modifyTime"})
-//    public static void loadImage(ImageView imageView,String url) {
-//
-//    }
+    @BindingAdapter(value = {"url", "placeHolderRes", "errorRes", "modifyTime"}, requireAll = false)
+    public static void loadImage(ImageView imageView, String url, int placeHodlerRes, int errorRes, int modifyTime) {
+        ImageLoader.getInstance().loadImage(new ImageLoaderConfiguration.Builder()
+                .context(App.getContext())
+                .url(url)
+                .imageView(imageView)
+//                .placeHolderRes()
+//                .errorRes()
+                .build());
+    }
 }

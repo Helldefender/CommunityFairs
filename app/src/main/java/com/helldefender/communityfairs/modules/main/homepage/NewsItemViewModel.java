@@ -16,8 +16,8 @@ import io.reactivex.functions.Action;
 
 public class NewsItemViewModel extends AndroidViewModel {
 
-    ObservableField<String> title = new ObservableField<>();
-    ObservableField<String> data = new ObservableField<>();
+    public ObservableField<String> title = new ObservableField<>();
+    public ObservableField<String> imageUrl = new ObservableField<>();
 
     public ReplyCommand itemClickCommand = new ReplyCommand(new Action() {
         @Override
@@ -28,6 +28,7 @@ public class NewsItemViewModel extends AndroidViewModel {
 
     public NewsItemViewModel(Application application) {
         super(application);
-
+        imageUrl.set("http://www.taopic.com/uploads/allimg/130331/240460-13033106243430.jpg");
+        title.set("我是一个标题");
     }
 }

@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="220dp"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <com.helldefender.communityfairs.widget.BannerView
-        android:id="@+id/carouselView"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.homepage.BannerViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp"
-        android:text="重庆邮电大学"
-        android:textStyle="bold"
-        android:drawableLeft="@drawable/shape"
-        android:textColor="@android:color/white"
-        android:drawablePadding="5dp"
-        android:textSize="16sp" />
-</FrameLayout>
+        <com.helldefender.communityfairs.widget.BannerView
+            android:layout_width="match_parent"
+            bind:images="@{viewModel.viewModels}"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="25dp"
+            android:drawableLeft="@drawable/shape"
+            android:drawablePadding="5dp"
+            android:text="重庆邮电大学"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+
+</layout>

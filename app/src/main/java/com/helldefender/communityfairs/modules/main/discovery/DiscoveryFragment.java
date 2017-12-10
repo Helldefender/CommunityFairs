@@ -1,13 +1,16 @@
 package com.helldefender.communityfairs.modules.main.discovery;
 
 import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.app.BaseFragment;
+import com.helldefender.communityfairs.app.ViewModelFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,29 +22,7 @@ import butterknife.Unbinder;
  * Created by Helldefender on 2017/2/16.
  */
 
-public class DiscoveryFragment extends BaseFragment{
-
-
-
-    @BindView(R.id.rv_discovery_event)
-    RecyclerView mEventRecyclerView;
-
-    Unbinder unbinder;
-    @BindView(R.id.tv_discovery_moreEvent)
-    TextView tvDiscoveryMoreEvent;
-
-//    @Override
-//    protected void initViews(View view, Bundle savedInstanceState) {
-//        //initPresenter();
-//        initRecyclerView();
-//
-//        tvDiscoveryMoreEvent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//    }
+public class DiscoveryFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
@@ -50,12 +31,12 @@ public class DiscoveryFragment extends BaseFragment{
 
     @Override
     protected int getVariableId() {
-        return 0;
+        return BR.viewModel;
     }
 
     @Override
     protected ViewModel getViewModel() {
-        return null;
+        return ViewModelProviders.of(this, ViewModelFactory.getInstance()).get(DiscoveryViewModel.class);
     }
 
     @Override
@@ -64,23 +45,6 @@ public class DiscoveryFragment extends BaseFragment{
     }
 
     private void initRecyclerView() {
-        List<String> data = new ArrayList<String>();
-        data.add("我是数据");
-        data.add("我是数据");
-        data.add("我是数据");
-        data.add("我是数据");
-        data.add("我是数据");
-        data.add("我是数据");
-        data.add("我是数据");
-        data.add("我是数据");
-//
-//        discoveryRecyclerView.setLayoutManager(new LinearLayoutManager(getHoldingActivity()));
-//        discoveryRecyclerView.setAdapter(new DiscoveryRVAdapter(getHoldingActivity(), new MultiViewType<String>() {
-//            @Override
-//            public int getViewTypeSpanCount(int viewType) {
-//                return 0;
-//            }
-//
 //            @Override
 //            public int getItemViewType(int position) {
 //                if (position == 0) {
@@ -105,17 +69,5 @@ public class DiscoveryFragment extends BaseFragment{
 //                return
 //            }
 //        }, data));
-
-//        eventRvAdapter = new OrganizationRvAdapter(getHoldingActivity(), R.layout.item_discovery_rv_event, data);
-//        mEventRecyclerView.setLayoutManager(new LinearLayoutManager(getHoldingActivity()));
-//        mEventRecyclerView.setAdapter(eventRvAdapter);
-//        mEventRecyclerView.addItemDecoration(new DividerItemDecoration(getHoldingActivity(), DividerItemDecoration.VERTICAL));
-//
-//        eventRvAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position, int viewType) {
-//
-//            }
-//        });
     }
 }

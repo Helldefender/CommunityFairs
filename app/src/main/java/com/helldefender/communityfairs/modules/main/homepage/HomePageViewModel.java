@@ -2,6 +2,7 @@ package com.helldefender.communityfairs.modules.main.homepage;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
 import android.util.Log;
@@ -21,6 +22,7 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.subjects.BehaviorSubject;
 
 /**
  * Created by Helldefender on 2017/12/4 for CommunityFairs.
@@ -30,9 +32,9 @@ import io.reactivex.functions.Function;
 
 public class HomePageViewModel extends AndroidViewModel {
 
-    public ObservableList<NewsItemViewModel> viewModel = new ObservableArrayList<>();
+    public ObservableList<ViewModel> viewModel = new ObservableArrayList<>();
 
-    public ItemViewWrapper<NewsItemViewModel> itemViewWrapper = new ItemViewWrapper<NewsItemViewModel>(new MultiViewType<NewsItemViewModel>() {
+    public ItemViewWrapper<ViewModel> itemViewWrapper = new ItemViewWrapper<>(new MultiViewType<ViewModel>() {
         @Override
         public int getViewTypeSpanCount(int viewType) {
             return 0;
@@ -49,7 +51,12 @@ public class HomePageViewModel extends AndroidViewModel {
         }
 
         @Override
-        public void getLayoutRes(ItemView itemView, int position, NewsItemViewModel viewModel) {
+        public void getLayoutRes(ItemView itemView, int position, ViewModel viewModel) {
+            if (position == 0) {
+                itemView.set(BR.viewModel, R.layout.item_homepage_rv_banner);
+                return;
+            }
+
             itemView.set(BR.viewModel, R.layout.item_homepage_rv_content);
         }
     });
@@ -87,7 +94,7 @@ public class HomePageViewModel extends AndroidViewModel {
 
     public HomePageViewModel(Application application) {
         super(application);
-        viewModel.add(new NewsItemViewModel(application));
+        viewModel.add(new BannerViewModel(application));
         viewModel.add(new NewsItemViewModel(application));
         viewModel.add(new NewsItemViewModel(application));
         viewModel.add(new NewsItemViewModel(application));

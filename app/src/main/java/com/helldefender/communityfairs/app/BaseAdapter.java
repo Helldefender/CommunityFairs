@@ -3,6 +3,7 @@ package com.helldefender.communityfairs.app;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.support.annotation.LayoutRes;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -92,6 +93,18 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
         registerAdapterDataObserver(adapterDataObserver);
     }
+
+    public BaseAdapter(ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, RefreshHeaderLayout refreshHeaderLayout, FrameLayout loadMoreFrameLayout) {
+        this.itemViewWrapper = itemViewWrapper;
+        this.viewModel = viewModel;
+        this.refreshHeaderLayout = refreshHeaderLayout;
+        this.loadMoreFrameLayout = loadMoreFrameLayout;
+
+        refreshEnable = true;
+        loadMoreEnable = true;
+
+        registerAdapterDataObserver(adapterDataObserver);
+    }
 //
 //    public BaseAdapter(Context context, List<T> data, RefreshHeaderLayout refreshHeaderLayout, FrameLayout loadMoreFrameLayout) {
 //        this.context = context;
@@ -129,7 +142,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
         } else if (viewType == LOAD_MORE_FOOTER_VIEW) {
             return new BaseViewHolder(context, loadMoreFrameLayout);
         } else {
-            ViewDataBinding viewDataBinding = DataBindingUtil.inflate(mInflater, R.layout.item_homepage_rv_content, parent, false);
+            ViewDataBinding viewDataBinding = DataBindingUtil.inflate(mInflater, itemViewWrapper.layoutRes(), parent, false);
             return BaseViewHolder.createViewHolder(viewDataBinding);
         }
     }
@@ -141,6 +154,9 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 //            return;
 //        }
 
+        if ((position >= 0 && position < getRefreshHeaderViewCount() + getHeaderViewsCount()) || position >= getRefreshHeaderViewCount() + getHeaderViewsCount() + getRealItemCount())
+            return;
+
         int Position = position - getHeaderViewsCount() - getRefreshHeaderViewCount();
 
         T viewModel = this.viewModel.get(Position);
@@ -151,7 +167,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
         if (bindingVariable != 0) {
             boolean result = viewDataBinding.setVariable(bindingVariable, viewModel);
             if (!result) {
-                throw new IllegalStateException("向你抛出一个异常");
+                throw new IllegalStateException("向你抛出一个异常-->setVariable失败");
             }
             viewDataBinding.executePendingBindings();
         }
@@ -175,10 +191,10 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
             return headerViews.keyAt(position - getRefreshHeaderViewCount());
         } else if (isFootViewPosition(position)) {
             return footerViews.keyAt(position - getHeaderViewsCount() - getRealItemCount() - getRefreshHeaderViewCount());
-        } else if (position == getHeaderViewsCount() + getRealItemCount() + getFooterViewsCount() + getRefreshHeaderViewCount() && loadMoreEnable) {
+        } else if (loadMoreEnable && position == getHeaderViewsCount() + getRealItemCount() + getFooterViewsCount() + getRefreshHeaderViewCount()) {
             return LOAD_MORE_FOOTER_VIEW;
         } else {
-            itemViewWrapper.getLayoutRes(position, viewModel.get(position - getHeaderViewsCount() - getRefreshHeaderViewCount()));
+            itemViewWrapper.getLayoutRes(position - getRefreshHeaderViewCount() - getHeaderViewsCount(), viewModel.get(position - getHeaderViewsCount() - getRefreshHeaderViewCount()));
             return itemViewWrapper.layoutRes();
         }
     }
@@ -250,26 +266,6 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
             loadMoreFrameLayout = new FrameLayout(context);
             loadMoreFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position, int viewType);
-    }
-
-    private OnItemClickListener mOnItemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
-        this.mOnItemClickListener = mOnItemClickListener;
-    }
-
-    private interface OnItemLongClickListener {
-        void onItemLongClick(View view, int position);
-    }
-
-    private OnItemLongClickListener onItemLongClickListener;
-
-    public void setOnItemLongClickListener(OnItemLongClickListener mOnItemClickListener) {
-        this.onItemLongClickListener = mOnItemClickListener;
     }
 
     private boolean isHeaderViewPosition(int position) {

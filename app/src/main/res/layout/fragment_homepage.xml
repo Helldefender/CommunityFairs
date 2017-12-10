@@ -27,7 +27,9 @@
             app:refreshHeaderLayout="@layout/layout_refresh_header_view"
             bind:itemViewWrapper="@{viewModel.itemViewWrapper}"
             bind:layoutManager="@{LayoutManager.getLinearLayoutManger()}"
+            bind:loadMoreEnable="@{true}"
             bind:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            bind:refreshEnable="@{true}"
             bind:viewModel="@{viewModel.viewModel}" />
     </FrameLayout>
 
