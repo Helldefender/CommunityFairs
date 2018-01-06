@@ -25,7 +25,7 @@ public class LayoutManager {
         };
     }
 
-    public static LayoutManagerFactory getLinearLayout(final int orientation, final boolean reverseLayout) {
+    public static LayoutManagerFactory getLinearLayoutManager(final int orientation, final boolean reverseLayout) {
         return new LayoutManagerFactory() {
             @Override
             public RecyclerView.LayoutManager create(RecyclerView recyclerView) {

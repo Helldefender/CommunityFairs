@@ -27,4 +27,8 @@ public class BannerItemViewModel extends AndroidViewModel {
         imageUrl.set(image.imageUrl);
         title.set(image.title);
     }
+
+    public Image getImage() {
+        return image;
+    }
 }

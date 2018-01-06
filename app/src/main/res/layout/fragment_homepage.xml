@@ -15,10 +15,18 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F5F6F7">
+        android:background="@color/background">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:layout_behavior="@string/appbar_scrolling_view_behavior"
+            bind:onRefreshCommand="@{viewModel.onRefreshCommand}">
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <com.helldefender.communityfairs.widget.recyclerview.RefreshRecyclerView
-            android:id="@+id/rv_homepage_refresh"
+            android:id="@+id/rv_homepage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:loadMoreEnabled="true"
@@ -31,6 +39,7 @@
             bind:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
             bind:refreshEnable="@{true}"
             bind:viewModel="@{viewModel.viewModel}" />
+
     </FrameLayout>
 
 

@@ -111,7 +111,7 @@
                     <com.helldefender.communityfairs.widget.CircleImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/avatar" />
+                        android:src="@drawable/yellow_avatar" />
 
                     <TextView
                         android:layout_width="wrap_content"

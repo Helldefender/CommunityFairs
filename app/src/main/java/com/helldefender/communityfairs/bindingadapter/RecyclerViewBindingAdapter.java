@@ -1,6 +1,7 @@
 package com.helldefender.communityfairs.bindingadapter;
 
 import android.databinding.BindingAdapter;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -24,6 +25,26 @@ import io.reactivex.subjects.PublishSubject;
 public class RecyclerViewBindingAdapter {
 
     @BindingAdapter(value = {"itemViewWrapper", "viewModel", "adapter", "refreshEnable", "loadMoreEnable"}, requireAll = false)
+    public static <T> void setAdapter(RecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, BaseAdapter adapter, boolean refreshEnable, boolean loadMoreEnable) {
+        if (itemViewWrapper == null) {
+            throw new IllegalArgumentException("向你抛出了一个异常-->ItemViewWrapper为空");
+        }
+
+        BaseAdapter mAdapter = (BaseAdapter) recyclerView.getAdapter();
+        if (adapter == null) {
+            if (mAdapter == null) {
+                adapter = new BaseAdapter<>(itemViewWrapper, viewModel);
+            } else {
+                adapter = mAdapter;
+            }
+        }
+
+        if (mAdapter != adapter) {
+            recyclerView.setAdapter(adapter);
+        }
+    }
+
+    @BindingAdapter(value = {"itemViewWrapper", "viewModel", "adapter", "refreshEnable", "loadMoreEnable"}, requireAll = false)
     public static <T> void setAdapter(RefreshRecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, BaseAdapter adapter, boolean refreshEnable, boolean loadMoreEnable) {
         if (itemViewWrapper == null) {
             throw new IllegalArgumentException("向你抛出了一个异常-->ItemViewWrapper为空");
@@ -32,7 +53,11 @@ public class RecyclerViewBindingAdapter {
         BaseAdapter mAdapter = (BaseAdapter) recyclerView.getAdapter();
         if (adapter == null) {
             if (mAdapter == null) {
-                adapter = BaseAdapterFactory.DEFAULT.create(recyclerView, itemViewWrapper, viewModel, refreshEnable, loadMoreEnable);
+                if (refreshEnable && loadMoreEnable) {
+                    adapter = new BaseAdapter<>(itemViewWrapper, viewModel, recyclerView.getRefreshHeaderLayout(), recyclerView.getLoadMoreFooterLayout());
+                } else {
+                    adapter = new BaseAdapter<>(itemViewWrapper, viewModel);
+                }
             } else {
                 adapter = mAdapter;
             }
@@ -46,6 +71,18 @@ public class RecyclerViewBindingAdapter {
     @BindingAdapter("layoutManager")
     public static void setLayoutManger(RecyclerView recyclerView, LayoutManager.LayoutManagerFactory layoutManagerFactory) {
         recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));
+    }
+
+    @BindingAdapter("onRefreshCommand")
+    public static void onRefreshCommand(SwipeRefreshLayout swipeRefreshLayout, final ReplyCommand onRefreshCommand) {
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (onRefreshCommand != null) {
+
+                }
+            }
+        });
     }
 
     @BindingAdapter("onLoadMoreCommand")
@@ -105,19 +142,4 @@ public class RecyclerViewBindingAdapter {
             }
         }
     }
-
-    public interface BaseAdapterFactory {
-        BaseAdapterFactory DEFAULT = new BaseAdapterFactory() {
-            @Override
-            public <T> BaseAdapter<T> create(RefreshRecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, boolean refreshEnable, boolean loadMoreEnable) {
-                if (refreshEnable && loadMoreEnable) {
-                    return new BaseAdapter<>(itemViewWrapper, viewModel, recyclerView.getRefreshHeaderLayout(), recyclerView.getLoadMoreFooterLayout());
-                }
-                return new BaseAdapter<>(itemViewWrapper, viewModel);
-            }
-        };
-
-        <T> BaseAdapter<T> create(RefreshRecyclerView recyclerView, ItemViewWrapper<T> itemViewWrapper, List<T> viewModel, boolean refreshEnable, boolean loadMoreEnable);
-    }
-
 }

@@ -8,7 +8,7 @@
         android:id="@+id/ll_organization_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_user_introduce"
+        android:background="@drawable/bg_primary_color_gradient"
         android:orientation="vertical"
         app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -56,7 +56,7 @@
                 android:layout_width="66dp"
                 android:layout_height="66dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/avatar"
+                android:src="@drawable/blue_avatar"
                 app:cirImg_border_color="#FFFFFF"
                 app:cirImg_border_width="1dp" />
 

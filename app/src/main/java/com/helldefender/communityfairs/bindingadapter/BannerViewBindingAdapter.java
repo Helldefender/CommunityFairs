@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
+import com.helldefender.communityfairs.model.entity.Image;
+import com.helldefender.communityfairs.modules.main.homepage.BannerItemViewModel;
 import com.helldefender.communityfairs.widget.BannerView;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -21,27 +23,16 @@ import java.util.List;
 public class BannerViewBindingAdapter {
 
     @BindingAdapter("images")
-    public static <T> void setList(BannerView bannerView, List<T> images) {
-        CirclePageIndicator circlePageIndicator = bannerView.getCirclePageIndicator();
+    public static void setList(BannerView bannerView, List<BannerItemViewModel> images) {
         ViewPager viewPager = bannerView.getViewPager();
-        ViewPagerAdapter<T> viewPagerAdapter = (ViewPagerAdapter) viewPager.getAdapter();
-        if (viewPagerAdapter == null) {
-            viewPagerAdapter = new ViewPagerAdapter<>();
-            viewPager.setAdapter(viewPagerAdapter);
-        }
-
-        viewPager.setFocusable(true);
-        viewPager.setCurrentItem(Integer.MAX_VALUE / 2);
-
-        viewPagerAdapter.setList(images);
 
         ViewPagerScroller viewPagerScroller = new ViewPagerScroller(bannerView.getContext());
         viewPagerScroller.setScrollDuration(1200);
         viewPagerScroller.setViewPagerScroller(viewPager);
 
-        //circlePageIndicator.setViewPager(viewPager);
+        bannerView.setList(images);
 
-        bannerView.startLoop();
+        //bannerView.startLoop();
     }
 
     public static class ViewPagerScroller extends Scroller {

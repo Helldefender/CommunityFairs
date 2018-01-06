@@ -57,6 +57,8 @@ dependencies {
     implementation 'android.arch.persistence.room:rxjava2:1.0.0'
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+    compile 'com.github.clans:fab:1.6.4'
+
 }
 
 configurations.all {

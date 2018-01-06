@@ -25,7 +25,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
+import com.helldefender.communityfairs.bindingadapter.ViewPagerAdapter;
 import com.helldefender.communityfairs.model.entity.Image;
+import com.helldefender.communityfairs.modules.main.homepage.BannerItemViewModel;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.lang.ref.WeakReference;
@@ -40,7 +42,9 @@ public class BannerView extends FrameLayout {
 
     private ViewPager viewPager;
 
-    private CirclePageIndicator circlePageIndicator;
+    private CirclePageIndicator indicator;
+
+    private ViewPagerAdapter mAdapter;
 
     private BannerHandler handler = new BannerHandler(new WeakReference<>(this));
 
@@ -58,16 +62,25 @@ public class BannerView extends FrameLayout {
         inflate(context, R.layout.view_banner, this);
 
         viewPager = (ViewPager) findViewById(R.id.vp_banner);
-        viewPager.setOnPageChangeListener(new BannerView.ViewPageChangeListener());
-        circlePageIndicator = (CirclePageIndicator) findViewById(R.id.vpIndicator_banner);
+        indicator = (CirclePageIndicator) findViewById(R.id.indicator_banner);
+
+        //viewPager.addOnPageChangeListener(new BannerView.ViewPageChangeListener());
+
+        mAdapter = new ViewPagerAdapter();
+        viewPager.setAdapter(mAdapter);
+
+        //viewPager.setFocusable(true);
+        //viewPager.setCurrentItem(Integer.MAX_VALUE / 2);
+
+        indicator.setViewPager(viewPager);
+    }
+
+    public void setList(List<BannerItemViewModel> images) {
+        mAdapter.setList(images);
     }
 
     public ViewPager getViewPager() {
         return viewPager;
-    }
-
-    public CirclePageIndicator getCirclePageIndicator() {
-        return circlePageIndicator;
     }
 
     public void startLoop() {
@@ -81,39 +94,27 @@ public class BannerView extends FrameLayout {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        stopLoop();
-        //destroyBitmaps();
+        //stopLoop();
+        // TODO: 2018/1/2 结束ImageView对Drawable的引用，销毁ImageView资源，回收内存
     }
-
-
-//    private void destroyBitmaps() {
-//        for (int i = 0; i < imageViewList.size(); i++) {
-//            ImageView imageView = imageViewList.get(i);
-//            Drawable drawable = imageView.getDrawable();
-//            if (drawable != null) {
-//                //解除drawable对view的引用
-//                drawable.setCallback(null); //销毁ImageView资源，回收内存
-//            }
-//        }
-//    }
 
     private static class BannerHandler extends Handler {
 
-        protected static final int MSG_UPDATE_IMAGE = 1;
+        private static final int MSG_UPDATE_IMAGE = 1;
 
-        protected static final int MSG_KEEP_SILENT = 2;
+        private static final int MSG_KEEP_SILENT = 2;
 
-        protected static final int MSG_BREAK_SILENT = 3;
+        private static final int MSG_BREAK_SILENT = 3;
 
-        protected static final int MSG_PAGE_CHANGED = 4;
+        private static final int MSG_PAGE_CHANGED = 4;
 
-        protected static final long MSG_DELAY = 6000;
-
-        private WeakReference<BannerView> weakReference;
+        private static final long MSG_DELAY = 6000;
 
         private int currentItem = 0;
 
-        public BannerHandler(WeakReference<BannerView> weakReference) {
+        private WeakReference<BannerView> weakReference;
+
+        private BannerHandler(WeakReference<BannerView> weakReference) {
             this.weakReference = weakReference;
         }
 

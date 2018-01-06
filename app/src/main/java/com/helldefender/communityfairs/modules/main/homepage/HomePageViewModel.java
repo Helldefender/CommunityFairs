@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.util.Log;
 
@@ -32,9 +33,10 @@ import io.reactivex.subjects.BehaviorSubject;
 
 public class HomePageViewModel extends AndroidViewModel {
 
-    public ObservableList<ViewModel> viewModel = new ObservableArrayList<>();
+    public ObservableList<AndroidViewModel> viewModel = new ObservableArrayList<>();
 
-    public ItemViewWrapper<ViewModel> itemViewWrapper = new ItemViewWrapper<>(new MultiViewType<ViewModel>() {
+    public ItemViewWrapper<AndroidViewModel> itemViewWrapper = new ItemViewWrapper<>(new MultiViewType<AndroidViewModel>() {
+
         @Override
         public int getViewTypeSpanCount(int viewType) {
             return 0;
@@ -51,14 +53,14 @@ public class HomePageViewModel extends AndroidViewModel {
         }
 
         @Override
-        public void getLayoutRes(ItemView itemView, int position, ViewModel viewModel) {
+        public void getLayoutRes(ItemView itemView, int position, AndroidViewModel viewModel) {
             if (position == 0) {
                 itemView.set(BR.viewModel, R.layout.item_homepage_rv_banner);
                 return;
             }
-
             itemView.set(BR.viewModel, R.layout.item_homepage_rv_content);
         }
+
     });
 
     public final ReplyCommand onRefreshCommand = new ReplyCommand(new Action() {
@@ -91,6 +93,13 @@ public class HomePageViewModel extends AndroidViewModel {
         }
     });
 
+    public final ViewStyle viewStyle = new ViewStyle();
+
+    public class ViewStyle {
+        public final ObservableBoolean isRefreshing = new ObservableBoolean(true);
+        public final ObservableBoolean progressRefreshing = new ObservableBoolean(true);
+    }
+
 
     public HomePageViewModel(Application application) {
         super(application);
@@ -98,5 +107,14 @@ public class HomePageViewModel extends AndroidViewModel {
         viewModel.add(new NewsItemViewModel(application));
         viewModel.add(new NewsItemViewModel(application));
         viewModel.add(new NewsItemViewModel(application));
+        viewModel.add(new NewsItemViewModel(application));
+        viewModel.add(new NewsItemViewModel(application));
+    }
+
+    private void loadMore() {
+//        viewStyle.isRefreshing.set(true);
+//
+//        // TODO: 2017/12/31  加载数据，尝试显示或是隐藏progressbar，或是设置recyclerview的状态，通过回调
+//        viewStyle.isRefreshing.set(false);
     }
 }

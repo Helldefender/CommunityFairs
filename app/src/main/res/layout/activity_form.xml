@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_user_introduce"
+        android:background="@drawable/bg_primary_color_gradient"
         android:paddingBottom="10dp"
         android:paddingTop="35dp">
 
@@ -327,7 +327,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
                 android:layout_marginTop="35dp"
-                android:background="@drawable/bg_user_introduce"
+                android:background="@drawable/bg_primary_color_gradient"
                 android:text="报名"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />

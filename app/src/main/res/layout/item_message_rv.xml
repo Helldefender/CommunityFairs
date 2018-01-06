@@ -1,58 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="18dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginTop="18dp"
-    android:orientation="horizontal">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <FrameLayout
-        android:id="@+id/frameLayout_item_message_badge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <data>
 
-        <ImageView
-            android:id="@+id/img_item_message_avatar"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/avatar" />
-    </FrameLayout>
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.messsage.MessageItemViewModel" />
+    </data>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/green_avatar" />
+
+            <com.helldefender.communityfairs.widget.BadgeView
+                android:id="@+id/badgeView_msg"
+                android:layout_width="33dp"
+                android:layout_height="33dp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="系统通知"
+                android:textColor="#D9000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="恭喜，数据库大赛报名成功！"
+                android:textColor="#80000000"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="系统通知"
-            android:textColor="#D9000000"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="恭喜，数据库大赛报名成功！"
+            android:layout_gravity="right"
+            android:text="刚刚"
             android:textColor="#80000000"
             android:textSize="12sp" />
-
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="刚刚"
-        android:textColor="#80000000"
-        android:textSize="12sp" />
-
-</LinearLayout>
+</layout>

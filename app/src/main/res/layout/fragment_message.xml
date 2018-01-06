@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/search_top_layout"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.messsage.MessageViewModel" />
+
+        <import type="com.helldefender.communityfairs.bindingadapter.LayoutManager" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_user_introduce"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="25dp">
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="0dp"
+        <com.helldefender.communityfairs.widget.TranslucentActionBar
+            android:id="@+id/actionbar_translucent_message"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="消息"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp" />
-</LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/actionbar_translucent_message"
+            android:layout_marginTop="6dp"
+            bind:itemViewWrapper="@{viewModel.itemViewWrapper}"
+            bind:layoutManager="@{LayoutManager.getLinearLayoutManger()}"
+            bind:viewModel="@{viewModel.viewModel}" />
+    </RelativeLayout>
+
+
+</layout>

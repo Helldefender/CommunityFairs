@@ -1,146 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_detail_content_location"
-        android:drawableLeft="@drawable/pin"
-        android:drawablePadding="10dp"
-        android:padding="5dp"
-        android:text="雨红莲"
-        android:textColor="#8d8d8d"
-        android:textSize="16sp" />
+    <data>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_item_display_part"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="小米电视系统软件部总监鼎力推荐，版权输出台湾地区受到两岸同行肯定，学得懂用得上、国内一部真正来自于Android开发专家的Android系统分析权威指南，讲解新版本热点技术，解决系统开发困惑问题 "
-        android:textColor="#D9000000"
-        android:textSize="16sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_detail_content_divider" />
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.community.detail.ContentViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="承办组织："
-            android:textColor="#99000000"
-            android:textSize="16sp" />
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="蓝山工作室"
-            android:textColor="#99000000"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:background="@drawable/bg_detail_content_location"
+            android:drawableLeft="@drawable/pin"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:text="雨红莲"
+            android:textColor="#5B5B5B"
+            android:textSize="14sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
+        <com.helldefender.communityfairs.widget.ExpandableTextView
+            android:id="@+id/tv_news_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="当前状态："
-            android:textColor="#99000000"
-            android:textSize="16sp" />
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.title}"
+            android:textColor="#d9f90000"
+            app:animDuration="200"
+            app:collapseDrawable="@drawable/icon_orange_arrow_down"
+            app:collapseExpandGrarity="right"
+            app:collapseExpandTextColor="@color/colorOrange"
+            app:collapseExpandTextSize="16sp"
+            app:contentTextColor="#262626"
+            app:contentTextSize="16sp"
+            app:expandDrawable="@drawable/icon_orange_arrow_up"
+            app:maxCollapsedLines="4"
+            app:textCollapse="@string/collapse"
+            app:textExpand="@string/expand" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_detail_content_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="承办组织："
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="蓝山工作室"
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="当前状态："
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="正常报名"
+                android:textColor="#F4733D"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="报名开始："
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="2017年04月20日"
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="报名截止："
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="2017年04月26日"
+                android:textColor="#1D1D1D"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_detail_content_divider" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="正常报名"
-            android:textColor="#F4733D"
-            android:textSize="16sp" />
+            android:text="评论"
+            android:textColor="#393939"
+            android:textSize="20sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="报名开始："
-            android:textColor="#99000000"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="2017年04月20日"
-            android:textColor="#99000000"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="报名截止："
-            android:textColor="#99000000"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="2017年04月26日"
-            android:textColor="#99000000"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_detail_content_divider" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="评论"
-        android:textSize="20sp" />
-
-</LinearLayout>
+</layout>

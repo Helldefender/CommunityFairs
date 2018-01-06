@@ -1,17 +1,26 @@
 package com.helldefender.communityfairs.modules.main.user;
 
 import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.view.View;
+
+import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.app.BaseFragment;
+import com.helldefender.communityfairs.app.ViewModelFactory;
+import com.helldefender.communityfairs.databinding.FragmentUserBinding;
+import com.helldefender.communityfairs.utils.DeviceUtil;
+import com.helldefender.communityfairs.utils.DisplayUtil;
+import com.helldefender.communityfairs.widget.TranslucentScrollView;
 
 
 /**
  * Created by Helldefender on 2017/2/5.
  */
 
-public class UserFragment extends BaseFragment {
+public class UserFragment extends BaseFragment<FragmentUserBinding, UserViewModel> {
 
     @Override
     protected int getLayoutId() {
@@ -20,18 +29,27 @@ public class UserFragment extends BaseFragment {
 
     @Override
     protected int getVariableId() {
-        return 1;
-    }
-
-
-
-    @Override
-    protected ViewModel getViewModel() {
-        return null;
+        return BR.viewModel;
     }
 
     @Override
-    protected void initViews(ViewDataBinding binding, Bundle savedInstanceState) {
-
+    protected UserViewModel getViewModel() {
+        return ViewModelProviders.of(this, ViewModelFactory.getInstance()).get(UserViewModel.class);
     }
+
+    @Override
+    protected void initViews(final FragmentUserBinding binding, Bundle savedInstanceState) {
+        binding.actionbarTranslucentMy.setData("我的", 0, null, 0, null, null);
+        binding.actionbarTranslucentMy.setNeedTranslucent();
+        binding.actionbarTranslucentMy.setStatusBarHeight(DeviceUtil.getStatusBarHeight());
+        binding.scrollviewTranslucent.setTranslucentChangedListener(new TranslucentScrollView.TranslucentChangedListener() {
+            @Override
+            public void onTranslucentChanged(int transAlpha) {
+                binding.actionbarTranslucentMy.tvTitle.setVisibility(transAlpha > 68 ? View.VISIBLE : View.GONE);
+            }
+        });
+        binding.scrollviewTranslucent.setTransView(binding.actionbarTranslucentMy);
+        binding.scrollviewTranslucent.setPullZoomView(binding.llHeader);
+    }
+
 }

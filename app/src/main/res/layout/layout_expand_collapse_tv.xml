@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.helldefender.communityfairs.widget.AlignTextView
+        android:id="@+id/tv_expandable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lineSpacingExtra="1dp"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        tools:text="@string/test_content" />
+
+    <TextView
+        android:id="@+id/tv_expand_collapse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawablePadding="3dp"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorOrange"
+        tools:drawableRight="@drawable/icon_orange_arrow_up"
+        tools:text="@string/collapse" />
+
+</LinearLayout>

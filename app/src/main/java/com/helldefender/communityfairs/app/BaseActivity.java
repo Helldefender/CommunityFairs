@@ -73,12 +73,13 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewMod
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, getLayoutId());
-        binding.setVariable(getVariableId(), viewModel = getViewModel());
+        if (getViewModel() != null) {
+            binding = DataBindingUtil.setContentView(this, getLayoutId());
+            binding.setVariable(getVariableId(), viewModel = getViewModel());
+        }
+
 
         handleStatusBar();
-
-        //setWidgetListener();
     }
 
     protected void handleStatusBar() {

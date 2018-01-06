@@ -14,12 +14,15 @@ import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.app.BaseActivity;
 import com.helldefender.communityfairs.app.ViewModelFactory;
 import com.helldefender.communityfairs.databinding.ActivityMainBinding;
+import com.helldefender.communityfairs.modules.main.discovery.DiscoveryFragment;
 import com.helldefender.communityfairs.modules.main.homepage.HomePageFragment;
+import com.helldefender.communityfairs.modules.main.messsage.MessageFragment;
+import com.helldefender.communityfairs.modules.main.user.UserFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements View.OnClickListener{
+public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> implements View.OnClickListener {
 
     private static final int TAB_HOMEPAGE = 0;
 
@@ -54,6 +57,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     private void initView() {
+        binding.radioHomepage.setOnClickListener(this);
+        binding.radioDiscovery.setOnClickListener(this);
+        binding.radioMessage.setOnClickListener(this);
+        binding.radioUser.setOnClickListener(this);
         initViewPager();
     }
 
@@ -61,17 +68,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         List<Fragment> fragmentList = new ArrayList<Fragment>();
 
         HomePageFragment homePageFragment = new HomePageFragment();
-        //DiscoveryFragment discoveryFragment = new DiscoveryFragment();
-        //MessageFragment messageFragment = new MessageFragment();
-        //UserFragment userFragment = new UserFragment();
+        DiscoveryFragment discoveryFragment = new DiscoveryFragment();
+        MessageFragment messageFragment = new MessageFragment();
+        UserFragment userFragment = new UserFragment();
 
         fragmentList.add(homePageFragment);
-        fragmentList.add(homePageFragment);
-        fragmentList.add(homePageFragment);
-        fragmentList.add(homePageFragment);
-        //fragmentList.add(discoveryFragment);
-        //fragmentList.add(messageFragment);
-        //fragmentList.add(userFragment);
+        fragmentList.add(discoveryFragment);
+        fragmentList.add(messageFragment);
+        fragmentList.add(userFragment);
 
         binding.viewpager.setOffscreenPageLimit(0);
 
@@ -137,9 +141,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 break;
             case R.id.radio_user:
                 binding.viewpager.setCurrentItem(TAB_USER, false);
-                break;
-            case R.id.img_posted:
-                //PublishActivity.start(MainActivity.this, null);
                 break;
         }
     }

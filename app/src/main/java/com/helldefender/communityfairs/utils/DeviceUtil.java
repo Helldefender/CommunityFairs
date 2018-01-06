@@ -22,6 +22,7 @@ public class DeviceUtil {
 
     /**
      * 判断网络是否可用
+     *
      * @return
      */
     public static boolean isNetworkAvailable() {
@@ -40,6 +41,7 @@ public class DeviceUtil {
 
     /**
      * 判断Wifi是否可用
+     *
      * @return
      */
     public static boolean isWifiAvailable() {
@@ -128,5 +130,15 @@ public class DeviceUtil {
         BigDecimal result4 = new BigDecimal(teraBytes);
 
         return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB";
+    }
+
+    public static int getStatusBarHeight() {
+        //获取status_bar_height资源的ID
+        int resourceId = App.getContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            //根据资源ID获取响应的尺寸值
+            return App.getContext().getResources().getDimensionPixelSize(resourceId);
+        }
+        return 0;
     }
 }

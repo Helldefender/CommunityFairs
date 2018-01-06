@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.helldefender.communityfairs.modules.main.discovery.DiscoveryViewModel" />
+
+        <import type="com.helldefender.communityfairs.bindingadapter.LayoutManager" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical">
+        android:background="@color/background">
 
         <LinearLayout
             android:id="@+id/ll_discovery_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_user_introduce"
+            android:background="@drawable/bg_primary_color_gradient"
             android:orientation="horizontal"
             android:paddingBottom="10dp"
             android:paddingLeft="12dp"
@@ -44,110 +45,16 @@
                 android:textCursorDrawable="@null"
                 android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tv_discovery_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:gravity="right|center_vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:text="取消"
-                android:textColor="#333333"
-                android:textSize="14sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:text="人气组织"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_discovery_moreOrganization"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:gravity="right"
-                android:text="更多"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <android.support.v7.widget.CardView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_discovery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            app:cardCornerRadius="3dp">
+            android:layout_below="@id/ll_discovery_search"
+            bind:itemViewWrapper="@{viewModel.itemViewWrapper}"
+            bind:layoutManager="@{LayoutManager.getLinearLayoutManger()}"
+            bind:viewModel="@{viewModel.viewModel}" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_discovery_organization"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.v7.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:text="热门活动"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_discovery_moreEvent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:gravity="right"
-                android:text="更多"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            app:cardCornerRadius="3dp"
-            app:cardElevation="5dp">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_discovery_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
-
-
+    </RelativeLayout>
 </layout>

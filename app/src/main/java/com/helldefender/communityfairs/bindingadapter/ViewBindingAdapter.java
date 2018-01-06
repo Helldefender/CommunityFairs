@@ -1,6 +1,7 @@
 package com.helldefender.communityfairs.bindingadapter;
 
 import android.databinding.BindingAdapter;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -13,13 +14,14 @@ import com.helldefender.communityfairs.bindingadapter.command.ReplyCommand;
  */
 
 public class ViewBindingAdapter {
+
     @BindingAdapter("clickCommand")
-    public static void clickCommand(View view, final ReplyCommand<View> clickCommand) {
+    public static void clickCommand(View view, final ReplyCommand clickCommand) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (clickCommand != null) {
-                    clickCommand.execute(v);
+                    clickCommand.execute();
                 }
             }
         });

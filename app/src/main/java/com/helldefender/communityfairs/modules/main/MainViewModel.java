@@ -7,9 +7,13 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.bindingadapter.command.ReplyCommand;
+
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.logging.Handler;
 
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
