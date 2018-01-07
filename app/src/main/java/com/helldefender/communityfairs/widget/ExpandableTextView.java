@@ -149,10 +149,10 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
             textExpand = getContext().getString(R.string.expand);
         }
         contentTextColor = typedArray.getColor(R.styleable.ExpandableTextView_contentTextColor, ContextCompat.getColor(getContext(), R.color.colorGray));
-        contentTextSize = typedArray.getDimension(R.styleable.ExpandableTextView_contentTextSize, DisplayUtil.sp2px(getContext(), 14));
+        contentTextSize = typedArray.getDimension(R.styleable.ExpandableTextView_contentTextSize, DisplayUtil.sp2px(14));
 
         collapseExpandTextColor = typedArray.getColor(R.styleable.ExpandableTextView_collapseExpandTextColor, ContextCompat.getColor(getContext(), R.color.colorOrange));
-        collapseExpandTextSize = typedArray.getDimension(R.styleable.ExpandableTextView_collapseExpandTextSize, DisplayUtil.sp2px(getContext(), 14));
+        collapseExpandTextSize = typedArray.getDimension(R.styleable.ExpandableTextView_collapseExpandTextSize, DisplayUtil.sp2px(14));
 
         grarity = typedArray.getInt(R.styleable.ExpandableTextView_collapseExpandGrarity, Gravity.LEFT);
         drawableGrarity = typedArray.getInt(R.styleable.ExpandableTextView_drawableGrarity, Gravity.RIGHT);

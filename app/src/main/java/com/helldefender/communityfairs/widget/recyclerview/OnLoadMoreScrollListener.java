@@ -4,8 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Created by Helldefender on 2017/4/19.
+ * Created by Helldefender on 2017/5/15.
  */
+
 public abstract class OnLoadMoreScrollListener extends RecyclerView.OnScrollListener {
 
     //通过重写onScrollListener来监听RecyclerView是否滑动到底部

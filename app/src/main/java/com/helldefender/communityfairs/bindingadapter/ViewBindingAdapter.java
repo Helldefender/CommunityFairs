@@ -1,8 +1,6 @@
 package com.helldefender.communityfairs.bindingadapter;
 
 import android.databinding.BindingAdapter;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.helldefender.communityfairs.bindingadapter.command.ReplyCommand;

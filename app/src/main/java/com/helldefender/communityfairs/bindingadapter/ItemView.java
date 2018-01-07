@@ -1,7 +1,5 @@
 package com.helldefender.communityfairs.bindingadapter;
 
-import android.support.annotation.LayoutRes;
-
 /**
  * Created by Helldefender on 2017/12/4 for CommunityFairs.
  * Function:

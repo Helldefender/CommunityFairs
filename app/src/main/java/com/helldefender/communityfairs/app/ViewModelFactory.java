@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import com.helldefender.communityfairs.modules.community.detail.NewsDetailViewModel;
 import com.helldefender.communityfairs.modules.main.MainViewModel;
 import com.helldefender.communityfairs.modules.main.discovery.DiscoveryViewModel;
+import com.helldefender.communityfairs.modules.main.discovery.organization.OrganizationTabViewModel;
+import com.helldefender.communityfairs.modules.main.discovery.organization.OrganizationViewModel;
 import com.helldefender.communityfairs.modules.main.homepage.HomePageViewModel;
 import com.helldefender.communityfairs.modules.main.homepage.NewsItemViewModel;
 import com.helldefender.communityfairs.modules.main.messsage.MessageViewModel;
@@ -52,6 +54,10 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new UserViewModel(application);
         } else if (modelClass.isAssignableFrom(NewsDetailViewModel.class)) {
             return (T) new NewsDetailViewModel(application);
+        } else if (modelClass.isAssignableFrom(OrganizationViewModel.class)) {
+            return (T) new OrganizationViewModel(application);
+        } else if (modelClass.isAssignableFrom(OrganizationTabViewModel.class)) {
+            return (T) new OrganizationTabViewModel(application);
         } else {
             throw new IllegalArgumentException("向你抛出了一个异常--->未知的ViewModel类型:" + modelClass);
         }

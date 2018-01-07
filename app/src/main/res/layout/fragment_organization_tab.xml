@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.discovery.organization.OrganizationTabViewModel" />
+
+        <import type="com.helldefender.communityfairs.bindingadapter.LayoutManager" />
+    </data>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_organization_tab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:itemViewWrapper="@{viewModel.itemViewWrapper}"
+        bind:layoutManager="@{LayoutManager.getLinearLayoutManger()}"
+        bind:viewModel="@{viewModel.viewModel}" />
+
+</layout>

@@ -1,37 +1,21 @@
 package com.helldefender.communityfairs.widget;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.bindingadapter.ViewPagerAdapter;
-import com.helldefender.communityfairs.model.entity.Image;
 import com.helldefender.communityfairs.modules.main.homepage.BannerItemViewModel;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

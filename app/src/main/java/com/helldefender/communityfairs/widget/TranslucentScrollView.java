@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +23,6 @@ import com.helldefender.communityfairs.utils.DisplayUtil;
 
 public class TranslucentScrollView extends ScrollView {
 
-    static final String TAG = "TranslucentScrollView";
-
     //伸缩视图
     private View zoomView;
     //伸缩视图初始高度
@@ -37,8 +34,10 @@ public class TranslucentScrollView extends ScrollView {
 
     //渐变的视图
     private View transView;
+
     //渐变颜色
     //private int transColor = Color.WHITE;
+
     private Drawable transDrawable;
     //渐变开始位置
     private int transStartY = 50;
@@ -53,11 +52,6 @@ public class TranslucentScrollView extends ScrollView {
     private TranslucentScrollView.TranslucentChangedListener translucentChangedListener;
 
     public interface TranslucentChangedListener {
-        /**
-         * 透明度变化，取值范围0-255
-         *
-         * @param transAlpha
-         */
         void onTranslucentChanged(int transAlpha);
     }
 
@@ -77,11 +71,6 @@ public class TranslucentScrollView extends ScrollView {
         this.translucentChangedListener = translucentChangedListener;
     }
 
-    /**
-     * 设置伸缩视图
-     *
-     * @param zoomView
-     */
     public void setPullZoomView(View zoomView) {
         this.zoomView = zoomView;
         zoomViewInitHeight = zoomView.getLayoutParams().height;
@@ -95,23 +84,12 @@ public class TranslucentScrollView extends ScrollView {
         }
     }
 
-    /**
-     * 设置渐变视图
-     *
-     * @param transView 渐变的视图
-     */
     public void setTransView(View transView) {
         //setTransView(transView, getResources().getColor(R.color.colorAccentBlue), DisplayUtil.dp2px(getContext(), DFT_TRANSSTARTY), DisplayUtil.dp2px(getContext(), DFT_TRANSENDY));
-        setTransView(transView, getResources().getDrawable(R.drawable.bg_primary_color_gradient), DisplayUtil.dp2px(getContext(), DFT_TRANSSTARTY), DisplayUtil.dp2px(getContext(), DFT_TRANSENDY));
+        setTransView(transView, getResources().getDrawable(R.drawable.bg_primary_color_gradient), DisplayUtil.dp2px( DFT_TRANSSTARTY), DisplayUtil.dp2px(DFT_TRANSENDY));
     }
 
-    //    /**
-//     * 设置渐变视图
-//     *
-//     * @param transView  渐变的视图
-//     * @param transColor 渐变颜色
-//     * @param transEndY  渐变结束位置
-//     */
+
     //public void setTransView(View transView, @ColorInt int transColor, int transStartY, int transEndY) {
     public void setTransView(View transView, Drawable drawable, int transStartY, int transEndY) {
         this.transView = transView;
@@ -128,11 +106,6 @@ public class TranslucentScrollView extends ScrollView {
         }
     }
 
-    /**
-     * 获取透明度
-     *
-     * @return
-     */
     private int getTransAlpha() {
         float scrollY = getScrollY();
         if (transStartY != 0) {
@@ -151,9 +124,6 @@ public class TranslucentScrollView extends ScrollView {
         }
     }
 
-    /**
-     * 重置ZoomView
-     */
     private void resetZoomView() {
         final ViewGroup.LayoutParams lp = zoomView.getLayoutParams();
         final float h = zoomView.getLayoutParams().height;// ZoomView当前高度
@@ -178,7 +148,6 @@ public class TranslucentScrollView extends ScrollView {
         int transAlpha = getTransAlpha();
 
         if (transView != null) {
-            Log.d(TAG, "[onScrollChanged .. in ], 透明度 == " + transAlpha);
             //transView.setBackgroundColor(ColorUtils.setAlphaComponent(transColor, transAlpha));
             transDrawable.setAlpha(transAlpha);
             transView.setBackground(transDrawable);
@@ -213,8 +182,6 @@ public class TranslucentScrollView extends ScrollView {
                     }
                     mScaling = true;
                     params.height = zoomViewInitHeight + distance;
-
-                    Log.d(TAG, "params.height == " + params.height + ", zoomViewInitHeight == " + zoomViewInitHeight + ", distance == " + distance);
                     zoomView.setLayoutParams(params);
                     return true;
             }

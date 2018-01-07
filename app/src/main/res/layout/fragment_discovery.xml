@@ -25,12 +25,12 @@
             android:paddingBottom="10dp"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:paddingTop="25dp">
+            android:paddingTop="30dp">
 
             <com.helldefender.communityfairs.widget.ClearEditText
                 android:id="@+id/et_discovery_search"
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="38dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:background="@drawable/search_layout_bg"

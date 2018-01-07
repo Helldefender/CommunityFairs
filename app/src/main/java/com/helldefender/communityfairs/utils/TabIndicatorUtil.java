@@ -30,8 +30,8 @@ public class TabIndicatorUtil {
             e.printStackTrace();
         }
 
-        int left = DisplayUtil.dp2px(context, leftMarginValue);
-        int right = DisplayUtil.dp2px(context, rightMarginValue);
+        int left = DisplayUtil.dp2px(leftMarginValue);
+        int right = DisplayUtil.dp2px(rightMarginValue);
 
         for (int i = 0; i < tabLinearLayout.getChildCount(); i++) {
             View child = tabLinearLayout.getChildAt(i);

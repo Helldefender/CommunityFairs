@@ -30,6 +30,7 @@ import com.helldefender.communityfairs.R;
  */
 
 public class ThumbUpView extends View implements View.OnClickListener {
+
     private static final float SCALE_MIN = 0.9f;
     private static final float SCALE_MAX = 1f;
 

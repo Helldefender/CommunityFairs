@@ -14,11 +14,15 @@ import android.widget.FrameLayout;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.helldefender.communityfairs.R;
+import com.helldefender.communityfairs.utils.DisplayUtil;
+
 /**
  * Created by Helldefender on 2017/5/15.
  */
 
 public class BadgeView extends TextView {
+
     private boolean mHideOnNull = true;
 
     public BadgeView(Context context) {
@@ -46,11 +50,10 @@ public class BadgeView extends TextView {
         }
 
         setTextColor(Color.WHITE);
-        //setTypeface(Typeface.DEFAULT_BOLD);
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
-        setPadding(dip2Px(5), dip2Px(1), dip2Px(5), dip2Px(1));
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
+        setPadding(DisplayUtil.dp2px(5), DisplayUtil.dp2px(1), DisplayUtil.dp2px(5), DisplayUtil.dp2px(1));
 
-        setBackground(9, Color.parseColor("#F4733D"));
+        setBackground(9, getResources().getColor(R.color.colorAccentBlue));
 
         setGravity(Gravity.CENTER);
 
@@ -58,9 +61,9 @@ public class BadgeView extends TextView {
         setBadgeCount(0);
     }
 
-    public void setBackground(int dipRadius, int badgeColor) {
-        int radius = dip2Px(dipRadius);
-        float[] radiusArray = new float[] { radius, radius, radius, radius, radius, radius, radius, radius };
+    public void setBackground(int dpRadius, int badgeColor) {
+        int radius = DisplayUtil.dp2px(dpRadius);
+        float[] radiusArray = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         RoundRectShape roundRect = new RoundRectShape(radiusArray, null, null);
         ShapeDrawable bgDrawable = new ShapeDrawable(roundRect);
@@ -68,26 +71,15 @@ public class BadgeView extends TextView {
         setBackground(bgDrawable);
     }
 
-    /**
-     * @return Returns true if view is hidden on badge value 0 or null;
-     */
     public boolean isHideOnNull() {
         return mHideOnNull;
     }
 
-    /**
-     * @param hideOnNull the hideOnNull to set
-     */
     public void setHideOnNull(boolean hideOnNull) {
         mHideOnNull = hideOnNull;
         setText(getText());
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see android.widget.TextView#setText(java.lang.CharSequence, android.widget.TextView.BufferType)
-     */
     @Override
     public void setText(CharSequence text, BufferType type) {
         if (isHideOnNull() && (text == null || text.toString().equalsIgnoreCase("0"))) {
@@ -102,78 +94,26 @@ public class BadgeView extends TextView {
         setText(String.valueOf(count));
     }
 
-    public Integer getBadgeCount() {
-        if (getText() == null) {
-            return null;
-        }
-
-        String text = getText().toString();
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
     public void setBadgeGravity(int gravity) {
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
         params.gravity = gravity;
         setLayoutParams(params);
     }
 
-    public int getBadgeGravity() {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
-        return params.gravity;
-    }
-
-    public void setBadgeMargin(int dipMargin) {
-        setBadgeMargin(dipMargin, dipMargin, dipMargin, dipMargin);
-    }
-
     public void setBadgeMargin(int leftDipMargin, int topDipMargin, int rightDipMargin, int bottomDipMargin) {
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
-        params.leftMargin = dip2Px(leftDipMargin);
-        params.topMargin = dip2Px(topDipMargin);
-        params.rightMargin = dip2Px(rightDipMargin);
-        params.bottomMargin = dip2Px(bottomDipMargin);
+        params.leftMargin = DisplayUtil.dp2px(leftDipMargin);
+        params.topMargin = DisplayUtil.dp2px(topDipMargin);
+        params.rightMargin = DisplayUtil.dp2px(rightDipMargin);
+        params.bottomMargin = DisplayUtil.dp2px(bottomDipMargin);
         setLayoutParams(params);
     }
 
-    public int[] getBadgeMargin() {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
-        return new int[] { params.leftMargin, params.topMargin, params.rightMargin, params.bottomMargin };
-    }
-
-    public void incrementBadgeCount(int increment) {
-        Integer count = getBadgeCount();
-        if (count == null) {
-            setBadgeCount(increment);
-        } else {
-            setBadgeCount(increment + count);
-        }
-    }
-
-    public void decrementBadgeCount(int decrement) {
-        incrementBadgeCount(-decrement);
-    }
-
-    /*
-     * Attach the BadgeView to the TabWidget
-     *
-     * @param target the TabWidget to attach the BadgeView
-     *
-     * @param tabIndex index of the tab
-     */
     public void setTargetView(TabWidget target, int tabIndex) {
         View tabView = target.getChildTabViewAt(tabIndex);
         setTargetView(tabView);
     }
 
-    /*
-     * Attach the BadgeView to the target view
-     *
-     * @param target the view to attach the BadgeView
-     */
     public void setTargetView(View target) {
         if (getParent() != null) {
             ((ViewGroup) getParent()).removeView(this);
@@ -187,7 +127,6 @@ public class BadgeView extends TextView {
             ((FrameLayout) target.getParent()).addView(this);
 
         } else if (target.getParent() instanceof ViewGroup) {
-            // use a new Framelayout container for adding badge
             ViewGroup parentContainer = (ViewGroup) target.getParent();
             int groupIndex = parentContainer.indexOfChild(target);
             parentContainer.removeView(target);
@@ -207,12 +146,5 @@ public class BadgeView extends TextView {
             Log.e(getClass().getSimpleName(), "ParentView is needed");
         }
 
-    }
-
-    /*
-     * converts dip to px
-     */
-    private int dip2Px(float dip) {
-        return (int) (dip * getContext().getResources().getDisplayMetrics().density + 0.5f);
     }
 }

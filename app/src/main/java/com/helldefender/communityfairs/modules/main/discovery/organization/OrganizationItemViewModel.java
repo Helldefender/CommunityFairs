@@ -1,28 +1,24 @@
-package com.helldefender.communityfairs.modules.main.homepage;
+package com.helldefender.communityfairs.modules.main.discovery.organization;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
-import android.util.Log;
-import android.view.View;
+import android.support.annotation.NonNull;
 
 import com.helldefender.communityfairs.bindingadapter.command.ReplyCommand;
 import com.helldefender.communityfairs.modules.community.detail.NewsDetailActivity;
 
-import org.apache.http.entity.InputStreamEntity;
-
 import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 
 /**
- * Created by Helldefender on 2017/12/8 for CommunityFairs.
+ * Created by Helldefender on 2018/1/7 for CommunityFairs.
  * Function:
  * Description:
  */
 
-public class NewsItemViewModel extends AndroidViewModel {
+public class OrganizationItemViewModel extends AndroidViewModel {
 
     private Context mContext;
 
@@ -37,7 +33,7 @@ public class NewsItemViewModel extends AndroidViewModel {
         }
     });
 
-    public NewsItemViewModel(Application application) {
+    public OrganizationItemViewModel(@NonNull Application application) {
         super(application);
         this.mContext = application;
         imageUrl.set("http://www.taopic.com/uploads/allimg/130331/240460-13033106243430.jpg");

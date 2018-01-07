@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -29,8 +30,10 @@
 
             <com.helldefender.communityfairs.widget.BadgeView
                 android:id="@+id/badgeView_msg"
-                android:layout_width="33dp"
-                android:layout_height="33dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_gravity="bottom|right"
+                bind:count="@{11}" />
         </FrameLayout>
 
         <LinearLayout

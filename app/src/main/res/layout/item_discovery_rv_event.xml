@@ -9,6 +9,8 @@
             type="com.helldefender.communityfairs.modules.main.discovery.EventItemViewModel" />
 
         <import type="com.helldefender.communityfairs.bindingadapter.LayoutManager" />
+
+        <import type="com.helldefender.communityfairs.bindingadapter.ItemDecoration" />
     </data>
 
     <RelativeLayout
@@ -41,7 +43,8 @@
                 android:focusable="true"
                 android:text="更多"
                 android:textColor="#F4733D"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                bind:clickCommand="@{viewModel.moreClickCommand}" />
         </RelativeLayout>
 
         <android.support.v7.widget.CardView
@@ -56,6 +59,9 @@
                 android:id="@+id/rv_organization_discovery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                bind:itemDecoration="@{ItemDecoration.getHorizontalItemDecoration()}"
                 bind:itemViewWrapper="@{viewModel.itemViewWrapper}"
                 bind:layoutManager="@{LayoutManager.getLinearLayoutManger()}"
                 bind:viewModel="@{viewModel.viewModel}" />

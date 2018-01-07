@@ -5,7 +5,6 @@ import android.databinding.ViewDataBinding;
 import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 

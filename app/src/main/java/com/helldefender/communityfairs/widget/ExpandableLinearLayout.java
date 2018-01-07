@@ -54,7 +54,7 @@ public class ExpandableLinearLayout extends LinearLayout implements View.OnClick
         defaultItemCount = ta.getInt(R.styleable.ExpandableLinearLayout_defaultItemCount, 2);
         expandText = ta.getString(R.styleable.ExpandableLinearLayout_expandText);
         hideText = ta.getString(R.styleable.ExpandableLinearLayout_hideText);
-        fontSize = ta.getDimension(R.styleable.ExpandableLinearLayout_tipTextSize, DisplayUtil.sp2px(context, 14));
+        fontSize = ta.getDimension(R.styleable.ExpandableLinearLayout_tipTextSize, DisplayUtil.sp2px(14));
         textColor = ta.getColor(R.styleable.ExpandableLinearLayout_tipTextColor, Color.parseColor("#666666"));
         arrowResId = ta.getResourceId(R.styleable.ExpandableLinearLayout_arrowDownImg, R.drawable.arrow_down);
         useDefaultBottom = ta.getBoolean(R.styleable.ExpandableLinearLayout_useDefaultBottom, true);

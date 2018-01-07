@@ -26,6 +26,7 @@
             android:name="com.helldefender.communityfairs.modules.community.detail.CommentPostActivity"
             android:theme="@style/transparent" />
         <activity android:name=".modules.community.detail.NewsDetailActivity" />
+        <activity android:name=".modules.main.discovery.organization.OrganizationActivity" />
         <activity android:name=".modules.main.SplashActivity">
 
         </activity>

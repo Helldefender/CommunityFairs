@@ -41,7 +41,8 @@
                 android:focusable="true"
                 android:text="更多"
                 android:textColor="#F4733D"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                bind:clickCommand="@{viewModel.moreClickCommand}" />
         </RelativeLayout>
 
         <android.support.v7.widget.CardView

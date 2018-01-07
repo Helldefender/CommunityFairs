@@ -10,8 +10,9 @@ import com.helldefender.communityfairs.R;
 
 
 /**
- * Created by aspsine on 16/3/14.
+ * Created by Helldefender on 2017/5/15.
  */
+
 public class LoadMoreFooterView extends FrameLayout {
 
     private Status mStatus;

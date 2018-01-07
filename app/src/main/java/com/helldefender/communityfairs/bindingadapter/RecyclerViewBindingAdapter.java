@@ -68,6 +68,11 @@ public class RecyclerViewBindingAdapter {
         }
     }
 
+    @BindingAdapter("itemDecoration")
+    public static void addItemDecoration(RecyclerView recyclerView, ItemDecoration.ItemDecorationFactory itemDecorationFactory) {
+        recyclerView.addItemDecoration(itemDecorationFactory.create(recyclerView));
+    }
+
     @BindingAdapter("layoutManager")
     public static void setLayoutManger(RecyclerView recyclerView, LayoutManager.LayoutManagerFactory layoutManagerFactory) {
         recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));

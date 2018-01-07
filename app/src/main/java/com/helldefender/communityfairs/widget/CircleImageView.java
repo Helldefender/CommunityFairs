@@ -28,13 +28,17 @@ import com.helldefender.communityfairs.R;
  */
 
 public class CircleImageView extends AppCompatImageView {
+
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
+
     private static final int COLORDRAWABLE_DIMENSION = 2;
 
     private static final int DEFAULT_BORDER_WIDTH = 0;
+
     private static final int DEFAULT_BORDER_COLOR = Color.BLACK;
+
     private static final int DEFAULT_FILL_COLOR = Color.TRANSPARENT;
     private static final boolean DEFAULT_BORDER_OVERLAY = false;
 

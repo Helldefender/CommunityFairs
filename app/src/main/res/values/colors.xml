@@ -20,6 +20,7 @@
     <color name="colorAccentBlue">#2CC0B3</color>
 
     <color name="statusColor">#F4733D</color>
+    <color name="colorDivider">#D8D8D8</color>
 
     <color name="colorOrange">#F4733D</color>
     <color name="colorGray">#CCCCCC</color>

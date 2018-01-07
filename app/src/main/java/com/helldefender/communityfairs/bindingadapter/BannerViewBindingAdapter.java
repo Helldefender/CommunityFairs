@@ -6,10 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-import com.helldefender.communityfairs.model.entity.Image;
 import com.helldefender.communityfairs.modules.main.homepage.BannerItemViewModel;
 import com.helldefender.communityfairs.widget.BannerView;
-import com.viewpagerindicator.CirclePageIndicator;
 
 import java.lang.reflect.Field;
 import java.util.List;
