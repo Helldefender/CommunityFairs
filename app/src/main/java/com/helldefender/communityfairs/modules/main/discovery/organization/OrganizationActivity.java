@@ -22,10 +22,8 @@ import com.helldefender.communityfairs.utils.TabIndicatorUtil;
 
 public class OrganizationActivity extends BaseActivity<ActivityOrganizationBinding, OrganizationViewModel> {
 
-    //fragment的适配器
     private TabFragmentAdapter tabFragmentAdapter;
 
-    //是否隐藏了头部
     private boolean isHideHeaderLayout = false;
 
     @Override
