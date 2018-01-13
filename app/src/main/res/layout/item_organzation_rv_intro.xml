@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.main.discovery.organization.IntroItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/tv_item_organization_intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="组织简介"
+                    android:textColor="#717171" />
+
+                <TextView
+                    android:id="@+id/tv_item_organization_intro_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/tv_item_organization_intro"
+                    android:ellipsize="end"
+                    android:lines="5"
+                    android:maxLines="5"
+                    android:text="@string/test_content"
+                    android:textColor="#191919" />
+
+                <View
+                    android:id="@+id/view_item_organization_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_item_organization_intro_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorDivider" />
+
+                <TextView
+                    android:id="@+id/tv_item_organization_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_item_organization_divider"
+                    android:text="所在学校"
+                    android:textColor="#717171" />
+
+                <TextView
+                    android:id="@+id/tv_item_organization_school_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_item_organization_divider"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/tv_item_organization_school"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="重庆邮电大学"
+                    android:textColor="#191919" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="热门活动"
+            android:textColor="#717171" />
+    </LinearLayout>
+</layout>

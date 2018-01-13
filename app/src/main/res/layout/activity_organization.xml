@@ -12,6 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,7 +32,77 @@
                     android:layout_height="@dimen/header_height"
                     android:background="@color/colorAccentBlue"
                     android:orientation="vertical"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/bg_avatar">
+
+                            <ImageView
+                                android:layout_width="65dp"
+                                android:layout_height="65dp"
+                                android:layout_centerInParent="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/world" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/text_white_14sp"
+                                android:layout_gravity="center_horizontal"
+                                android:text="蓝山工作室"
+                                android:textSize="20sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp">
+
+                                <TextView
+                                    style="@style/text_white_14sp"
+                                    android:layout_width="0dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical|right"
+                                    android:text="动态：0"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    style="@style/text_white_14sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="15dp"
+                                    android:gravity="center"
+                                    android:text="|"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    style="@style/text_white_14sp"
+                                    android:layout_width="0dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical|left"
+                                    android:text="关注数：0"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tabL_organization"
@@ -39,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     app:tabBackground="@color/tabBackgroundColor"
-                    app:tabIndicatorColor="#57B6EF"
+                    app:tabIndicatorColor="@color/colorAccentBlue"
                     app:tabIndicatorHeight="1dp"
                     app:tabSelectedTextColor="@color/tabSelectTextColor"
                     app:tabTextAppearance="@style/MyTabTextAppearance" />

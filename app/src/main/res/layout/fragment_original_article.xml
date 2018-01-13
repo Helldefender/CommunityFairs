@@ -5,7 +5,7 @@
     android:background="?attr/mColorBackground"
     android:orientation="vertical">
 
-    <include layout="@layout/top_panel_back_layout" />
+    <include layout="@layout/layout_top_panel_back" />
 
 
     <ImageView

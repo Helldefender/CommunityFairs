@@ -42,18 +42,20 @@ public class OrganizationTabViewModel extends AndroidViewModel {
         @Override
         public void getLayoutRes(ItemView itemView, int position, AndroidViewModel viewModel) {
             if (position == 0) {
-                itemView.set(BR.viewModel, R.layout.item_organization_tab);
+                itemView.set(BR.viewModel, R.layout.item_organzation_rv_intro);
+                return;
             }
-            itemView.set(BR.viewModel, R.layout.item_organization_tab);
+            itemView.set(BR.viewModel, R.layout.item_organization_rv_content);
         }
     });
 
     public OrganizationTabViewModel(@NonNull Application application) {
         super(application);
-        viewModel.add(new OrganizationItemViewModel(application));
-        viewModel.add(new OrganizationItemViewModel(application));
-        viewModel.add(new OrganizationItemViewModel(application));
-        viewModel.add(new OrganizationItemViewModel(application));
-        viewModel.add(new OrganizationItemViewModel(application));
+        viewModel.add(new IntroItemViewModel(application));
+        viewModel.add(new ContentItemViewModel(application));
+        viewModel.add(new ContentItemViewModel(application));
+        viewModel.add(new ContentItemViewModel(application));
+        viewModel.add(new ContentItemViewModel(application));
+        viewModel.add(new ContentItemViewModel(application));
     }
 }

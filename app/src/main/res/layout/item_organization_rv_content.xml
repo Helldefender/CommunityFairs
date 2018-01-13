@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.helldefender.communityfairs.modules.main.discovery.organization.OrganizationItemViewModel" />
+            type="com.helldefender.communityfairs.modules.main.discovery.organization.ContentItemViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

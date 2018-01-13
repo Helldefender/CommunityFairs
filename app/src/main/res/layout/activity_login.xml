@@ -10,9 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="150dp"
+        android:scaleType="fitXY"
         android:src="@drawable/icon" />
 
-    <EditText
+    <com.helldefender.communityfairs.widget.ClearEditText
         android:id="@+id/et_login_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
         android:layout_marginTop="15dp"
         android:background="#929292" />
 
-    <EditText
+    <com.helldefender.communityfairs.widget.ClearEditText
         android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,16 +62,16 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/bg_corner_btn_blue"
+        android:src="@drawable/login_btn"
         android:text="@string/login"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/bg_corner_btn_blue"
-        android:src="@drawable/login_btn" />
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

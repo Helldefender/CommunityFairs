@@ -48,7 +48,7 @@ public class CommentPostActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_comment_post;
+        return R.layout.activity_comment;
     }
 
     @Override
@@ -73,7 +73,6 @@ public class CommentPostActivity extends BaseActivity {
 
         setPlaceHolderLayout();
 
-        //initCommentPostListener();
     }
 
     private void setUpContentEdit() {

@@ -18,7 +18,7 @@ import io.reactivex.functions.Action;
  * Description:
  */
 
-public class OrganizationItemViewModel extends AndroidViewModel {
+public class ContentItemViewModel extends AndroidViewModel {
 
     private Context mContext;
 
@@ -33,7 +33,7 @@ public class OrganizationItemViewModel extends AndroidViewModel {
         }
     });
 
-    public OrganizationItemViewModel(@NonNull Application application) {
+    public ContentItemViewModel(@NonNull Application application) {
         super(application);
         this.mContext = application;
         imageUrl.set("http://www.taopic.com/uploads/allimg/130331/240460-13033106243430.jpg");

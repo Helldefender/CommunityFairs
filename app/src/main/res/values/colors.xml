@@ -50,7 +50,7 @@
     <color name="un_press_color">#9C27B0</color>
 
     <color name="tabBackgroundColor">#F5F6F7</color>
-    <color name="tabSelectTextColor">#57B6EF</color>
+    <color name="tabSelectTextColor">@color/colorAccentBlue</color>
 
     <color name="progressColor">#00000000</color>
     <color name="windowBackgroundColor">#00000000</color>
