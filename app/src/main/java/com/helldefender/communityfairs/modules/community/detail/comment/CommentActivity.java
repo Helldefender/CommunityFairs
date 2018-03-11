@@ -1,31 +1,24 @@
-package com.helldefender.communityfairs.modules.community.detail;
+package com.helldefender.communityfairs.modules.community.detail.comment;
 
-import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.app.BaseActivity;
+import com.helldefender.communityfairs.app.ViewModelFactory;
+import com.helldefender.communityfairs.databinding.ActivityCommentBinding;
 
 /**
  * Created by Helldefender on 2017/2/24.
  */
 
-public class CommentPostActivity extends BaseActivity {
-
-    private EditText contentEdit;
-
-    private TextView releaseBtn;
-
-    private LinearLayout placeHolderLayout;
-
-    //private SubscriberOnNextListener commentPostListener;
+public class CommentActivity extends BaseActivity<ActivityCommentBinding, CommentViewModel> {
 
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -40,11 +33,10 @@ public class CommentPostActivity extends BaseActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            boolean isEnable = contentEdit.getText().length() > 0;
-            updateReleaseBtn(releaseBtn, isEnable);
+            boolean isEnable = binding.etComment.getText().length() > 0;
+            updateReleaseBtn(binding.btnComment, isEnable);
         }
     };
-
 
     @Override
     public int getLayoutId() {
@@ -53,12 +45,12 @@ public class CommentPostActivity extends BaseActivity {
 
     @Override
     protected int getVariableId() {
-        return 0;
+        return BR.viewModel;
     }
 
     @Override
-    protected ViewModel getViewModel() {
-        return null;
+    protected CommentViewModel getViewModel() {
+        return ViewModelProviders.of(this, ViewModelFactory.getInstance()).get(CommentViewModel.class);
     }
 
     @Override
@@ -72,37 +64,30 @@ public class CommentPostActivity extends BaseActivity {
         setUpReleaseBtn();
 
         setPlaceHolderLayout();
-
     }
 
     private void setUpContentEdit() {
-        contentEdit = (EditText) findViewById(R.id.post_comment_content_edit);
-        contentEdit.addTextChangedListener(textWatcher);
+        binding.etComment.addTextChangedListener(textWatcher);
     }
 
     private void setUpReleaseBtn() {
-        releaseBtn = (TextView) findViewById(R.id.post_comment_release_btn);
-        releaseBtn.setEnabled(false);
-
-        releaseBtn.setOnClickListener(new View.OnClickListener() {
+        binding.btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // HttpMethods.getInstance().
-               // contentEdit.getText().toString();
 
             }
         });
     }
 
     private void setPlaceHolderLayout() {
-        placeHolderLayout = (LinearLayout) findViewById(R.id.post_comment_place_holder_layout);
-
-        placeHolderLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        placeHolderLayout = (LinearLayout) findViewById(R.id.post_comment_place_holder_layout);
+//
+//        placeHolderLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
     }
 
 //    private void initCommentPostListener() {
@@ -116,6 +101,6 @@ public class CommentPostActivity extends BaseActivity {
 
     private void updateReleaseBtn(TextView releaseBtn, boolean isEnable) {
         releaseBtn.setEnabled(isEnable);
-        releaseBtn.setTextColor(isEnable ? getResources().getColor(R.color.login_btn_enable) : getResources().getColor(R.color.login_btn_disable));
+        //releaseBtn.setTextColor(isEnable ? getResources().getColor(R.color.colorAccentBlue) : getResources().getColor(R.color.colorPrimaryDark));
     }
 }

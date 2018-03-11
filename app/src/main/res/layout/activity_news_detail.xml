@@ -60,23 +60,23 @@
                 app:fab_size="mini" />
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab_upload"
+                android:id="@+id/fab_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_send_white_18dp"
                 app:fab_colorNormal="@color/colorAccent"
                 app:fab_colorPressed="@color/colorAccentDark"
-                app:fab_label="上传"
+                app:fab_label="评论"
                 app:fab_size="mini" />
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab_preview"
+                android:id="@+id/fab_apply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_chrome_reader_mode_white_18dp"
                 app:fab_colorNormal="@color/colorAccent"
                 app:fab_colorPressed="@color/colorAccentDark"
-                app:fab_label="预览"
+                app:fab_label="报名"
                 app:fab_size="mini" />
 
         </com.github.clans.fab.FloatingActionMenu>

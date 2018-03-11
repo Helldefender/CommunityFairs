@@ -1,13 +1,13 @@
-package com.helldefender.communityfairs.modules.community.detail;
+package com.helldefender.communityfairs.modules.community.detail.comment;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 /**
- * Created by Helldefender on 2018/1/2 for CommunityFairs.
- * Function:
- * Description:
+ * 功能：
+ * 描述：
+ * Created by Helldefender on 2018/1/13.
  */
 
 public class CommentViewModel extends AndroidViewModel {

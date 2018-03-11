@@ -91,7 +91,7 @@
 
     <string name="unused">未使用</string>
 
-    <string name="login_account_hint">输入您的手机号或邮箱登录</string>
+    <string name="login_account_hint">输入手机号或邮箱</string>
     <string name="login_password_hint">输入密码</string>
     <string name="login_forget_password">忘记密码</string>
     <string name="login_register">注册新账号</string>
@@ -100,7 +100,7 @@
     <string name="register_get_check">获取验证码</string>
     <string name="register_check_hint">请输入验证码</string>
     <string name="register_password_hint">设置密码（6到20位字符）</string>
-    <string name="register_contract_hint">注册代表您已同意《U-Lab用户协议》</string>
+    <string name="register_contract_hint">注册代表您已同意《活动集市用户协议》</string>
     <string name="register_in_email">点此用邮箱注册</string>
     <string name="register_password_confirm">重新输入密码</string>
     <string name="item_detail">物品详情</string>

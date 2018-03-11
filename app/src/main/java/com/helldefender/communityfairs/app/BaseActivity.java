@@ -2,16 +2,12 @@ package com.helldefender.communityfairs.app;
 
 import android.arch.lifecycle.ViewModel;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,14 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.helldefender.communityfairs.R;
-import com.helldefender.communityfairs.listener.PermissionListener;
 import com.helldefender.communityfairs.utils.ToolbarUtil;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by Helldefender on 2017/2/5.
@@ -78,8 +67,9 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends ViewMod
             binding.setVariable(getVariableId(), viewModel = getViewModel());
         }
 
-
         handleStatusBar();
+
+
     }
 
     protected void handleStatusBar() {

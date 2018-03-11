@@ -1,56 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.community.detail.comment.CommentViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:gravity="bottom"
         android:orientation="vertical">
-
-    </LinearLayout>
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:fillViewport="true"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" />
 
-            <EditText
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/comment_post_bg"
-                android:padding="20dp"
-                android:textColorHint="@android:color/darker_gray"
-                android:textSize="16sp" />
+                android:orientation="vertical">
 
-            <Button
-                android:layout_width="90dp"
-                android:layout_height="28dp"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_corner_btn_blue"
-                android:textColor="@android:color/white"
-                android:text="发表评论" />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/et_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/comment_post_bg"
+                    android:gravity="top|left"
+                    android:hint="请输入评论"
+                    android:lines="3"
+                    android:padding="20dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="14sp" />
 
-    </ScrollView>
-
-</LinearLayout>
+                <Button
+                    android:id="@+id/btn_comment"
+                    android:layout_width="92dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_corner_btn_blue"
+                    android:gravity="center"
+                    android:text="发表评论"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,16 +9,16 @@
             type="com.helldefender.communityfairs.modules.main.MainViewModel" />
     </data>
 
-    <FrameLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false">
+        android:layout_height="match_parent">
 
         <com.helldefender.communityfairs.widget.TabViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="45dp" />
+            android:layout_marginBottom="45dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -69,5 +69,5 @@
                 android:text="@string/user"
                 android:textSize="12sp" />
         </RadioGroup>
-    </FrameLayout>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

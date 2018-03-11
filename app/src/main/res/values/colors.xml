@@ -34,10 +34,6 @@
 
     <color name="tab_transparent">#00000000</color>
 
-    <!-- 登录按钮的文字变化 -->
-    <color name="login_btn_enable">#ffffff</color>
-    <color name="login_btn_disable">#eeb55b</color>
-
     <color name="base_color">#f5b550</color>
 
     <color name="text_color">#444444</color>

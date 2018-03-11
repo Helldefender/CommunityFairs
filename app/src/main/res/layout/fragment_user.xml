@@ -316,7 +316,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="17dp"
                             android:layout_weight="1"
-                            android:text="开始抽奖" />
+                            android:text="活动奖励" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -349,7 +349,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="17dp"
                             android:layout_weight="1"
-                            android:text="邀请奖励" />
+                            android:text="活动分享" />
 
                         <ImageView
                             android:layout_width="wrap_content"

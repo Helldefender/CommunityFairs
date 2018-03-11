@@ -18,6 +18,8 @@ import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.app.BaseActivity;
 import com.helldefender.communityfairs.app.ViewModelFactory;
 import com.helldefender.communityfairs.databinding.ActivityNewsDetailBinding;
+import com.helldefender.communityfairs.modules.community.detail.apply.ApplyActivity;
+import com.helldefender.communityfairs.modules.community.detail.comment.CommentActivity;
 import com.helldefender.communityfairs.utils.ToolbarUtil;
 
 
@@ -57,11 +59,11 @@ public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding, 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ToolbarUtil toolbarUtil = new ToolbarUtil();
         //toolbarUtil.titleString = "标题";
         //toolbarUtil.isNeedNavigate = false;
-
         //mToolBar.setTitleTextColor(Color.RED);
+
+        ToolbarUtil toolbarUtil = new ToolbarUtil();
         setToolBar(R.id.toolbar_news_detail, toolbarUtil);
         setAppBar();
         setFloatingActionMenu();
@@ -132,39 +134,26 @@ public class NewsDetailActivity extends BaseActivity<ActivityNewsDetailBinding, 
         binding.fabShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                showFilter(MainActivity.this, TYPE_SHARE);
                 floatingActionMenu.close(true);
             }
         });
 
-        binding.fabUpload.setOnClickListener(new View.OnClickListener() {
+        binding.fabComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                showFilter(MainActivity.this, TYPE_UPLOAD);
+                startActivity(CommentActivity.class);
                 floatingActionMenu.close(true);
             }
         });
 
-        binding.fabPreview.setOnClickListener(new View.OnClickListener() {
+        binding.fabApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                switchContent(PreviewFragment.getInstance());
+                startActivity(ApplyActivity.class);
                 floatingActionMenu.close(true);
             }
         });
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                finish();
-//                break;
-//            default:
-//                break;
-//        }
-//        return true;
-//    }
 
 //    @Override
 //    public boolean dispatchTouchEvent(MotionEvent ev) {

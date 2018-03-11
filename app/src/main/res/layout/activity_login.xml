@@ -1,108 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_primary_color_gradient"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="150dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon" />
+    <data>
 
-    <com.helldefender.communityfairs.widget.ClearEditText
-        android:id="@+id/et_login_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="46dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginTop="90dp"
-        android:background="@null"
-        android:drawableLeft="@drawable/register_phone_uncheck"
-        android:drawablePadding="31dp"
-        android:hint="@string/login_account_hint"
-        android:textColorHint="#666666"
-        android:textSize="12sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="85dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="15dp"
-        android:background="#929292" />
-
-    <com.helldefender.communityfairs.widget.ClearEditText
-        android:id="@+id/et_login_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginTop="20dp"
-        android:background="@null"
-        android:drawableLeft="@drawable/login_password"
-        android:drawablePadding="28dp"
-        android:hint="@string/login_password_hint"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:textColorHint="#666666"
-        android:textSize="12sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="85dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="15dp"
-        android:background="#929292" />
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/bg_corner_btn_blue"
-        android:src="@drawable/login_btn"
-        android:text="@string/login"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        <variable
+            name="viewModel"
+            type="com.helldefender.communityfairs.modules.user.login.LoginViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_primary_color_gradient"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_login_forget_password"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_forget_password"
-            android:textSize="13sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="160dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon" />
+
+        <EditText
+            android:id="@+id/et_login_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="46dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginTop="80dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/register_phone_uncheck"
+            android:drawablePadding="31dp"
+            android:ellipsize="end"
+            android:hint="@string/login_account_hint"
+            android:maxLines="1"
+            android:textColorHint="#666666"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="15dp"
+            android:background="#929292" />
+
+        <EditText
+            android:id="@+id/et_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/login_password"
+            android:drawablePadding="28dp"
+            android:hint="@string/login_password_hint"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColorHint="#666666"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="15dp"
+            android:background="#929292" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_corner_btn_blue"
+            android:src="@drawable/login_btn"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_login_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_forget_password"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:text="@string/login_register"
+                android:textColor="#448AFF"
+                android:textSize="13sp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_login_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:text="@string/login_register"
-            android:textColor="#448AFF"
-            android:textSize="13sp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12dp"
+            android:gravity="bottom|center"
+            android:text="@string/login_hint"
+            android:textColor="#999999"
+            android:textSize="10sp" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="12dp"
-        android:gravity="bottom|center"
-        android:text="@string/login_hint"
-        android:textColor="#999999"
-        android:textSize="10sp" />
-
-</LinearLayout>
+</layout>

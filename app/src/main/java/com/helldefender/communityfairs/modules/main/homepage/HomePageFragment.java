@@ -2,8 +2,7 @@ package com.helldefender.communityfairs.modules.main.homepage;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
 
 import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
@@ -12,6 +11,7 @@ import com.helldefender.communityfairs.app.ViewModelFactory;
 import com.helldefender.communityfairs.databinding.FragmentHomepageBinding;
 import com.helldefender.communityfairs.listener.OnLoadMoreListener;
 import com.helldefender.communityfairs.listener.OnRefreshListener;
+import com.helldefender.communityfairs.modules.community.publish.PublishActivity;
 import com.helldefender.communityfairs.widget.recyclerview.LoadMoreFooterView;
 import com.helldefender.communityfairs.widget.recyclerview.RefreshRecyclerView;
 
@@ -22,7 +22,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -65,6 +64,13 @@ public class HomePageFragment extends BaseFragment<FragmentHomepageBinding, Home
 //                recyclerView.setRefreshing(true);
 //            }
 //        });
+
+        binding.fabRelease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getHoldingActivity().startActivity(PublishActivity.class);
+            }
+        });
     }
 
     @Override
