@@ -57,6 +57,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void run() {
                 startActivity(LoginActivity.class);
+                finish();
 //                if (canAutoLogin()) {
 //                    startActivity(SplashActivity.class);
 //                    //MainActivity.start(SplashActivity.this,null); // TODO: 2017/12/30

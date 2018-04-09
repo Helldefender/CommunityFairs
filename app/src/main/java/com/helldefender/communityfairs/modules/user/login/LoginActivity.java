@@ -45,30 +45,32 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.etLoginAccount.getText().length() == 0) {
-                    showToast("用户名不得为空");
-                    return;
-                }
-                if (binding.etLoginPassword.getText().length() == 0) {
-                    showToast("密码不得为空");
-                    return;
-                }
-
-                if ((binding.etLoginAccount.getText().length() < 5) || (binding.etLoginAccount.getText().length() > 10)) {
-                    showToast("用户名长度为5-10个字符");
-                    return;
-                }
-                if ((binding.etLoginPassword.getText().length() < 6) || (binding.etLoginPassword.getText().length() > 15)) {
-                    showToast("密码长度为6-20个字符");
-                    return;
-                }
-                if (binding.etLoginAccount.getText().toString().equals("admin") && binding.etLoginPassword.getText().toString().equals("123456")) {
-                    startActivity(MainActivity.class);
-                } else if (!binding.etLoginAccount.getText().toString().equals("admin")) {
-                    showToast("用户名错误"+binding.etLoginAccount.getText());
-                } else if (!binding.etLoginPassword.getText().toString().equals("123456")) {
-                    showToast("密码错误");
-                }
+                startActivity(MainActivity.class);
+                finish();
+//                if (binding.etLoginAccount.getText().length() == 0) {
+//                    showToast("用户名不得为空");
+//                    return;
+//                }
+//                if (binding.etLoginPassword.getText().length() == 0) {
+//                    showToast("密码不得为空");
+//                    return;
+//                }
+//
+//                if ((binding.etLoginAccount.getText().length() < 5) || (binding.etLoginAccount.getText().length() > 10)) {
+//                    showToast("用户名长度为5-10个字符");
+//                    return;
+//                }
+//                if ((binding.etLoginPassword.getText().length() < 6) || (binding.etLoginPassword.getText().length() > 15)) {
+//                    showToast("密码长度为6-20个字符");
+//                    return;
+//                }
+//                if (binding.etLoginAccount.getText().toString().equals("admin") && binding.etLoginPassword.getText().toString().equals("123456")) {
+//                    startActivity(MainActivity.class);
+//                } else if (!binding.etLoginAccount.getText().toString().equals("admin")) {
+//                    showToast("用户名错误"+binding.etLoginAccount.getText());
+//                } else if (!binding.etLoginPassword.getText().toString().equals("123456")) {
+//                    showToast("密码错误");
+//                }
             }
         });
 

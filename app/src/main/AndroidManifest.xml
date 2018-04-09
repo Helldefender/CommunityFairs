@@ -24,9 +24,9 @@
         </activity>
         <activity android:name=".modules.user.login.LoginActivity" />
         <activity android:name=".modules.user.register.RegisterActivity" />
-        <activity android:name="com.helldefender.communityfairs.modules.main.MainActivity">
-
-        </activity>
+        <activity
+            android:name="com.helldefender.communityfairs.modules.main.MainActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name="com.helldefender.communityfairs.modules.community.detail.comment.CommentActivity"
             android:theme="@style/transparent"
