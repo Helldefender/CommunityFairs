@@ -1,5 +1,5 @@
 
-package com.helldefender.communityfairs.widget;
+package com.helldefender.communityfairs.widget.expandable;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.utils.DisplayUtil;
+import com.helldefender.communityfairs.widget.textview.AlignTextView;
 
 /**
  * Created by Helldefender on 2018/1/2 for CommunityFairs.

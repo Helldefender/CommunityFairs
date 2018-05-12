@@ -11,4 +11,7 @@
     <dimen name="header_height">275dp</dimen>
 
     <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="three_grid_unit">12dp</dimen>
+    <dimen name="one_and_a_half_grid_unit">12dp</dimen>
 </resources>

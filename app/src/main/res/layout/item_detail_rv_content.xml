@@ -25,7 +25,7 @@
             android:textColor="#5B5B5B"
             android:textSize="14sp" />
 
-        <com.helldefender.communityfairs.widget.ExpandableTextView
+        <com.helldefender.communityfairs.widget.expandable.ExpandableTextView
             android:id="@+id/tv_news_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

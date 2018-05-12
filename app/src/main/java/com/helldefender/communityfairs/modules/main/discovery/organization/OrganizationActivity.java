@@ -6,15 +6,19 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.view.PagerAdapter;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.helldefender.communityfairs.BR;
 import com.helldefender.communityfairs.R;
 import com.helldefender.communityfairs.app.BaseActivity;
 import com.helldefender.communityfairs.app.ViewModelFactory;
 import com.helldefender.communityfairs.databinding.ActivityOrganizationBinding;
-import com.helldefender.communityfairs.utils.TabIndicatorUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Helldefender on 2017/6/14.
@@ -22,8 +26,8 @@ import com.helldefender.communityfairs.utils.TabIndicatorUtil;
 
 public class OrganizationActivity extends BaseActivity<ActivityOrganizationBinding, OrganizationViewModel> {
 
-    private TabFragmentAdapter tabFragmentAdapter;
-
+    private List<View> mViewList = new ArrayList<>();
+    private PageAdapter mPageAdapter;
     private boolean isHideHeaderLayout = false;
 
     @Override
@@ -41,22 +45,19 @@ public class OrganizationActivity extends BaseActivity<ActivityOrganizationBindi
         return ViewModelProviders.of(this, ViewModelFactory.getInstance()).get(OrganizationViewModel.class);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
-
+        initView();
     }
 
-    private void init() {
-        tabFragmentAdapter = new TabFragmentAdapter(getSupportFragmentManager(), this);
-        binding.vpOrganization.setAdapter(tabFragmentAdapter);
-        binding.tabLOrganization.setupWithViewPager(binding.vpOrganization);
+    private void initView() {
+        mPageAdapter=new PageAdapter();
+        mViewList.add();
 
-        binding.vpOrganization.setOffscreenPageLimit(tabFragmentAdapter.getCount());
-
-        TabIndicatorUtil.setTabIndicatorWidth(this, binding.tabLOrganization, 45, 45);
+        binding.viewpagerTitleOrganization.initData(new String[]{getStringRes(R.string.basic_Info), getStringRes(R.string.logcat_Info), getStringRes(R.string.options_Info), getStringRes(R.string.intro_Info)}, binding.vpOrganization, 0);
+        binding.vpOrganization.setAdapter(new PageAdapter());
+        binding.vpOrganization.setOffscreenPageLimit(mPageAdapter.getCount());
 
         initAppBarLayout();
     }
@@ -90,13 +91,12 @@ public class OrganizationActivity extends BaseActivity<ActivityOrganizationBindi
         });
     }
 
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (isHideHeaderLayout) {
                 isHideHeaderLayout = false;
-                ((OrganizationTabFragment) tabFragmentAdapter.getFragments().get(0)).getRecyclerView().scrollToPosition(0);
+                ((OrganizationTabFragment) mPageAdapter.getFragments().get(0)).getRecyclerView().scrollToPosition(0);
                 binding.llHeaderOrganization.setVisibility(View.VISIBLE);
 
                 new Handler().postDelayed(new Runnable() {
@@ -114,5 +114,29 @@ public class OrganizationActivity extends BaseActivity<ActivityOrganizationBindi
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private class PageAdapter extends PagerAdapter {
+
+        @Override
+        public int getCount() {
+            return mViewList.size();
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            container.addView(mViewList.get(position));
+            return mViewList.get(position);
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
+        }
     }
 }

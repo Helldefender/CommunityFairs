@@ -7,4 +7,5 @@ package com.helldefender.communityfairs.widget;
  */
 
 public class BottomBar {
+
 }

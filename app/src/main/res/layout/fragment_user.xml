@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.helldefender.communityfairs.widget.TranslucentScrollView
+        <com.helldefender.communityfairs.widget.translucent.TranslucentScrollView
             android:id="@+id/scrollview_translucent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -399,9 +399,9 @@
                         android:background="@color/background_user" />
                 </LinearLayout>
             </LinearLayout>
-        </com.helldefender.communityfairs.widget.TranslucentScrollView>
+        </com.helldefender.communityfairs.widget.translucent.TranslucentScrollView>
 
-        <com.helldefender.communityfairs.widget.TranslucentActionBar
+        <com.helldefender.communityfairs.widget.translucent.TranslucentActionBar
             android:id="@+id/actionbar_translucent_my"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.helldefender.communityfairs.widget.AlignTextView
+    <com.helldefender.communityfairs.widget.textview.AlignTextView
         android:id="@+id/tv_expandable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

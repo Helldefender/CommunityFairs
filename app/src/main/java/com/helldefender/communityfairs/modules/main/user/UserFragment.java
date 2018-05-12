@@ -1,8 +1,6 @@
 package com.helldefender.communityfairs.modules.main.user;
 
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,8 +10,7 @@ import com.helldefender.communityfairs.app.BaseFragment;
 import com.helldefender.communityfairs.app.ViewModelFactory;
 import com.helldefender.communityfairs.databinding.FragmentUserBinding;
 import com.helldefender.communityfairs.utils.DeviceUtil;
-import com.helldefender.communityfairs.utils.DisplayUtil;
-import com.helldefender.communityfairs.widget.TranslucentScrollView;
+import com.helldefender.communityfairs.widget.translucent.TranslucentScrollView;
 
 
 /**

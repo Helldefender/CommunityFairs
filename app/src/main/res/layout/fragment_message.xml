@@ -17,7 +17,7 @@
         android:background="@color/background"
         android:orientation="vertical">
 
-        <com.helldefender.communityfairs.widget.TranslucentActionBar
+        <com.helldefender.communityfairs.widget.translucent.TranslucentActionBar
             android:id="@+id/actionbar_translucent_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.helldefender.communityfairs.widget;
+package com.helldefender.communityfairs.widget.translucent;
 
 import android.content.Context;
 import android.text.TextUtils;

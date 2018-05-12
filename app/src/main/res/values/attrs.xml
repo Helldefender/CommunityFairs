@@ -25,19 +25,12 @@
     </declare-styleable>
 
     <declare-styleable name="ExpandableLinearLayout">
-        <!--默认显示的条目数-->
         <attr name="defaultItemCount" format="integer" />
-        <!--提示文字的大小-->
         <attr name="tipTextSize" format="dimension" />
-        <!--字体颜色-->
         <attr name="tipTextColor" format="color"/>
-        <!--待展开的文字提示-->
         <attr name="expandText" format="string" />
-        <!--待收起时的文字提示-->
         <attr name="hideText" format="string" />
-        <!--向下的箭头的图标-->
         <attr name="arrowDownImg" format="reference" />
-        <!--是否使用默认的底部-->
         <attr name="useDefaultBottom" format="boolean" />
     </declare-styleable>
 
@@ -70,6 +63,43 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="ViewPagerTitle">
+        <attr name="backgroundColor" format="color" />
+        <attr name="defaultTextColor" format="color" />
+        <attr name="selectedTextColor" format="color" />
+        <attr name="defaultTextSize" format="dimension" />
+        <attr name="selectedTextSize" format="dimension" />
+    </declare-styleable>
 
+    <declare-styleable name="NiceSpinner">
+        <attr name="arrowTint" format="color" />
+        <attr name="hideArrow" format="boolean" />
+        <attr name="arrowDrawable" format="reference|color"/>
+        <attr name="dropDownListPaddingBottom" format="dimension"/>
+        <attr name="backgroundSelector" format="integer"/>
+        <attr name="textTint" format="color"/>
+    </declare-styleable>
 
+    <declare-styleable name="SwitchButton">
+        <attr name="sb_shadow_radius" format="reference|dimension"/>
+        <attr name="sb_shadow_offset" format="reference|dimension"/>
+        <attr name="sb_shadow_color" format="reference|color"/>
+        <attr name="sb_uncheck_color" format="reference|color"/>
+        <attr name="sb_checked_color" format="reference|color"/>
+
+        <attr name="sb_border_width" format="reference|dimension"/>
+        <attr name="sb_checkline_color" format="reference|color"/>
+        <attr name="sb_checkline_width" format="reference|dimension"/>
+        <attr name="sb_uncheckcircle_color" format="reference|color"/>
+        <attr name="sb_uncheckcircle_width" format="reference|dimension"/>
+        <attr name="sb_uncheckcircle_radius" format="reference|dimension"/>
+
+        <attr name="sb_checked" format="reference|boolean"/>
+        <attr name="sb_shadow_effect" format="reference|boolean"/>
+        <attr name="sb_effect_duration" format="reference|integer"/>
+        <attr name="sb_button_color" format="reference|color"/>
+        <attr name="sb_show_indicator" format="reference|boolean"/>
+        <attr name="sb_background" format="reference|color"/>
+        <attr name="sb_enable_effect" format="reference|boolean"/>
+    </declare-styleable>
 </resources>

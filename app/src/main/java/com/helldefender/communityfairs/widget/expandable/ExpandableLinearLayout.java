@@ -1,4 +1,4 @@
-package com.helldefender.communityfairs.widget;
+package com.helldefender.communityfairs.widget.expandable;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

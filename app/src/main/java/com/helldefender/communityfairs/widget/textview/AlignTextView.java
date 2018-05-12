@@ -1,4 +1,4 @@
-package com.helldefender.communityfairs.widget;
+package com.helldefender.communityfairs.widget.textview;
 
 import android.content.Context;
 import android.content.res.TypedArray;

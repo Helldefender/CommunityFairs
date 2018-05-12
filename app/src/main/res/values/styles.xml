@@ -130,6 +130,4 @@
         <item name="android:layout_width">0.8dp</item>
         <item name="android:background">@color/dividing_light</item>
     </style>
-
-
 </resources>

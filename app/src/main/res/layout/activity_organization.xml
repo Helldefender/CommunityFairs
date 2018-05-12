@@ -104,17 +104,14 @@
                     </RelativeLayout>
                 </LinearLayout>
 
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/tabL_organization"
+                <com.helldefender.communityfairs.widget.viewpagetitle.ViewPagerTitle
+                    android:id="@+id/viewpager_title_organization"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    app:tabBackground="@color/tabBackgroundColor"
-                    app:tabIndicatorColor="@color/colorAccentBlue"
-                    app:tabIndicatorHeight="1dp"
-                    app:tabSelectedTextColor="@color/tabSelectTextColor"
-                    app:tabTextAppearance="@style/MyTabTextAppearance" />
-
+                    android:layout_height="40dp"
+                    android:layout_marginRight="40dp"
+                    app:backgroundColor="@color/black_1"
+                    app:defaultTextSize="16sp"
+                    app:selectedTextSize="16sp" />
             </android.support.design.widget.AppBarLayout>
 
             <android.support.v4.view.ViewPager
